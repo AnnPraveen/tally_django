@@ -1,32 +1,42 @@
 {% extends 'base.html' %}
 {% block body %}
 
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<!-- <div  style="text-align: center;margin-top:-10px;font-weight:900">{{comp.name}}</div>
-<div hidden  style="text-align: center;margin-top:-10px;font-weight:900">{{comp.id}}</div> -->
-
+<h5 class="text-capitalize" style="text-align:center;">sagma</h5>
+<div>
+    <table>
+    {% for i in com %}
+    {% if i.active == 1 %}
+    <tr>
+     <div style="margin-left: 20px;">{{i.name}}</div></tr>
+     {% endif %}
+    {% endfor %}
+    </table>
+</div>
+         
 <div class="row container-fluid p-0 mx-0">
     <div class="col-sm-4 m-1 p-0"></div>
     <div class="col-sm-4 m-1 p-0" style=" background-color:rgba(0,0,0,0.2);height: 400px;">
         <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->    
-
+       
     <div  class="bg-info text-light">List of Masters</div>
     
            <div>
                <table>
+                {% for i in com %}
+                {% if i.active == 1 %}
+                <tr>
+                <div style="margin-left: 20px;color: black;">{{i.name}}</div></tr>
+                {% endif %}
+                {% endfor %}
                 
                 <tr>
                 <div style="text-align: right;margin-right: 20px;"><a href="{% url 'altercompany_view' %}">Change Company</a></div>   
                 
                 </tr>
-                <tr>
-                    <div style="text-align: right;margin-right: 20px;"><a href="">Expand All</a></div>   
-                    
-                </tr>
-                <tr>
-                <div style="text-align: right;margin-right: 20px;"><a href="">Show More</a></div>          
-                </tr>
+                
                 <hr style="width:100%;text-align:left;margin-left:0">
                 <tr>
                     <div style="margin-left: 20px;">Accounting Masters</div>   
@@ -38,7 +48,7 @@
                     <div style="margin-left: 25px;"><a href="{% url 'listofledgers' %}">Ledger</a></div>   
                 </tr>
                 <tr>
-                    <div style="margin-left: 25px;"><a href="">Cost centre</a></div>   
+                    <div style="margin-left: 25px;"><a href="{% url 'listofcostcentres' %}">Cost centre</a></div>   
                 </tr>
                 <tr>
                     <div style="margin-left: 25px;"><a href="{% url 'listofcurrencies' %}">Currency</a></div>   

@@ -75,13 +75,16 @@ WSGI_APPLICATION = 'tallyproject.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+  'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tallyproject',
+        'NAME': 'tally',
         'USER':'root',
         'PASSWORD':'',
         'HOST':'localhost',
         'PORT':'3306',
+        'OPTIONS': {
+        'sql_mode': 'traditional',
+    }
     }
 }
 

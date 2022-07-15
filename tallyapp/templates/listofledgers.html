@@ -22,12 +22,12 @@
                         
                     </tr>
                     <hr style="width:100%;text-align:left;margin-left:0">
+                    {% for i in lgr %}
+        
                     <tr>
-                        <div style="margin-left: 25px;"><a href="">Cash</a></div>   
+                    <div style="margin-left: 25px;"><a href="">{{i.name}}</a></div>
                     </tr>
-                    <tr>
-                        <div style="margin-left: 25px;"><a href="">Profit & Loss A/c</a></div>   
-                    </tr>
+                    {% endfor %}
                     
                     
                </table>

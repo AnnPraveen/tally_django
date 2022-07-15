@@ -23,9 +23,12 @@
                         
                     </tr>
                     <hr style="width:100%;text-align:left;margin-left:0">
+                    {% for i in cur %}
+        
                     <tr>
-                        <div style="margin-left: 25px;"><a href="">&#8377;</a></div>   
+                    <div style="margin-left: 25px;"><a href="">{{i.symbol}}</a></div>
                     </tr>
+                    {% endfor %}
                     
                </table>
            </div>

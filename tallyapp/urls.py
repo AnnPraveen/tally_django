@@ -14,15 +14,6 @@ urlpatterns = [
     path('creategroup/<int:pk>',views.creategroup,name='creategroup'),
     # path('features',views.features,name='features'),
     path('altercompanyview',views.altercompanyview,name='altercompanyview'),
-
-    path('alter',views.alter,name='alter'),
-    path('altercompany_view',views.altercompany_view,name='altercompany_view'),
-    path('listofgroup',views.listofgroup,name='listofgroup'),
-    path('listofledgers',views.listofledgers,name='listofledgers'),
-    path('listofcurrencies',views.listofcurrencies,name='listofcurrencies'),
-    path('listofvouchertypes',views.listofvouchertypes,name='listofvouchertypes'),
-
-
     path('selectcompany',views.selectcompany,name='selectcompany'),
     path('shutcompany',views.shutcompany,name='shutcompany'),
     path('addstate',views.addstate,name='addstate'),
@@ -36,5 +27,13 @@ urlpatterns = [
     path('featurecompany/<int:pk>',views.featurecompany,name='featurecompany'),
     path('disable/<int:pk>',views.disable,name='disable'),
     path('enable/<int:pk>',views.enable,name='enable'),
+
+    path('alter',views.alter,name='alter'),
+    path('altercompany_view',views.altercompany_view,name='altercompany_view'),
+    path('listofgroup',views.listofgroup,name='listofgroup'),
+    path('listofledgers',views.listofledgers,name='listofledgers'),
+    path('listofcostcentres',views.listofcostcentres,name='listofcostcentres'),
+    path('listofcurrencies',views.listofcurrencies,name='listofcurrencies'),
+    path('listofvouchertypes',views.listofvouchertypes,name='listofvouchertypes'),
     
 ]
