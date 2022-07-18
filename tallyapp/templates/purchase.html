@@ -1,0 +1,112 @@
+
+    {% extends 'base.html' %}
+    {% block body %}
+    {% load static %}
+    <style>
+        .enter{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+    </style>
+
+  <div class="m-0">
+    <h6 style="" class="bg-info text-light p-1 m-1 text-left">Create Purchase Voucher </h6>
+    <div  style="text-align: center;margin-top:-35px;font-weight:900">Purchase No:{{cmp.name}}</div>
+
+            <form  style="background-color:#f6f2f266;" method="post" action=" ">
+                {% csrf_token %}
+                
+                <div class="row container-fluid p-0 m-0" >
+
+                    <div class="col-sm-6 m-0 p-4">
+
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Supplier Invoice No</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="number" placeholder="Party_ac_number" name="Pac_number" class="form-control " /></div>
+                        </div>
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Party A/c name</label></div>
+                            <div class="col-sm-4 m-0 p-0"> 
+                                <input type="name" placeholder="Party_ac_name" name="Party_ac_name" class="form-control " /></div>                    
+                        </div>
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >current_ac_balance</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="number" placeholder="current_ac_balance" name="current_ac_balance" class="form-control " /></div>
+                        </div>
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Purchase ledger</label></div>
+                            <div class="col-sm-4 m-0 p-0"> 
+                                <input type="number" placeholder="purchase_ledger" name="purchase_ledger" class="form-control " /></div>                    
+                        </div>
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >current_ac_balance</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="number" placeholder="current_ac_balance" name="current_ac_balance" class="form-control " /></div>
+                        </div>
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Name of Item</label></div>
+                            <div class="col-sm-8 m-0 p-0"> 
+                                <input type="number" placeholder="current ac_balance" name="current_ac_balance" class="form-control " /></div>                    
+                        </div>
+                       
+                <div class="enter w-100 py-4"><button class="btn btn-info w-25 px-4">CREATE</button></div>   
+               </div>
+              </div>
+                
+            </form>
+        </div>
+
+    </div>
+        
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

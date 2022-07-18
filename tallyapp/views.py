@@ -10,10 +10,30 @@ def index(request):
 def company(request):
     com=Companies.objects.all()
     return render(request,'company.html',{'com':com})
-
+# Reports sales ,purchase and journal
+     
+def disp_more_reports(request):
+    com=Companies.objects.all()
+    return render(request,'dispmorereprt.html')    
+def salesregister(request):
+    com=Companies.objects.all()
+    return render(request,'sales_report.html')   
+def purchaseregister(request):
+    com=Companies.objects.all()
+    return render(request,'purchase_report.html')   
+def journalregister(request):
+    com=Companies.objects.all()
+    return render(request,'purchase_report.html')               
 def index1(request):
     return render(request,'basepage.html')
-
+def voucher1(request):
+    return render(request,'index.html')    
+def sales(request):
+    return render(request,'sales.html')     
+def purchase(request):
+    return render(request,'purchase.html')      
+def journal(request):
+    return render(request,'journal.html')   
 def getStates(request):
     return States.objects.all()
 
@@ -399,6 +419,10 @@ def listofgroup(request):
     com=Companies.objects.all()
     grp=Group.objects.all()
     return render(request,'listofgroup.html',{'com':com, 'grp':grp})
+def listofsalesvouchers(request):
+    com=Companies.objects.all()
+    grp=Group.objects.all()
+    return render(request,'listofsalesvouchers.html')    
 
 def listofledgers(request):
     com=Companies.objects.all()
