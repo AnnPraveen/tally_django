@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tallyapp',
-]
+    'bootstrap_modal_forms',
+    
+ ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

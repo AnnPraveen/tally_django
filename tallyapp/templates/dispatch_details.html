@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<center></center><h5 class="text-capitalize" style="text-align:center;">Delivery Note No:22</h5></center>   
+<a href="javascript:;" class="has-arrow">
+    <div class="row container-fluid p-3 mx-0">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6 m-0 p-0" style="background-color:rgba(0,0,0,0.2)">
+        
+            <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
+        <div  class="bg-info text-light">DispatchDetails</div>
+<div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);"></div>
+         
+<form   method="post" action=" ">
+    {% csrf_token %}
+    
+    <div class="row container-fluid p-0 m-0" >
+         <div class="col-sm-8 m-0 p-8">
+
+            <div class="row container-fluid  p-4 m-0">
+                <div class="col-sm-6 m-0 p-0"> <label >Dispatch Description Number:</label></div>
+                <div class="col-sm-6 m-0 p-0"> <input type="number" placeholder="dispatch_desp_num" name="dispatch_desp_num" class="form-control " /></div>
+                <div class="col-sm-6 m-0 p-0"> <label >Date: </label></div>
+                <div class="col-sm-6 m-0 p-0"> 
+                 <input type="date" placeholder="carrier_name" name="dispatchdate" class="form-control " /></div>                 
+            </div>
+            <div class="row container-fluid  p-4 m-0">
+                <div class="col-sm-6 m-0 p-0"> <label >Dispatched Through:</label></div>
+                <div class="col-sm-6 m-0 p-0"> 
+                    <input type="text" placeholder="dispatch_method" name="dispatch_method" class="form-control " /></div>                    
+            </div>
+            <div class="row container-fluid  p-4 m-0">
+                <div class="col-sm-6 m-0 p-0"> <label >Destination:</label></div>
+                <div class="col-sm-6 m-0 p-0"> <input type="text" placeholder="Destination" name="Destination" class="form-control " /></div>
+            </div>
+            <div class="row container-fluid  p-4 m-0">
+                <div class="col-sm-6 m-0 p-0"> <label >CarrierName/Agent</label></div>
+                <div class="col-sm-6 m-0 p-0"> 
+                    <input type="text" placeholder="carrier_name" name="carrier_name" class="form-control " /></div>                    
+            </div>
+            <div class="row container-fluid  p-4 m-0">
+                <div class="col-sm-6 m-0 p-0"> <label>Motor Vechicle No</label></div>
+                <div class="col-sm-6 m-0 p-0"> 
+                <input type="text" placeholder="carrier_name" name="carrier_name" class="form-control " /></div>                    
+            </div>    
+            <div class="row container-fluid  p-4 m-0">
+                <div class="col-sm-6 m-0 p-0"> <label >Bill Of LandingLR-RR NO: </label></div>
+                <div class="col-sm-6 m-0 p-0"> 
+                    <input type="text" placeholder="carrier_name" name="carrier_name" class="form-control " /></div>                    
+                <div class="col-sm-6 m-0 p-0"> <label >Date: </label></div>
+                <div class="col-sm-6 m-0 p-0"> 
+                 <input type="date" placeholder="carrier_name" name="landingdate" class="form-control " /></div>                    
+            </div>
+        </div>
+     </div>                    
+     <div class="col-sm-3"></div>                      
+    </div>
+  
+    
+</form>
+
+   
+{% endblock %}

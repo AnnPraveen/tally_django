@@ -17,13 +17,16 @@ def disp_more_reports(request):
     return render(request,'dispmorereprt.html')    
 def salesregister(request):
     com=Companies.objects.all()
-    return render(request,'sales_report.html')   
+    return render(request,'salesregister.html')   
 def purchaseregister(request):
     com=Companies.objects.all()
     return render(request,'purchase_report.html')   
 def journalregister(request):
     com=Companies.objects.all()
-    return render(request,'purchase_report.html')               
+    return render(request,'journal_report.html')  
+def listofsalesvouchers(request):
+    com=Companies.objects.all()
+    return render(request,'listofsalesvouchers.html')                
 def index1(request):
     return render(request,'basepage.html')
 def voucher1(request):
@@ -33,7 +36,9 @@ def sales(request):
 def purchase(request):
     return render(request,'purchase.html')      
 def journal(request):
-    return render(request,'journal.html')   
+    return render(request,'journal.html') 
+def showvouchers(request):
+    return render(request,'listofvouchertypes.html')      
 def getStates(request):
     return States.objects.all()
 
@@ -405,11 +410,15 @@ def enable(request,pk):
     c.active=True
     c.save()
     return redirect('shutcompany')
-
-
 def alter(request):
     com=Companies.objects.all()
     return render(request,'altercompany.html')
+def dispatch_details(request):
+    com=Companies.objects.all()
+    return render(request,'dispatch_details.html')    
+def partydetails(request):
+    com=Companies.objects.all()
+    return render(request,'partydetails.html')      
 
 def altercompany_view(request):
     com=Companies.objects.all()

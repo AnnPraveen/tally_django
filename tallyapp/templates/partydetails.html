@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<center></center><h5 class="text-capitalize" style="text-align:center;"></h5></center>   
+<a href="javascript:;" class="has-arrow">
+  <div class="row container-fluid p-3 mx-0">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);">
+            <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
+        <div  class="bg-info text-light">PartyDetails</div>
+<div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);"></div>
+         
+<form   method="post" action=" ">
+    {% csrf_token %}
+    <div class="row container-fluid p-3 mx-0">
+        <div class="col"><label>Buyer(Bill to)</label></div>
+        <div class="col"><input type="text" placeholder="cash" name="partyname" class="form-control " /></div>
+        <div class="col"><label>Consignee(ship to)</label></div>
+        <div class="col"><input type="text" placeholder="cash" name="partname" class="form-control " /></div>
+      </div>
+      <div class="row container-fluid p-3 mx-0">
+        <div class="col"><label>Maling name No</label></div>
+        <div class="col"><input type="text" placeholder="cash" name="carrier_name" class="form-control " /></div>
+        <div class="col"><label>Maling name</label></div>
+        <div class="col"><input type="text" placeholder="cash" name="carrier_name" class="form-control " /></div>
+      </div>
+      <div class="row container-fluid p-3 mx-0">
+        <div class="col"><label>Address</label></div>
+        <div class="col"><input type="text" placeholder="party" name="carrier_name" class="form-control " /></div>
+        <div class="col"><label>Address</label></div>
+        <div class="col"><input type="text" placeholder="party" name="carrier_name" class="form-control " /></div>
+      </div>
+      <div class="row container-fluid p-3 mx-0">
+        <div class="col-sm-3 m-0 p-0"><label>State</label></div>
+        <div class="col-sm-3 m-0 p-0"><input type="text" placeholder="carrier_name" name="carrier_name" class="form-control " /></div>
+        <div class="col-sm-3 m-0 p-0"><label>State</label></div>
+        <div class="col-sm-3 m-0 p-0"><input type="text" placeholder="carrier_name" name="carrier_name" class="form-control " /></div>
+      </div>
+      <div class="row container-fluid p-3 mx-0">
+        <div class="col-sm-3 m-0 p-0"><label>Country</label></div>
+        <div class="col-sm-3 m-0 p-0"><input type="text" placeholder="carrier_name" name="carrier_name" class="form-control " /></div>
+        <div class="col-sm-3 m-0 p-0"><label>Motor Vechicle No</label></div>
+        <div class="col-sm-3 m-0 p-0"><input type="text" placeholder="carrier_name" name="carrier_name" class="form-control " /></div>
+      </div>
+  
+    
+</form>
+
+   
+{% endblock %}

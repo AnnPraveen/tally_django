@@ -35,7 +35,11 @@ urlpatterns = [
     path('salesregister',views.salesregister,name='salesregister'),
     path('purchaseregister',views.purchaseregister,name='purchaseregister'),
     path('journalregister',views.journalregister,name='journalregister'),
+    
+    path('partydetails',views.partydetails,name='partydetails'),
+    path('showVouchers',views.showvouchers,name='showvouchers'),
     path('alter',views.alter,name='alter'),
+    path('dispatch_details',views.dispatch_details,name='dispatch_details'),#click party name in sale form to get delivery details
     path('altercompany_view',views.altercompany_view,name='altercompany_view'),
     path('listofsalesvouchers',views.listofsalesvouchers,name='listofsalesvouchers'),
     

@@ -1,49 +1,161 @@
 {% extends 'base.html' %}
 {% block body %}
+{% load static %}
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/jquery-git.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<style>
+    .contra_head{
+        background-color: transparent;
+        height: 105px;
+        box-shadow: none;
+    }
+    .contra_head .card-title{
+        font-size: small;
+    }
+    .contra_head .card-text .row{
+        width:100%;
+    }
+    .flex-column{
+        width: 15%;
+        background-color: rgba(0,0,0,0.2);
+        height: 100%;
+    }
+    #voucherPop .list-group .list-group-item{
+        background-color: transparent;
+        border: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    #voucherPop{
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    #voucherPop .modal-content{
+        background-color: rgb(216, 232, 238);
+        margin: 10% auto;
+        width: 25%;
+        height: 70%;
+        border-radius: 0%;
+        border: none;
+    }
+    .list-group-item{
+        color: black;
+        cursor: pointer;
+    }
+    .selected{
+        background-color: white;
+    }
+</style>
+
+<script>
+    function showVouchers(){
+        document.getElementById('voucherPop').style.visibility= "visible";
+        document.getElementById('voucherPop').style.display = "block";  
+    }
+    window.addEventListener('click',outsideClick)
+    function outsideClick(event){
+        if(event.target == document.getElementById('voucherPop')){
+            document.getElementById('voucherPop').style.display = "none"
+        }
+    }
+    function setVtype(name){
+        document.getElementById('voucherPop').style.display = "none"
+        document.getElementById('Vname').innerHTML = name
+    }
+    
+</script>
 
 
-<div  class="row container-fluid ">
-  <table class="table table-bordered">
-    <thead>
-        <tr>
-          <th  colspan="3">Purchase Register</th>
-          <th></th>
+<div class="row container-fluid p-4 mx-0">
+    <div class="col-sm-10 p-0" style="background-color:rgba(0,0,0,0.2);height: 100%;">
+        <div hidden id="cid">{{ com.id }}</div>
+        <div  class="bg-info text-light">&nbsp; &nbsp;  Purchase Register<span style="margin-left: 40%;">{{com.name}}</span></div>
+        <div class="row container-fluid m-0 mt-4 w-100 p-0">
+            <span class="card border-bottom border-top w-75 rounded-0 contra_head">
+                <div class="card-body">
+                    <div class="card-text mt-3"><b>P a r t i c u l a r s</b></div>
+                </div>
+            </span>
+            <span class="card border w-25 text-center rounded-0 contra_head">
+                <div class="card-body p-0">
+                    <div class="card-title border-bottom mb-0">
+                        <i id="Vname">Sales</i><br><b>{{com.name}}</b><br>For 
+                    </div>
+                    <div class="card-text border-bottom">
+                        <b>Transactions</b>
+                    </div>
+                    <div class="card-text row container-fluid p-6 ml-1">
+                        <span class="col-sm-3 border-right p-0">Credit</span><span class="col-sm-3 border-right p-0">Debit</span>
+                        <span class="col-sm-6 p-0">Closing Balance</span>
+                    </div>
+                </div>
+            </span>
+        </div>
+        <div class="row container-fluid p-8 mx-0">
+            <table class="table p-0 m-0" id="pTable">
+                <tbody>
+                    <tr>
+                        <td class="w-75 m-0 p-0 pl-3" style="cursor: pointer;">April</td>
+                    </tr>
+                    <tr>
+                        <td class="w-75 m-0 p-0 pl-3" style="cursor: pointer;">May</td>
+                    </tr>
+                    <tr>
+                      <td class="w-75 m-0 p-0 pl-3" style="cursor: pointer;">June</td>
+                  </tr>
+                  <tr>
+                    <td class="w-75 m-0 p-0 pl-3" style="cursor: pointer;">July</td>
+                </tr>
+                <tr>
+                  <td class="w-75 m-0 p-0 pl-3" style="cursor: pointer;">August</td>
+              </tr>
+              <tr>
+                <td class="w-75 m-0 p-0 pl-3" style="cursor: pointer;">September</td>
+            </tr>
+            <tr>
+              <td class="w-75 m-0 p-0 pl-3" style="cursor: pointer;">May</td>
           </tr>
-      </thead> 
-      <tr>
-        <th  colspan="3">Particulars</th>
-        <td>
-           <center>
-            Purchases<br>
-            company name<br>Transactions 
-           </center>
-        </td>       
-      </tr>
-      <tr>
-        <td colspan="5">
-            <a href="">April</a> 
-        </td>
-      </tr>
-      <tr>
-        <td colspan="5">
-            <a href="">May</a> 
-        </td>
-      </tr>
-      <tr>
-        <td colspan="5">
-        <a href="">June</a>  
-        </td> 
-      </tr>
-      <tr>
-        <a>
-      </tr>
-      <tr>
-        <td colspan="5">
-        Grand Total:
-        </td> 
-      </tr>
-</table>
+           </tbody>
+            </table>
+        </div>
+        <div class="row container-fluid m-0 w-100 p-0">
+            <table class="table p-0 m-0">
+                <tbody>
+                    <tr>
+                        <td class="w-75 m-0 p-0 pl-3">Grand Total</td>
+                        <td class="w-25 m-0 p-0 text-center">0000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal" id="voucherPop">
+            <div class="modal-content">
+                <div class="modal-header bg-info p-0 m-0 rounded-0">
+                    <h6 class="modal-title ml-3">Monthly Voucher Type</h6>
+                </div>
+                <div class="modal-body">
+                    <div class="text-right"><a href="" style="cursor: pointer;" class="text-dark">Create</a></div>
+                    <hr class="mt-0 border-dark">
+                    <ul class="list-group">
+                        {% for v in vou %}
+                        <li class="list-group-item" onclick="setVtype('{{ v.voucher_type }}');">{{ v.voucher_type }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   
 </div>
-{% endblock %}
+
+{% endblock %}
