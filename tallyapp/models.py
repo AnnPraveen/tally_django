@@ -74,7 +74,19 @@ class Costcentre(models.Model):
     alias = models.CharField(max_length=225,null=True)
     under = models.CharField(max_length=225)
     company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
-    
+
+class Sales(models.Model):
+    partyAccntname = models.CharField(max_length=225)
+    currentbalance = models.CharField(max_length=225,null=True)
+    salesledger = models.CharField(max_length=225)
+    nameofitem=models.CharField(max_length=225)
+class Purchase(models.Model):
+    supplierinvoiceno= models.CharField(max_length=225)
+    partyAccntname = models.CharField(max_length=225)
+    currentbalance = models.CharField(max_length=225,null=True)
+    purchaseledger = models.CharField(max_length=225)
+    nameofitem=models.CharField(max_length=225)  
+
 class Currency(models.Model):
     symbol = models.CharField(max_length=225)
     formal_name = models.CharField(max_length=225)

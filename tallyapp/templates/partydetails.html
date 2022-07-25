@@ -14,11 +14,11 @@
          
 <form   method="post" action=" ">
     {% csrf_token %}
-    <div class="row container-fluid p-3 mx-0">
-        <div class="col"><label>Buyer(Bill to)</label></div>
-        <div class="col"><input type="text" placeholder="cash" name="partyname" class="form-control " /></div>
-        <div class="col"><label>Consignee(ship to)</label></div>
-        <div class="col"><input type="text" placeholder="cash" name="partname" class="form-control " /></div>
+    <div class="row container-fluid  mx-0">
+        <div class="col-md-3"><label>Buyer(Bill to)</label></div>
+        <div class="col-md-3"><input type="text" placeholder="cash" name="partyname" class="form-control " /></div>
+        <div class="col-md-3"><label>Cosign(ship to)</label></div>
+        <div class="col-md-3"><input type="text" placeholder="cash" name="partname" class="form-control " /></div>
       </div>
       <div class="row container-fluid p-3 mx-0">
         <div class="col"><label>Maling name No</label></div>
@@ -34,9 +34,9 @@
       </div>
       <div class="row container-fluid p-3 mx-0">
         <div class="col-sm-3 m-0 p-0"><label>State</label></div>
-        <div class="col-sm-3 m-0 p-0"><input type="text" placeholder="carrier_name" name="carrier_name" class="form-control " /></div>
+        <div class="col-sm-3 m-0 p-0"><input type="text" placeholder="carrier_name" name="carrier_name" class="form-control"/></div>
         <div class="col-sm-3 m-0 p-0"><label>State</label></div>
-        <div class="col-sm-3 m-0 p-0"><input type="text" placeholder="carrier_name" name="carrier_name" class="form-control " /></div>
+        <div class="col-sm-3 m-0 p-0"><input type="text" placeholder="carrier_name" name="carrier_name" class="form-control"/></div>
       </div>
       <div class="row container-fluid p-3 mx-0">
         <div class="col-sm-3 m-0 p-0"><label>Country</label></div>

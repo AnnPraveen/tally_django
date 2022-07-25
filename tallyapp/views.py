@@ -12,30 +12,33 @@ def company(request):
     return render(request,'company.html',{'com':com})
 # Reports sales ,purchase and journal
      
-def disp_more_reports(request):
+def disp_more_reports(request):#ann
     com=Companies.objects.all()
     return render(request,'dispmorereprt.html')    
-def salesregister(request):
+def salesregister(request):#ann
     com=Companies.objects.all()
     return render(request,'salesregister.html')   
-def purchaseregister(request):
+def purchaseregister(request):#ann
     com=Companies.objects.all()
-    return render(request,'purchase_report.html')   
-def journalregister(request):
+    return render(request,'purchaseregister.html')   
+def journalregister(request):#ann
     com=Companies.objects.all()
     return render(request,'journal_report.html')  
-def listofsalesvouchers(request):
+def listofsalesvouchers(request):#ann
     com=Companies.objects.all()
-    return render(request,'listofsalesvouchers.html')                
+    return render(request,'listofsalesvouchers.html')      
+def listofpurchasevouchers(request):#ann
+    com=Companies.objects.all()
+    return render(request,'listofpurchasevouchers.html')                  
 def index1(request):
     return render(request,'basepage.html')
 def voucher1(request):
     return render(request,'index.html')    
-def sales(request):
+def sales(request):#ann
     return render(request,'sales.html')     
-def purchase(request):
+def purchase(request):#ann
     return render(request,'purchase.html')      
-def journal(request):
+def journal(request):#ann
     return render(request,'journal.html') 
 def showvouchers(request):
     return render(request,'listofvouchertypes.html')      
@@ -428,7 +431,7 @@ def listofgroup(request):
     com=Companies.objects.all()
     grp=Group.objects.all()
     return render(request,'listofgroup.html',{'com':com, 'grp':grp})
-def listofsalesvouchers(request):
+def listofsalesvouchers(request):#ann
     com=Companies.objects.all()
     grp=Group.objects.all()
     return render(request,'listofsalesvouchers.html')    

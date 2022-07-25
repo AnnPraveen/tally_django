@@ -1,0 +1,144 @@
+
+    {% extends 'base.html' %}
+    {% block body %}
+    {% load static %}
+    <style>
+        .enter{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+    </style>
+     <a href="javascript:;" class="has-arrow">
+        <div class="row container-fluid p-3 mx-0">
+            <div class="col-sm-2 m-0 p-0"></div>
+            <div class="col-sm-8 m-0 p-0" style=" background-color:rgba(0,0,0,0.2)">
+                <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
+        <div  class="bg-info text-light">Journal No:1 </div><br>
+    <div class="col-sm-6 m-0 p-0"></div>
+    <div  style="text-align: center;margin-top:-35px;font-weight:900"></div>
+
+            <form   method="post" action=" ">
+                {% csrf_token %}
+                
+                <div class="row container-fluid p-0 m-0" >
+
+                    <div class="col-sm-6 m-0 p-4">
+
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Party A/c Name</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="number" placeholder="Party_ac_number" name="Pac_number" class="form-control " /></div>
+                        </div>
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Current Balance</label></div>
+                            <div class="col-sm-4 m-0 p-0"> 
+                                <input type="number" placeholder="current ac_balance" name="current_ac_balance" class="form-control " /></div>                    
+                        </div>
+                                           <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Sales Ledger</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="number" placeholder="sales" name="Pac_number" class="form-control " /></div>
+                        </div>
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Current Balance</label></div>
+                            <div class="col-sm-4 m-0 p-0"> 
+                                <input type="number" placeholder="current ac_balance" name="current_ac_balance" class="form-control " /></div>                    
+                        </div>
+                                            
+                </div>
+              </div>
+                
+            </form>
+                <table class="table table-bordered">
+                    <tr>
+                        <td colspan="5">april 1 to april2<BR><BR></td>
+                      </tr>
+                     <tr>
+                      <th colspan="3">Name of Item</th>
+                      <th colspan="2" >Quantity</th>
+                      <th colspan="1">Rates Per</th>
+                      <th colspan="1">Amount:</th>   
+                     </tr>
+                <tbody>
+                          
+                              <tr>
+                                <td colspan="3">Himaliya Body Lotion</td>
+                                <td colspan="2"><a href="{% url 'salesregister' %}">sales</a></td>
+                                <td colspan="1">200</td>
+                                <td colspan="1">40000</td>
+                                   
+                             
+                      </tbody>
+                            <tr>
+                            <td colspan="5">
+                             Grand Total:
+                             </td>
+                             <td colspan="4"><center>
+                              400</center>
+                              </td> 
+                            </tr>
+                            <tr>
+                              <td colspan="5">
+                               <a href="{% url 'listofsalesvouchers' %}">Back to sale list</a>
+                               </td> 
+                               <td colspan="5">
+                                <a href="{% url 'dispatch_details' %}">DispatchDetails</a>
+                                </td> 
+                              </tr>
+              </table>
+                          
+        </div>
+
+    </div>
+        
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
