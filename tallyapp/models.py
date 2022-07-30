@@ -1,3 +1,5 @@
+from pickle import TRUE
+from tkinter import FALSE
 from django.db import models
 
 class Countries(models.Model):
@@ -75,17 +77,21 @@ class Costcentre(models.Model):
     under = models.CharField(max_length=225)
     company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
 
-class Sales(models.Model):
+class Sales(models.Model):#ann sales table
     partyAccntname = models.CharField(max_length=225)
-    currentbalance = models.CharField(max_length=225,null=True)
+    currentbalancep = models.CharField(max_length=225,null=True)#current balance of party
     salesledger = models.CharField(max_length=225)
-    nameofitem=models.CharField(max_length=225)
-class Purchase(models.Model):
-    supplierinvoiceno= models.CharField(max_length=225)
-    partyAccntname = models.CharField(max_length=225)
+    currentbalancesl = models.CharField(max_length=225,null=True)#balance of corresponding sales ledger
+    nameofitem=models.CharField(max_length=225,null=True)
+    sales_date=models.DateField(null=True)
+
+class Purchase(models.Model):#ann purchase tabel
+    supplierinvoiceno= models.CharField(max_length=225,default=True)
+    partyAccntname = models.CharField(max_length=225,default=True)
     currentbalance = models.CharField(max_length=225,null=True)
-    purchaseledger = models.CharField(max_length=225)
-    nameofitem=models.CharField(max_length=225)  
+    purchaseledger = models.CharField(max_length=225,default=True)
+    nameofitem=models.CharField(max_length=225,default=True) 
+    purchase_date=models.DateField(null=True) 
 
 class Currency(models.Model):
     symbol = models.CharField(max_length=225)

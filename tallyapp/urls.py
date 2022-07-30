@@ -30,13 +30,14 @@ urlpatterns = [
     path('journal',views.journal,name='journal'),#journalnn
     path('purchase',views.purchase,name='purchase'),#purchaseann
     path('listofpurchasevouchers',views.listofpurchasevouchers,name='listofpurchasevouchers'),#ann,#listofpurchasevouchers
+    path('listjournalvouchers',views.listjournalvouchers,name='listjournalvouchers'),#ann,#listofjournalvouchers
     path('featurecompany/<int:pk>',views.featurecompany,name='featurecompany'),
     path('disable/<int:pk>',views.disable,name='disable'),
     path('enable/<int:pk>',views.enable,name='enable'),
     path('salesregister',views.salesregister,name='salesregister'),#ann
     path('purchaseregister',views.purchaseregister,name='purchaseregister'),#ann
     path('journalregister',views.journalregister,name='journalregister'),#ann
-    
+    path('sales_add',views.sales_add,name='sales_add'),#ann
     path('partydetails',views.partydetails,name='partydetails'),
     path('showVouchers',views.showvouchers,name='showvouchers'),
     path('alter',views.alter,name='alter'),

@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 from .models import *
 from django.contrib import messages
 from django.http import JsonResponse
+#from tallyapp.models import Sales, Purchase,Companies
 def index(request):
     comp=Companies.objects.all()
     return render(request,'index.html',{'comp':comp})
@@ -11,13 +12,14 @@ def company(request):
     com=Companies.objects.all()
     return render(request,'company.html',{'com':com})
 # Reports sales ,purchase and journal
+ 
      
 def disp_more_reports(request):#ann
     com=Companies.objects.all()
     return render(request,'dispmorereprt.html')    
 def salesregister(request):#ann
-    com=Companies.objects.all()
-    return render(request,'salesregister.html')   
+    sales=Sales.objects.all()
+    return render(request,'salesregister.html',{'sales':sales})   
 def purchaseregister(request):#ann
     com=Companies.objects.all()
     return render(request,'purchaseregister.html')   
@@ -25,21 +27,39 @@ def journalregister(request):#ann
     com=Companies.objects.all()
     return render(request,'journal_report.html')  
 def listofsalesvouchers(request):#ann
-    com=Companies.objects.all()
-    return render(request,'listofsalesvouchers.html')      
+    s=Sales.objects.all()
+    # print("hi")
+    print(s)
+    return render(request,'listofsalesvouchers.html',{'sales':s})      
 def listofpurchasevouchers(request):#ann
     com=Companies.objects.all()
-    return render(request,'listofpurchasevouchers.html')                  
+    return render(request,'listofpurchasevouchers.html') 
+def listjournalvouchers(request):#ann
+    com=Companies.objects.all()
+    return render(request,'listjournalvouchers.html')                     
 def index1(request):
     return render(request,'basepage.html')
 def voucher1(request):
-    return render(request,'index.html')    
+    return render(request,'vouchertype.html')    
 def sales(request):#ann
     return render(request,'sales.html')     
 def purchase(request):#ann
     return render(request,'purchase.html')      
 def journal(request):#ann
-    return render(request,'journal.html') 
+    return render(request,'journal.html')
+def sales_add (request):#ann
+ if request.method=="POST":
+    partyAc=request.POST.get('Party_name') 
+     #name=request.POST.get('fname')
+    sales_date=request.POST.get('Date')
+    currentp=request.POST.get('current_ac_balancep')
+    currentbl=request.POST.get('current_ac_balancesl')
+    nameof=request.POST.get('nameofitem')
+    salesle=request.POST.get('salesledger')
+    sales=Sales(partyAccntname=partyAc,sales_date=sales_date,salesledger=salesle,currentbalancesl=currentbl,currentbalancep=currentp,nameofitem=nameof)
+    sales.save()
+    messages.info(request,'Sales entered successfully')
+    return redirect('/')  
 def showvouchers(request):
     return render(request,'listofvouchertypes.html')      
 def getStates(request):

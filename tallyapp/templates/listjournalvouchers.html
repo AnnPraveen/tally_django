@@ -14,7 +14,7 @@
     <table class="table-bordered" width="100%">
       <thead class="thead-dark">
         <tr>
-          <th  colspan="7">List of all Sales Vouchers<BR><BR></th>
+          <th  colspan="7">List of all Journal Vouchers<BR><BR></th>
           <td>april 1 to april31<BR><BR></td>
         </tr>
        <tr>
@@ -27,18 +27,20 @@
         </tr>
       </thead>
       <tr>
-        
+        <td>
+          abcd
+        </td>
       </tr>
         
-         {% for i in sales %}  
+         {% for sale in sales %}  
       <tr>
-          
-          <td colspan="2">{{i.sales_date}}</td>
+          <td colspan="2">abcd</td> 
+          <td colspan="2">{{sale.sales_date}}</td>
           <td style="color:white">{{sale.name}}</td>
-          <td>{{i.salesledger}}</td>
-          <td>{{i.nameofitem}}</td>
-          <td>{{i.currentbalance}}</td>
-          <td>{{i.nameofitem}}</td>
+          <td>{{sale.salesledger}}</td>
+          <td>{{sale.nameofitem}}</td>
+          <td>{{sale.currentbalance}}</td>
+          <td>{{sale.nameofitem}}</td>
        </tr>
        {% endfor %}
       
@@ -52,7 +54,7 @@
           </tr> 
           <tr>
             <td colspan="6">
-             <a href="{% url 'salesregister' %}">Back to sales register</a>
+             <a href="{% url 'journalregister' %}">Back to Journal register</a>
              </td> 
             </tr>
       </tbody> 
