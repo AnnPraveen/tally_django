@@ -10,12 +10,23 @@
             
         }
     </style>
-
-  <div class="m-0">
-    <h6 style="" class="bg-info text-light p-1 m-1 text-left">Create Purchase Voucher </h6>
+<center> {% for message in messages %}
+    <h5 style="text-align:center;color:white;background-color: #2f516f;">
+        {{ message }}</span>
+    </h5>
+   {% endfor %}</center>
+<div  style="background-color: rgb(236, 194, 116);width:245px ;color:black";>
+    <a href="" onclick="history.go(-1)" class="close" style="margin-right:1100px; ">+</a>
+   </div>
+<div class="row container-fluid p-0 mx-0">
+    <div class="col-sm-1 m-0 p-0"></div>
+    <div class="col-sm-10 m-0 p-0" style=" background-color:rgba(0,0,0,0.2); width:50%">
+        <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
+    <h6 style="" class="bg-info text-light p-1 m-1 text-left"> PurchaseEntry </h6>
+   
     <div  style="text-align: center;margin-top:-35px;font-weight:900">Purchase No:{{cmp.name}}</div>
-
-            <form  style="background-color:#f6f2f266;" method="post" action=" ">
+   
+            <form   method="post" action="{% url 'purchase_add'%}">
                 {% csrf_token %}
                 
                 <div class="row container-fluid p-0 m-0" >
@@ -24,63 +35,55 @@
 
                         <div class="row container-fluid  p-2 m-0">
                             <div class="col-sm-4 m-0 p-0"> <label >Supplier Invoice No</label></div>
-                            <div class="col-sm-4 m-0 p-0"> <input type="number" placeholder="Party_ac_number" name="Pac_number" class="form-control " /></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="text" placeholder="supplier_invoice_number" name="Suppliernumber" class="form-control " /></div>
                         </div>
                         <div class="row container-fluid  p-2 m-0">
-                            <div class="col-sm-4 m-0 p-0"> <label >Party A/c name</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <label >Party A/c Name</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="text" placeholder="Party_ac_number" name="Party_name" class="form-control" /></div>
+                             </div>
+                            <div class="row container-fluid  p-2 m-0">    
+                            <div class="col-sm-4 m-0 p-0"> <label >Date</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="date" placeholder="addDate" name="Date" class="form-control" /></div>
+                        </div>
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Current Balance:</label></div>
                             <div class="col-sm-4 m-0 p-0"> 
-                                <input type="name" placeholder="Party_ac_name" name="Party_ac_name" class="form-control " /></div>                    
+                                <input type="text" placeholder="" name="current_ac_balancep" class="form-control"/></div>                    
+                        </div>
+                                           <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Purchase Ledger</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="text" placeholder="" name="purchaseledger" class="form-control"/></div>
                         </div>
                         <div class="row container-fluid  p-2 m-0">
-                            <div class="col-sm-4 m-0 p-0"> <label >current_ac_balance</label></div>
-                            <div class="col-sm-4 m-0 p-0"> <input type="number" placeholder="current_ac_balance" name="current_ac_balance" class="form-control " /></div>
-                        </div>
-                        <div class="row container-fluid  p-2 m-0">
-                            <div class="col-sm-4 m-0 p-0"> <label >Purchase ledger</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <label >Current Balance:</label></div>
                             <div class="col-sm-4 m-0 p-0"> 
-                                <input type="number" placeholder="purchase_ledger" name="purchase_ledger" class="form-control " /></div>                    
-                        </div>
-                        <div class="row container-fluid  p-2 m-0">
-                            <div class="col-sm-4 m-0 p-0"> <label >current_ac_balance</label></div>
-                            <div class="col-sm-4 m-0 p-0"> <input type="number" placeholder="current_ac_balance" name="current_ac_balance" class="form-control " /></div>
+                                <input type="text" placeholder="" name="current_ac_balancel" class="form-control"/></div>                    
                         </div>
                         <div class="row container-fluid  p-2 m-0">
                             <div class="col-sm-4 m-0 p-0"> <label >Name of Item</label></div>
-                            <div class="col-sm-8 m-0 p-0"> 
-                                <input type="number" placeholder="current ac_balance" name="current_ac_balance" class="form-control " /></div>                    
+                            <div class="col-sm-4 m-0 p-0"> 
+                                <input type="text" placeholder="" name="Item_name" class="form-control"/></div>                    
                         </div>
-                       
-                <div class="enter w-100 py-4"><button class="btn btn-info w-25 px-4">CREATE</button></div>   
-               </div>
+                        
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0">
+                            <button class="btn btn-warning btn-lg btn-block"  type="submit">Add</button></div>
+                            <!-- <div class="col-sm-4 m-0 p-0">
+                                <input class="btns_prnt" type="button" value="Quit"></div>
+                        </div> -->
+                                      
+                </div>
+                          
               </div>
                 
             </form>
-        </div>
+                                         
+        
+         
 
     </div>
         
     {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

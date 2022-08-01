@@ -148,15 +148,23 @@
                               
                           </ul>
                       </li>
-                        <li>
-                            <a href="javascript:;" class="has-arrow">
+                      <li>
+                        <a href="javascript:;" class="has-arrow">
 
-                                <div class="parent-icon"><i class='bx bx-briefcase-alt'></i>
-                                </div>
-                                <div class="menu-title">Sales</div>
-                            </a>
-                            
-                        </li>
+                            <div class="parent-icon"><i class='bx bx-briefcase-alt'></i>
+                            </div>
+                            <div class="menu-title">Voucher</div>
+                        </a>
+                        <ul>
+                            <li>
+                                <a   href="{% url 'sales' %}">Sales </a>
+                                 <a  href="{% url 'purchase' %}">Purchase </a>
+                                 <a  href="{% url 'journal' %}">Journal </a>
+                            </li>
+                 
+                       </ul>
+                  
+                    </li>
                         <li>
                             <a href="{% url 'disp_more_reports' %}" >
                                 <div class="parent-icon"><i class="bx bx-file"></i>

@@ -17,51 +17,81 @@ def company(request):
 def disp_more_reports(request):#ann
     com=Companies.objects.all()
     return render(request,'dispmorereprt.html')    
+
 def salesregister(request):#ann
     sales=Sales.objects.all()
     return render(request,'salesregister.html',{'sales':sales})   
+
 def purchaseregister(request):#ann
     com=Companies.objects.all()
     return render(request,'purchaseregister.html')   
+
 def journalregister(request):#ann
     com=Companies.objects.all()
     return render(request,'journal_report.html')  
+
 def listofsalesvouchers(request):#ann
     s=Sales.objects.all()
     # print("hi")
     print(s)
-    return render(request,'listofsalesvouchers.html',{'sales':s})      
+    return render(request,'listofsalesvouchers.html',{'sales':s})    
+
 def listofpurchasevouchers(request):#ann
     com=Companies.objects.all()
-    return render(request,'listofpurchasevouchers.html') 
+    return render(request,'listofpurchasevouchers.html')
+    
 def listjournalvouchers(request):#ann
     com=Companies.objects.all()
-    return render(request,'listjournalvouchers.html')                     
+    return render(request,'listjournalvouchers.html')       
+
 def index1(request):
     return render(request,'basepage.html')
+
 def voucher1(request):
     return render(request,'vouchertype.html')    
 def sales(request):#ann
     return render(request,'sales.html')     
+
 def purchase(request):#ann
-    return render(request,'purchase.html')      
+    return render(request,'purchase.html')    
+
 def journal(request):#ann
     return render(request,'journal.html')
+
 def sales_add (request):#ann
  if request.method=="POST":
     partyAc=request.POST.get('Party_name') 
-     #name=request.POST.get('fname')
     sales_date=request.POST.get('Date')
     currentp=request.POST.get('current_ac_balancep')
     currentbl=request.POST.get('current_ac_balancesl')
-    nameof=request.POST.get('nameofitem')
+    Item_name=request.POST.get('Item_name')
     salesle=request.POST.get('salesledger')
-    sales=Sales(partyAccntname=partyAc,sales_date=sales_date,salesledger=salesle,currentbalancesl=currentbl,currentbalancep=currentp,nameofitem=nameof)
+    sales=Sales(partyAccntname=partyAc,sales_date=sales_date,salesledger=salesle,currentbalancesl=currentbl,currentbalancep=currentp,nameofitem=Item_name)
     sales.save()
-    messages.info(request,'Sales entered successfully')
-    return redirect('/')  
+    messages.info(request,'Sale entered successfully')
+    #return redirect('/')  
+    return render(request,'sales.html')     
+
+
+def purchase_add(request):#ann
+ if request.method=="POST":
+    supplierinvoiceno=request.POST.get('Suppliernumber') 
+    partyAc=request.POST.get('Party_name') 
+    purchase_date=request.POST.get('Date')
+    currentbalancep =request.POST.get('current_ac_balancep')
+    currentbalancepl =request.POST.get('current_ac_balancel')
+    nameofitem=request.POST.get('Item_name')
+    purchasele=request.POST.get('purchaseledger')
+    purchase=Purchase(supplierinvoiceno=supplierinvoiceno,partyAccntname=partyAc,purchase_date=purchase_date,purchaseledger=purchasele,currentbalancepl =currentbalancepl ,currentbalancep=currentbalancep,nameofitem=nameofitem)
+    purchase.save()
+    print("purchase")
+    messages.info(request,'Purchase entered successfully')
+    return render(request,'purchase.html',)    
+    #return redirect('/')      
+
 def showvouchers(request):
-    return render(request,'listofvouchertypes.html')      
+    return render(request,'listofvouchertypes.html')    
+      
 def getStates(request):
     return States.objects.all()
 

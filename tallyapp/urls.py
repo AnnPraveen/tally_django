@@ -29,6 +29,7 @@ urlpatterns = [
     path('sales',views.sales,name='sales'),#salesann
     path('journal',views.journal,name='journal'),#journalnn
     path('purchase',views.purchase,name='purchase'),#purchaseann
+    path('purchase_add',views.purchase_add,name='purchase_add'),#ann
     path('listofpurchasevouchers',views.listofpurchasevouchers,name='listofpurchasevouchers'),#ann,#listofpurchasevouchers
     path('listjournalvouchers',views.listjournalvouchers,name='listjournalvouchers'),#ann,#listofjournalvouchers
     path('featurecompany/<int:pk>',views.featurecompany,name='featurecompany'),

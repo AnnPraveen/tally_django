@@ -88,7 +88,8 @@ class Sales(models.Model):#ann sales table
 class Purchase(models.Model):#ann purchase tabel
     supplierinvoiceno= models.CharField(max_length=225,default=True)
     partyAccntname = models.CharField(max_length=225,default=True)
-    currentbalance = models.CharField(max_length=225,null=True)
+    currentbalancep = models.CharField(max_length=225,null=True)
+    currentbalancepl = models.CharField(max_length=225,null=True)
     purchaseledger = models.CharField(max_length=225,default=True)
     nameofitem=models.CharField(max_length=225,default=True) 
     purchase_date=models.DateField(null=True) 

@@ -9,17 +9,43 @@
             justify-content: center;
             
         }
-    </style>
-     <a href="javascript:;" class="has-arrow">
-        <div class="row container-fluid p-3 mx-0">
-            <div class="col-sm-2 m-0 p-0"></div>
-            <div class="col-sm-8 m-0 p-0" style=" background-color:rgba(0,0,0,0.2)">
-                <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
-        <div  class="bg-info text-light">Sales No:1 </div><br>
-    <div class="col-sm-6 m-0 p-0"></div>
-    <div  style="text-align: center;margin-top:-35px;font-weight:900"></div>
+        
+  .btns_prnt{
+      width: 100%;
+      text-align:center;
+      color:white;
+      background-color: rgba(240, 248, 255, 0);
+      
+      /* padding: 6px; */
 
-            <form   method="post" action=" ">
+  }
+  .btns_prnt:hover{
+      background-color:orange;
+      
+  }
+
+ </style>
+      <div  style="background-color: rgb(236, 194, 116);width:245px ;color:black";>
+         <a href="" onclick="history.go(-1)" class="close" style="margin-right:1100px; ">+</a>
+        
+     </div>
+ 
+     <div class="row container-fluid p-0 mx-0">
+         <div class="col-sm-1 m-0 p-0"></div>
+         <div class="col-sm-10 m-0 p-0" style=" background-color:rgba(0,0,0,0.2); width:50%">
+             <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
+         
+        <div  class="bg-info text-light">Sale Entry No:1 </div><br>
+    <div class="col-sm-6 m-0 p-0"> 
+         {% for message in messages %}
+         <h5 style="text-align:center;color:white;background-color: #2f516f;">
+             {{ message }}</span>
+         </h5>
+        {% endfor %}
+</div>
+    <div  style="text-align: center;margin-top:-35px;font-weight:900;background-color: #2f516f;"></div>
+
+            <form   method="post" action="{% url 'sales_add'%}">
                 {% csrf_token %}
                 
                 <div class="row container-fluid p-0 m-0" >
@@ -28,67 +54,47 @@
 
                         <div class="row container-fluid  p-2 m-0">
                             <div class="col-sm-4 m-0 p-0"> <label >Party A/c Name</label></div>
-                            <div class="col-sm-4 m-0 p-0"> <input type="number" placeholder="Party_ac_number" name="Pac_number" class="form-control " /></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="text" placeholder="Party_ac_number" name="Party_name" class="form-control" /></div>
+                             </div>
+                            <div class="row container-fluid  p-2 m-0">    
+                            <div class="col-sm-4 m-0 p-0"> <label >Date</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="date" placeholder="addDate" name="Date" class="form-control" /></div>
                         </div>
                         <div class="row container-fluid  p-2 m-0">
-                            <div class="col-sm-4 m-0 p-0"> <label >Current Balance</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <label >Current Balance:</label></div>
                             <div class="col-sm-4 m-0 p-0"> 
-                                <input type="number" placeholder="current ac_balance" name="current_ac_balance" class="form-control " /></div>                    
+                                <input type="text" placeholder="" name="current_ac_balancep" class="form-control"/></div>                    
                         </div>
                                            <div class="row container-fluid  p-2 m-0">
                             <div class="col-sm-4 m-0 p-0"> <label >Sales Ledger</label></div>
-                            <div class="col-sm-4 m-0 p-0"> <input type="number" placeholder="sales" name="Pac_number" class="form-control " /></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="text" placeholder="" name="salesledger" class="form-control"/></div>
                         </div>
                         <div class="row container-fluid  p-2 m-0">
-                            <div class="col-sm-4 m-0 p-0"> <label >Current Balance</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <label >Current Balance:</label></div>
                             <div class="col-sm-4 m-0 p-0"> 
-                                <input type="number" placeholder="current ac_balance" name="current_ac_balance" class="form-control " /></div>                    
+                                <input type="text" placeholder="" name="current_ac_balancesl" class="form-control"/></div>                    
                         </div>
-                                            
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Name of Item</label></div>
+                            <div class="col-sm-4 m-0 p-0"> 
+                                <input type="text" placeholder="" name="Item_name" class="form-control"/></div>                    
+                        </div>
+                        
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0">
+                            <button class="btn btn-warning btn-lg btn-block"  type="submit">Add</button></div>
+                            <!-- <div class="col-sm-4 m-0 p-0">
+                                <input class="btns_prnt" type="button" value="Quit"></div>
+                        </div> -->
+                                      
                 </div>
+                          
               </div>
                 
             </form>
-                <table class="table table-bordered">
-                    <tr>
-                        <td colspan="5">april 1 to april2<BR><BR></td>
-                      </tr>
-                     <tr>
-                      <th colspan="3">Name of Item</th>
-                      <th colspan="2" >Quantity</th>
-                      <th colspan="1">Rates Per</th>
-                      <th colspan="1">Amount:</th>   
-                     </tr>
-                <tbody>
-                          
-                              <tr>
-                                <td colspan="3">Himaliya Body Lotion</td>
-                                <td colspan="2"><a href="{% url 'salesregister' %}">sales</a></td>
-                                <td colspan="1">200</td>
-                                <td colspan="1">40000</td>
-                                   
-                             
-                      </tbody>
-                            <tr>
-                            <td colspan="5">
-                             Grand Total:
-                             </td>
-                             <td colspan="4"><center>
-                              400</center>
-                              </td> 
-                            </tr>
-                            <tr>
-                              <td colspan="5">
-                               <a href="{% url 'listofsalesvouchers' %}">Back to sale list</a>
-                               </td> 
-                               <td colspan="5">
-                                <a href="{% url 'dispatch_details' %}">DispatchDetails</a>
-                                </td> 
-                              </tr>
-              </table>
-                          
-        </div>
-
+                                         
+        
+    
     </div>
         
     {% endblock %}
