@@ -21,7 +21,7 @@
           <th colspan="2">Date</th>
           <th colspan="2">Particulars</th>
           <th colspan="2">Voucher type:</th>
-          <th colspan="2">Voucher No:</th>
+          <th colspan="2">Voucher No :</th>
           <th colspan="2">Debit Amount</th>
           <th colspan="2">Credit Amount</th>
         </tr>
@@ -34,11 +34,11 @@
       <tr>
           
           <td colspan="2">{{i.sales_date}}</td>
-          <td style="color:white">{{sale.name}}</td>
-          <td>{{i.salesledger}}</td>
-          <td>{{i.nameofitem}}</td>
-          <td>{{i.currentbalance}}</td>
-          <td>{{i.nameofitem}}</td>
+          <td colspan="2" >{{i.partyAccntname}}</td>
+          <td colspan="2">Accounting Voucher</td>
+          <td colspan="2">{{i.salesledger}}</td>
+          <td colspan="2">None </td>
+          <td colspan="2">{{i.currentbalancesl}}</td>
        </tr>
        {% endfor %}
       

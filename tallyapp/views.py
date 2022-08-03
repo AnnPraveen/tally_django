@@ -28,15 +28,22 @@ def purchaseregister(request):#ann
 
 def journalregister(request):#ann
     com=Companies.objects.all()
-    return render(request,'journal_report.html')  
+    return render(request,'journal_report.html')
 
-def listofsalesvouchers(request):#ann
+
+def listofsalesvoucher(request):#ann
     s=Sales.objects.all()
-    # print("hi")
+    print("hi")
     print(s)
-    return render(request,'listofsalesvouchers.html',{'sales':s})    
+    return render(request,'listofsalesvouchers.html',{'sales':s})   
 
-def listofpurchasevouchers(request):#ann
+# def listofsalesvouchers(request):#ann
+#     s=Sales.objects.all()
+#     print("hi")
+#     print(s)
+#     return render(request,'listofsalesvouchers.html',{'sales':s})    
+
+def listofpurchasevoucher(request):#ann
     com=Companies.objects.all()
     return render(request,'listofpurchasevouchers.html')
     

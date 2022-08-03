@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% block body %}
 <style>
-  
+  th.a{
+    text-align: center;
+    width: 120px;
+   }
   .btns_prnt{
       width: 100%;
       text-align: end;
@@ -27,8 +30,17 @@
         <div  class="bg-info text-light"> Sales Register</div>
 <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);"></div>
     <table class="table-bordered" width="100%">
-      <thead class="thead-dark"> 
-        <tr>
+      <thead class="thead-dark">
+          <tr>
+              <th rowspan="2" colspan="6">Particulars </th>
+              <th colspan="6" class="a">Infox<br>For 1-Apr-22</th>
+          </tr>
+          <tr><th colspan="5"class="a">Trancations</th></tr>
+      <!-- <tr> <th colspan="2"class="a" >Credit</th>
+          <th colspan="2"class="a" >Debit</th><th colspan="2"class="a" >Closing Balance</th></tr>
+               
+       -->
+        <!-- <tr>
           <th colspan="4"></th>
           
           <th>salesforApril 12 2022</th></tr>
@@ -36,17 +48,17 @@
           <th colspan="5"><br/>Particulars</th>
           
           <th colspan="5">Transactions</th>
-        </tr>
+        </tr> -->
       </thead>
        <tr>
-        <th colspan="5"></th>
-        <th colspan="2"><br/>Credit</th>
-        <th colspan="2"><br/>Debit</th>
-        <th colspan="2"><br/>TotalBalance</th>
+        <th  colspan="8"></th>
+        <th class="a" colspan="2"><br/>Credit</th>
+        <th class="a"colspan="2"><br/>Debit</th>
+        <th class="a"colspan="2"><br/>TotalBalance</th>
        </tr>
        <tbody>
  
- <tr> <th><a href="vouchpage" class="btns_prnt">April</a></th></tr>       
+ <tr> <th><a href="{% url 'listofsalesvoucher'%}" class="btns_prnt">April</a></th></tr>       
  <tr> <th><a href="vouchpage" class="btns_prnt">May</a></th></tr>
  <tr><th><a href="branch"  class="btns_prnt" >June</a></th> </tr>   
  
@@ -64,13 +76,13 @@
        </tbody>
        <div class="row container-fluid m-0 w-100 p-0">
         <table class="table p-0 m-0">
-            <tbody>
-                <tr>
-                    <td class="w-75 m-0 p-0 pl-3">Grand Total</td>
-                    <td class="w-25 m-0 p-0 text-center"><a href="{% url 'listofsalesvouchers'%}">0000</a></td>
-                </tr>
-            </tbody>
-        </table>   
+          <tbody>
+              <tr>
+                  <td class="w-75 m-0 p-0 pl-3">Grand Total</td>
+                  <td class="w-25 m-0 p-0 text-center"><a href="{% url 'listofsalesvoucher'%}">0000</a></td>
+              </tr>
+          </tbody>
+      </table>   
     </table>
     </div>
   </div>

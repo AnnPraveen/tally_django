@@ -30,7 +30,7 @@ urlpatterns = [
     path('journal',views.journal,name='journal'),#journalnn
     path('purchase',views.purchase,name='purchase'),#purchaseann
     path('purchase_add',views.purchase_add,name='purchase_add'),#ann
-    path('listofpurchasevouchers',views.listofpurchasevouchers,name='listofpurchasevouchers'),#ann,#listofpurchasevouchers
+    path('listofpurchasevoucher',views.listofpurchasevoucher,name='listofpurchasevoucher'),#ann,#listofpurchasevouchers
     path('listjournalvouchers',views.listjournalvouchers,name='listjournalvouchers'),#ann,#listofjournalvouchers
     path('featurecompany/<int:pk>',views.featurecompany,name='featurecompany'),
     path('disable/<int:pk>',views.disable,name='disable'),
@@ -44,7 +44,7 @@ urlpatterns = [
     path('alter',views.alter,name='alter'),
     path('dispatch_details',views.dispatch_details,name='dispatch_details'),#click party name in sale form to get delivery details
     path('altercompany_view',views.altercompany_view,name='altercompany_view'),
-    path('listofsalesvouchers',views.listofsalesvouchers,name='listofsalesvouchers'),#ann
+    path('listofsalesvoucher',views.listofsalesvoucher,name='listofsalesvoucher'),#ann
     
     path('listofgroup',views.listofgroup,name='listofgroup'),
     path('listofledgers',views.listofledgers,name='listofledgers'),

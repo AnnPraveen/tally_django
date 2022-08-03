@@ -76,35 +76,6 @@ class Costcentre(models.Model):
     alias = models.CharField(max_length=225,null=True)
     under = models.CharField(max_length=225)
     company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
-
-class Sales(models.Model):#ann sales table
-    partyAccntname = models.CharField(max_length=225)
-    currentbalancep = models.CharField(max_length=225,null=True)#current balance of party
-    salesledger = models.CharField(max_length=225)
-    currentbalancesl = models.CharField(max_length=225,null=True)#balance of corresponding sales ledger
-    nameofitem=models.CharField(max_length=225,null=True)
-    sales_date=models.DateField(null=True)
-
-class Purchase(models.Model):#ann purchase tabel
-    supplierinvoiceno= models.CharField(max_length=225,default=True)
-    partyAccntname = models.CharField(max_length=225,default=True)
-    currentbalancep = models.CharField(max_length=225,null=True)
-    currentbalancepl = models.CharField(max_length=225,null=True)
-    purchaseledger = models.CharField(max_length=225,default=True)
-    nameofitem=models.CharField(max_length=225,default=True) 
-    purchase_date=models.DateField(null=True) 
-
-class Currency(models.Model):
-    symbol = models.CharField(max_length=225)
-    formal_name = models.CharField(max_length=225)
-    currency_code = models.CharField(max_length=225)
-    decimal_places = models.CharField(max_length=225)
-    show_in_millions = models.BooleanField(default=False)
-    suffix_symbol = models.BooleanField(default=False)
-    symbol_and_amount = models.BooleanField(default=False)
-    after_decimal = models.CharField(max_length=225)
-    amount_in_words = models.CharField(max_length=225)
-    company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
 class Voucher(models.Model):
     voucher_name = models.CharField(max_length=225)
     alias = models.CharField(max_length=225)
@@ -120,7 +91,37 @@ class Voucher(models.Model):
     make_optional =  models.CharField(max_length=225)
     provide_naration =  models.CharField(max_length=225)
     print_voucher = models.CharField(max_length=225)
+    company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)    
+
+class Sales(models.Model):#ann sales table
+    partyAccntname = models.CharField(max_length=225)
+    currentbalancep = models.CharField(max_length=225,null=True)#current balance of party
+    salesledger = models.CharField(max_length=225)
+    currentbalancesl = models.CharField(max_length=225,null=True)#balance of corresponding sales ledger
+    nameofitem=models.CharField(max_length=225,null=True)
+    sales_date=models.DateField(null=True)
+   # voucher=models.ForeignKey(Voucher,on_delete=models.CASCADE,blank=True,null=True)
+class Purchase(models.Model):#ann purchase tabel
+    supplierinvoiceno= models.CharField(max_length=225,default=True)
+    partyAccntname = models.CharField(max_length=225,default=True)
+    currentbalancep = models.CharField(max_length=225,null=True)
+    currentbalancepl = models.CharField(max_length=225,null=True)
+    purchaseledger = models.CharField(max_length=225,default=True)
+    nameofitem=models.CharField(max_length=225,default=True) 
+    purchase_date=models.DateField(null=True) 
+    voucher=models.ForeignKey(Voucher,on_delete=models.CASCADE,blank=True,null=True)
+class Currency(models.Model):
+    symbol = models.CharField(max_length=225)
+    formal_name = models.CharField(max_length=225)
+    currency_code = models.CharField(max_length=225)
+    decimal_places = models.CharField(max_length=225)
+    show_in_millions = models.BooleanField(default=False)
+    suffix_symbol = models.BooleanField(default=False)
+    symbol_and_amount = models.BooleanField(default=False)
+    after_decimal = models.CharField(max_length=225)
+    amount_in_words = models.CharField(max_length=225)
     company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
+
     
 class Ledger(models.Model):
     name = models.CharField(max_length=225)
