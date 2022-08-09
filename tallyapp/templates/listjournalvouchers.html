@@ -18,33 +18,35 @@
           <td>april 1 to april31<BR><BR></td>
         </tr>
        <tr>
-          <th colspan="2">Date</th>
-          <th colspan="2">Particulars</th>
+          <th colspan="3">Date</th>
+          <th colspan="3">Particulars(By)</th>
+          <th colspan="3">Particulars(To)</th>
           <th colspan="2">Voucher type:</th>
-          <th colspan="2">Voucher No:</th>
+          <th colspan="1">Voucher No:</th>
           <th colspan="2">Debit Amount</th>
           <th colspan="2">Credit Amount</th>
         </tr>
       </thead>
-      <tr>
-        <td>
-          abcd
-        </td>
-      </tr>
-        
-         {% for sale in sales %}  
-      <tr>
-          <td colspan="2">abcd</td> 
-          <td colspan="2">{{sale.sales_date}}</td>
-          <td style="color:white">{{sale.name}}</td>
-          <td>{{sale.salesledger}}</td>
-          <td>{{sale.nameofitem}}</td>
-          <td>{{sale.currentbalance}}</td>
-          <td>{{sale.nameofitem}}</td>
-       </tr>
-       {% endfor %}
       
-        <tr>
+         {% for j in Journal %}  
+      <tr>
+          <td colspan="2">{{j.journal_date}}</td>
+          <!-- {if {j.particularby.name}!=0 } -->
+          <td colspan="3" >{{j.particularby}}</td>
+          <td colspan="3">{{j.particularto}}</td>
+          <td colspan="2">Journal</td>
+          <td colspan="2">{{j.debit}}</td>
+          <td colspan="1">0</td>
+          <!-- else
+          <td colspan="2">{{j.journal_date}}</td>
+          <!-- {if {j.particularby.name}!=0 } -->
+          <!-- <td >{{j.particularby.name}}</td>
+          <td>Journal</td>
+          <td>0</td>
+          <td>{{j.credit}}</td> --> -->
+      </tr>
+       {% endfor %}
+      <tr>
          <td colspan="6">
            Grand Total:
            </td>

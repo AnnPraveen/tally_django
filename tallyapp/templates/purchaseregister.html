@@ -1,11 +1,24 @@
 {% extends 'base.html' %}
 {% block body %}
 <style>
-    th.a{
+  th.a{
     text-align: center;
     width: 120px;
    }
-</style>
+  .btns_prnt{
+      width: 100%;
+      text-align: end;
+      background-color: rgba(240, 248, 255, 0);
+      border: none;
+      /* padding: 6px; */
+
+  }
+  .btns_prnt:hover{
+      background-color:orange;
+      color: rgb(15, 14, 14);
+  }
+
+</style>   
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <center></center><h5 class="text-capitalize" style="text-align:center;"></h5></center>   
@@ -35,29 +48,29 @@
         <th colspan="2" class="a"><br/>TotalBalance</th>
        </tr>
        <tbody>
+ 
+        <tr> <th><a href="{% url 'listofpurchasevoucher'%}" class="btns_prnt">April</a></th></tr>       
+        <tr> <th><a href="vouchpage" class="btns_prnt">May</a></th></tr>
+        <tr><th><a href="{% url 'listofpurchasevoucher'%}"  class="btns_prnt" >June</a></th> </tr>   
         
- <tr> <th><a href="vouchpage">April</a></th></tr>
- <tr> <th><a href="vouchpage">May</a></th></tr>
- <tr><th><a href="branch">June</a></th> </tr>   
- 
- <tr> <th><a href="vouchpage">July</a></th></tr>
- <tr> <th><a href="vouchpage">August</a></th></tr>
- <tr><th><a href="branch">September</a></th> </tr> 
- 
- <tr> <th><a href="vouchpage">October</a></th></tr>
- <tr> <th><a href="vouchpage">November</a></th></tr>
- <tr><th><a href="branch">Deember</a></th> </tr> 
- 
- <tr> <th><a href="vouchpage">January</a></th></tr>
- <tr> <th><a href="vouchpage">Febuary</a></th></tr>
- <tr><th><a href="branch">March</a></th> </tr> 
-       </tbody>
+        <tr> <th><a href="vouchpage"  class="btns_prnt">July</a></th></tr>
+        <tr> <th><a href="vouchpage"  class="btns_prnt">August</a></th></tr>
+        <tr><th><a href="branch"  class="btns_prnt">September</a></th> </tr> 
+        
+        <tr> <th><a href="vouchpage"  class="btns_prnt">October</a></th></tr>
+        <tr> <th><a href="vouchpage"  class="btns_prnt">November</a></th></tr>
+        <tr><th><a href="branch"  class="btns_prnt">Deember</a></th> </tr> 
+        
+        <tr> <th><a href="vouchpage"  class="btns_prnt">January</a></th></tr>
+        <tr> <th><a href="vouchpage"  class="btns_prnt">Febuary</a></th></tr>
+        <tr><th><a href="branch"  class="btns_prnt">March</a></th> </tr> 
+              </tbody>
        <div class="row container-fluid m-0 w-100 p-0">
         <table class="table p-0 m-0">
             <tbody>
                 <tr>
                     <td class="w-75 m-0 p-0 pl-3">Grand Total</td>
-                    <td class="w-25 m-0 p-0 text-center"><a href="{% url 'listofpurchasevouchers'%}">0000</a></td>
+                    <td class="w-25 m-0 p-0 text-center"><a href="{% url 'listofpurchasevoucher'%}">0000</a></td>
                 </tr>
             </tbody>
         </table>   

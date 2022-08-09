@@ -32,8 +32,15 @@ def journalregister(request):#ann
 
 
 def listofsalesvoucher(request):#ann
-    s=Sales.objects.all()
-    print("hi")
+   # s=Sales.objects.all()
+    s= Sales.objects.filter(sales_date__year='2022', 
+                     sales_date__month='04')
+    #total=0         
+    #for sl in s:
+    #  t_amount =(sl.currentbalancesl)
+    # print(t_amount)
+    # total = t_amount+total
+    # print("hi")
     print(s)
     return render(request,'listofsalesvouchers.html',{'sales':s})   
 
@@ -44,12 +51,15 @@ def listofsalesvoucher(request):#ann
 #     return render(request,'listofsalesvouchers.html',{'sales':s})    
 
 def listofpurchasevoucher(request):#ann
-    com=Companies.objects.all()
-    return render(request,'listofpurchasevouchers.html')
+    p= Purchase.objects.filter(purchase_date__year='2022', 
+                     purchase_date__month='06')
+    print(p)
+    return render(request,'listofpurchasevouchers.html',{'purchase':p})
     
-def listjournalvouchers(request):#ann
-    com=Companies.objects.all()
-    return render(request,'listjournalvouchers.html')       
+def listjournalvouchers(request):#ann                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          j= Journal.objects.all( )          
+    # return render(request,'listjournalvouchers.html',{'Journal':j})
+     return render(request,'basepage.html')
+  
 
 def index1(request):
     return render(request,'basepage.html')

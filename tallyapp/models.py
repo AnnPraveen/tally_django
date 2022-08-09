@@ -42,7 +42,14 @@ class Group(models.Model):
     calculation = models.BooleanField(default=False)
     used_purchase = models.CharField(max_length=225,null=True,blank=True)
     company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
-    
+
+
+#  class stock_item(models.Model):#ajmay
+
+#     rateper=models.CharField(max_length=100,null=True)
+#     value=models.CharField(max_length=100,null=True)    
+# #     group = models.ForeignKey(StockGroup,on_delete=models.SET_NULL, null=True)
+#     # bn  opening_balance=models.IntegerField(null=True)    
 
 class Features(models.Model):
     maintain_accounts = models.BooleanField(default=True)
@@ -76,6 +83,7 @@ class Costcentre(models.Model):
     alias = models.CharField(max_length=225,null=True)
     under = models.CharField(max_length=225)
     company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
+
 class Voucher(models.Model):
     voucher_name = models.CharField(max_length=225)
     alias = models.CharField(max_length=225)
@@ -97,19 +105,25 @@ class Sales(models.Model):#ann sales table
     partyAccntname = models.CharField(max_length=225)
     currentbalancep = models.CharField(max_length=225,null=True)#current balance of party
     salesledger = models.CharField(max_length=225)
-    currentbalancesl = models.CharField(max_length=225,null=True)#balance of corresponding sales ledger
+    currentbalancesl = models.IntegerField(null=True)#balance of corresponding sales ledger
     nameofitem=models.CharField(max_length=225,null=True)
+    quantity=models.IntegerField(null=True)
+    price=models.IntegerField(default=0)
     sales_date=models.DateField(null=True)
    # voucher=models.ForeignKey(Voucher,on_delete=models.CASCADE,blank=True,null=True)
+
 class Purchase(models.Model):#ann purchase tabel
     supplierinvoiceno= models.CharField(max_length=225,default=True)
     partyAccntname = models.CharField(max_length=225,default=True)
     currentbalancep = models.CharField(max_length=225,null=True)
     currentbalancepl = models.CharField(max_length=225,null=True)
     purchaseledger = models.CharField(max_length=225,default=True)
-    nameofitem=models.CharField(max_length=225,default=True) 
+    nameofitem=models.CharField(max_length=225,null=True)
+    quantity=models.IntegerField(null=True)
+    price=models.IntegerField(default=0)
     purchase_date=models.DateField(null=True) 
     voucher=models.ForeignKey(Voucher,on_delete=models.CASCADE,blank=True,null=True)
+
 class Currency(models.Model):
     symbol = models.CharField(max_length=225)
     formal_name = models.CharField(max_length=225)
@@ -122,7 +136,13 @@ class Currency(models.Model):
     amount_in_words = models.CharField(max_length=225)
     company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
 
-    
+class Journal(models.Model):#ann journal table
+    particularsby = models.CharField(max_length=225,null=True)
+    particularsto = models.CharField(max_length=225,null=True)
+    credit = models.IntegerField(default=0,null=True)#current balance of party
+    journalledger = models.CharField(max_length=225,null=True)
+    debit = models.IntegerField(null=True,default=0)#balance of corresponding sales ledger
+    journal_date=models.DateField(null=True)    
 class Ledger(models.Model):
     name = models.CharField(max_length=225)
     alias = models.CharField(max_length=225)
@@ -130,6 +150,7 @@ class Ledger(models.Model):
     provide_banking_details =  models.CharField(max_length=225)
     pan_no=models.CharField(max_length=225)
     company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
+    
 class Ledger_Mailing_Details(models.Model):
     mailingname = models.CharField(max_length=225)
     address = models.CharField(max_length=225)

@@ -16,6 +16,17 @@ class CompaniesAdmin(admin.ModelAdmin):
     list_display=('name',)
 admin.site.register(Companies,CompaniesAdmin)
 
+
+# #admin.site.register(SALES)'ANN'
+# class SalesAdmin(admin.ModelAdmin):
+#     list_display=('sales',)
+# admin.site.register(Sales,SalesAdmin)
+
+# #admin.site.register(PURCHASE)'ANN'
+# class PurchaseAdmin(admin.ModelAdmin):
+#     list_display=('purchases',)
+# admin.site.register(Purchase,PurchaseAdmin)
+
 #admin.site.register(Group)
 class GroupAdmin(admin.ModelAdmin):
     list_display=('name',)
@@ -44,3 +55,7 @@ admin.site.register(Ledger_Mailing_Details)
 admin.site.register(Ledger_Banking_Details)
 admin.site.register(Ledger_Asset_Rounding)
 admin.site.register(Ledger_Asset_Statutory)
+
+admin.site.register(Purchase)#ann
+admin.site.register(Sales)#ann
+admin.site.register(Journal)#ann
