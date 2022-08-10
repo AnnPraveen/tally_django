@@ -59,3 +59,4 @@ admin.site.register(Ledger_Asset_Statutory)
 admin.site.register(Purchase)#ann
 admin.site.register(Sales)#ann
 admin.site.register(Journal)#ann
+admin.site.register(Particular)#ann

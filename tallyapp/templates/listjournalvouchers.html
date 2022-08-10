@@ -31,20 +31,12 @@
          {% for j in Journal %}  
       <tr>
           <td colspan="2">{{j.journal_date}}</td>
-          <!-- {if {j.particularby.name}!=0 } -->
           <td colspan="3" >{{j.particularby}}</td>
           <td colspan="3">{{j.particularto}}</td>
           <td colspan="2">Journal</td>
           <td colspan="2">{{j.debit}}</td>
           <td colspan="1">0</td>
-          <!-- else
-          <td colspan="2">{{j.journal_date}}</td>
-          <!-- {if {j.particularby.name}!=0 } -->
-          <!-- <td >{{j.particularby.name}}</td>
-          <td>Journal</td>
-          <td>0</td>
-          <td>{{j.credit}}</td> --> -->
-      </tr>
+       </tr>
        {% endfor %}
       <tr>
          <td colspan="6">

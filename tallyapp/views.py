@@ -31,10 +31,11 @@ def journalregister(request):#ann
     return render(request,'journal_report.html')
 
 
-def listofsalesvoucher(request):#ann
+def listofsalesvoucher(request,pk):#ann
    # s=Sales.objects.all()
+    m=pk
     s= Sales.objects.filter(sales_date__year='2022', 
-                     sales_date__month='04')
+                     sales_date__month=m)
     #total=0         
     #for sl in s:
     #  t_amount =(sl.currentbalancesl)
@@ -50,24 +51,35 @@ def listofsalesvoucher(request):#ann
 #     print(s)
 #     return render(request,'listofsalesvouchers.html',{'sales':s})    
 
-def listofpurchasevoucher(request):#ann
-    p= Purchase.objects.filter(purchase_date__year='2022', 
+def listofpurchasevoucher(request,mid):#ann
+    m=mid
+    if(m =='04'):
+     p= Purchase.objects.filter(purchase_date__year='2022',purchase_date__month='04') 
+    if(m =='05'):
+     p= Purchase.objects.filter(purchase_date__year='2022', 
+                                      purchase_date__month='05')
+    if(m =='06'):
+     p= Purchase.objects.filter(purchase_date__year='2022', 
                      purchase_date__month='06')
     print(p)
     return render(request,'listofpurchasevouchers.html',{'purchase':p})
     
 def listjournalvouchers(request):#ann                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          j= Journal.objects.all( )          
-    # return render(request,'listjournalvouchers.html',{'Journal':j})
-     return render(request,'basepage.html')
-  
+     return render(request,'listjournalvouchers.html')
+    
 
 def index1(request):
     return render(request,'basepage.html')
 
 def voucher1(request):
-    return render(request,'vouchertype.html')    
+    return render(request,'vouchertype.html')  
 def sales(request):#ann
-    return render(request,'sales.html')     
+    sal=Sales.objects.all
+    return render(request,'sales.html',{'sale':sal})      
+def saleview(request,pk):#ann
+    sal=Sales.objects.get(id=pk)
+    print(sal)
+    return render(request,'sales.html',{'sale':sal})     
 
 def purchase(request):#ann
     return render(request,'purchase.html')    
@@ -340,6 +352,7 @@ def currency(request,pk):
 
 
 
+
 def creategroup(request,pk):
     cmp=Companies.objects.get(id=pk)
     if request.method == 'POST':
@@ -483,9 +496,8 @@ def enable(request,pk):
 def alter(request):
     com=Companies.objects.all()
     return render(request,'altercompany.html')
-def dispatch_details(request):
-    com=Companies.objects.all()
-    return render(request,'dispatch_details.html')    
+def dispatch_details(request):#ann dispatch details
+     return render(request,'dispatch_details.html')    
 def partydetails(request):
     com=Companies.objects.all()
     return render(request,'partydetails.html')      

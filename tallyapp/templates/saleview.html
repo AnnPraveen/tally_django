@@ -1,0 +1,171 @@
+
+    {% extends 'base.html' %}
+    {% block body %}
+    {% load static %}
+    <style>
+        .enter{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        
+  .btns_prnt{
+      width: 100%;
+      text-align:center;
+      color:white;
+      background-color: rgba(240, 248, 255, 0);
+      
+      /* padding: 6px; */
+
+  }
+  .btns_prnt:hover{
+      background-color:orange;
+      
+  }
+
+ </style>
+      <div  style="background-color: rgb(236, 194, 116);width:245px ;color:black";>
+         <a href="" onclick="history.go(-1)" class="close" style="margin-right:1100px; ">+</a>
+        
+     </div>
+ 
+     <div class="row container-fluid p-0 mx-0">
+         <div class="col-sm-1 m-0 p-0"></div>
+         <div class="col-sm-10 m-0 p-0" style=" background-color:rgba(0,0,0,0.2); width:50%">
+             <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
+         
+        <div  class="bg-info text-light">Sale Entry No:1 </div><br>
+    <div class="col-sm-6 m-0 p-0"> 
+         {% for message in messages %}
+         <h5 style="text-align:center;color:white;background-color: #2f516f;">
+             {{ message }}</span>
+         </h5>
+        {% endfor %}
+</div>
+    <div  style="text-align: center;margin-top:-35px;font-weight:900;background-color: #2f516f;"></div>
+
+            <form   method="post" action="{% url 'sales_add'%}">
+                {% csrf_token %}
+                
+                <div class="row container-fluid p-0 m-0" >
+
+                    <div class="col-sm-6 m-0 p-4">
+
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Party A/c Name</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="text" placeholder="Party_ac_number" name="Party_name" value="{% 'sale.'  %}" class="form-control" /></div>
+                             </div>
+                            <div class="row container-fluid  p-2 m-0">    
+                            <div class="col-sm-4 m-0 p-0"> <label >Date</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="date" placeholder="addDate" name="Date" Value="{{sale.partyAccntname}}" class="form-control" /></div>
+                        </div>
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Current Balance:</label></div>
+                            <div class="col-sm-4 m-0 p-0"> 
+                                <input type="text" placeholder="" name="current_ac_balancep" Value="{{sale.currentbalancep}}"class="form-control"/></div>                    
+                        </div>
+                                           <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Sales Ledger</label></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="text" placeholder="" name="salesledger" Value="{{sale.salesledger}}" class="form-control"/></div>
+                        </div>
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Current Balance:</label></div>
+                            <div class="col-sm-4 m-0 p-0"> 
+                                <input type="number" placeholder="" name="current_ac_balancesl" class="form-control"/></div>                    
+                        </div>
+                        <div class="row container-fluid  p-2 m-0">
+                            <div class="col-sm-4 m-0 p-0"> <label >Name of Item</label></div>
+                            <div class="col-sm-4 m-0 p-0"> 
+                                <input type="text" placeholder="" name="Item_name" class="form-control"/></div>                    
+                        </div>
+                        
+                   
+                          
+              </div>
+              <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);"></div>
+    <table class="table-bordered" width="100%">
+      <thead class="thead-dark">
+       <tr>
+          <th colspan="5">Name Of item</th>
+          <th colspan="2">Quantity</th>
+          <th colspan="2">Rate<h1 style="font-style:italic">per</h1></th>
+          <th colspan="2"> Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <th colspan="5"><input type="text" placeholder="" name="Item_name" class="form-control"/></th>
+            <th colspan="2"><input type="number" placeholder="" name="quantity" class="form-control"/></th>
+            <th colspan="2"><input type="number" placeholder="" name="rate" class="form-control"/></th>
+            <th colspan="2"> <input type="number" placeholder="" name="amount" class="form-control"/></th>
+          </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="row container-fluid  p-2 m-0">
+        <div class="col-sm-4 m-0 p-0">
+        <button class="btn btn-warning btn-lg btn-block"  type="submit">DispatchDetails</button></div>
+        <!-- <div class="col-sm-4 m-0 p-0">
+            <input class="btns_prnt" type="button" value="Quit"></div>
+    </div> -->
+                  
+</div>
+             
+            </form>
+                                         
+        
+    
+    </div>
+        
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

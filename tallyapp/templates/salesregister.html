@@ -58,11 +58,11 @@
        </tr>
        <tbody>
  
- <tr> <th><a href="{% url 'listofsalesvoucher'%}" class="btns_prnt">April</a></th></tr>       
- <tr> <th><a href="vouchpage" class="btns_prnt">May</a></th></tr>
- <tr><th><a href="branch"  class="btns_prnt" >June</a></th> </tr>   
+ <tr> <th><a href="{% url 'listofsalesvoucher' 04 %}" class="btns_prnt">April</a></th></tr>       
+ <tr> <th><a href="{% url 'listofsalesvoucher' 05 %}" class="btns_prnt">May</a></th></tr>
+ <tr><th><a href="{% url 'listofsalesvoucher' 06 %}" class="btns_prnt" >June</a></th> </tr>   
  
- <tr> <th><a href="vouchpage"  class="btns_prnt">July</a></th></tr>
+ <tr> <th><a href="{% url 'listofsalesvoucher' 07 %}"  class="btns_prnt">July</a></th></tr>
  <tr> <th><a href="vouchpage"  class="btns_prnt">August</a></th></tr>
  <tr><th><a href="branch"  class="btns_prnt">September</a></th> </tr> 
  
@@ -79,7 +79,7 @@
           <tbody>
               <tr>
                   <td class="w-75 m-0 p-0 pl-3">Grand Total</td>
-                  <td class="w-25 m-0 p-0 text-center"><a href="{% url 'listofsalesvoucher'%}">0000</a></td>
+                  <td class="w-25 m-0 p-0 text-center"><a href="">0000</a></td>
               </tr>
           </tbody>
       </table>   
@@ -88,3 +88,4 @@
   </div>
 p
 {% endblock %}
+<!-- {% url 'listofsalesvoucher'%} -->

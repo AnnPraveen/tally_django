@@ -137,12 +137,14 @@ class Currency(models.Model):
     company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
 
 class Journal(models.Model):#ann journal table
+    journalledger = models.CharField(max_length=225,null=True)
+    journal_date=models.DateField(null=True)       
+class Particular(models.Model):#ann Particular table
     particularsby = models.CharField(max_length=225,null=True)
     particularsto = models.CharField(max_length=225,null=True)
     credit = models.IntegerField(default=0,null=True)#current balance of party
-    journalledger = models.CharField(max_length=225,null=True)
     debit = models.IntegerField(null=True,default=0)#balance of corresponding sales ledger
-    journal_date=models.DateField(null=True)    
+    journal=models.ForeignKey(Journal,on_delete=models.CASCADE,blank=True,null=True)  
 class Ledger(models.Model):
     name = models.CharField(max_length=225)
     alias = models.CharField(max_length=225)

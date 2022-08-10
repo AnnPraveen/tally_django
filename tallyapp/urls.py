@@ -26,6 +26,7 @@ urlpatterns = [
     path('demo1/<int:pk>',views.demo1,name='demo1'),
     # path('demo2/<int:pk>',views.demo2,name='demo2'), 
     path('voucher1',views.voucher1,name='voucher1'),#ann
+    
     path('sales',views.sales,name='sales'),#salesann
     path('journal',views.journal,name='journal'),#journalnn
     path('purchase',views.purchase,name='purchase'),#purchaseann
@@ -39,12 +40,13 @@ urlpatterns = [
     path('purchaseregister',views.purchaseregister,name='purchaseregister'),#ann
     path('journalregister',views.journalregister,name='journalregister'),#ann
     path('sales_add',views.sales_add,name='sales_add'),#ann
+    path('saleview/<int:pk>',views.saleview,name='saleview'),#ann
     path('partydetails',views.partydetails,name='partydetails'),
     path('showVouchers',views.showvouchers,name='showvouchers'),
     path('alter',views.alter,name='alter'),
     path('dispatch_details',views.dispatch_details,name='dispatch_details'),#click party name in sale form to get delivery details
     path('altercompany_view',views.altercompany_view,name='altercompany_view'),
-    path('listofsalesvoucher',views.listofsalesvoucher,name='listofsalesvoucher'),#ann
+    path('listofsalesvoucher/<int:pk>',views.listofsalesvoucher,name='listofsalesvoucher'),#ann
     
     path('listofgroup',views.listofgroup,name='listofgroup'),
     path('listofledgers',views.listofledgers,name='listofledgers'),
