@@ -33,7 +33,7 @@
       <tr>
         
       </tr>
-        
+         {% t=0 %}
          {% for i in sales %}  
       <tr>
           
@@ -41,9 +41,9 @@
           <td colspan="2" ><a href="{% url 'dispatch_details' %}" onclick="openForm()">{{i.partyAccntname}}</a></td>
           <td colspan="2">Accounting Voucher</td>
           <td colspan="2">{{i.salesledger}}</td>
-          <td colspan="2">{{i.currentbalancesl}}</td>
+          <td colspan="2">{{i.total}}</td>
           <td colspan="2">None </td>
-        
+           {% t={{i.total}}+t %}
        </tr>
        {% endfor %}
       
@@ -51,8 +51,8 @@
          <td colspan="6">
            Grand Total:
            </td>
-           <td colspan="6"><center>
-            5460400</center>
+           <td colspan="6">{{ t }}<center>
+            </center>
             </td> 
           </tr> 
           <tr>

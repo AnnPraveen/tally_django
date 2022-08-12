@@ -110,6 +110,7 @@ class Sales(models.Model):#ann sales table
     quantity=models.IntegerField(null=True)
     price=models.IntegerField(default=0)
     sales_date=models.DateField(null=True)
+    total=models.IntegerField(default=0)
    # voucher=models.ForeignKey(Voucher,on_delete=models.CASCADE,blank=True,null=True)
 
 class Purchase(models.Model):#ann purchase tabel
@@ -121,6 +122,7 @@ class Purchase(models.Model):#ann purchase tabel
     nameofitem=models.CharField(max_length=225,null=True)
     quantity=models.IntegerField(null=True)
     price=models.IntegerField(default=0)
+    total=models.IntegerField(default=0)
     purchase_date=models.DateField(null=True) 
     voucher=models.ForeignKey(Voucher,on_delete=models.CASCADE,blank=True,null=True)
 
@@ -137,8 +139,9 @@ class Currency(models.Model):
     company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
 
 class Journal(models.Model):#ann journal table
-    journalledger = models.CharField(max_length=225,null=True)
-    journal_date=models.DateField(null=True)       
+     journalledger = models.CharField(max_length=225,null=True)
+     journal_date=models.DateField(null=True)  
+
 class Particular(models.Model):#ann Particular table
     particularsby = models.CharField(max_length=225,null=True)
     particularsto = models.CharField(max_length=225,null=True)

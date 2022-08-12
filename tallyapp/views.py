@@ -27,9 +27,8 @@ def purchaseregister(request):#ann
     return render(request,'purchaseregister.html')   
 
 def journalregister(request):#ann
-    com=Companies.objects.all()
+    j=Journal.objects.all()
     return render(request,'journal_report.html')
-
 
 def listofsalesvoucher(request,pk):#ann
    # s=Sales.objects.all()
@@ -43,30 +42,44 @@ def listofsalesvoucher(request,pk):#ann
     # total = t_amount+total
     # print("hi")
     print(s)
-    return render(request,'listofsalesvouchers.html',{'sales':s})   
+    return render(request,'listofsalesvouchers.html',{'sales':s})     
 
-# def listofsalesvouchers(request):#ann
-#     s=Sales.objects.all()
-#     print("hi")
-#     print(s)
-#     return render(request,'listofsalesvouchers.html',{'sales':s})    
-
-def listofpurchasevoucher(request,mid):#ann
-    m=mid
-    if(m =='04'):
-     p= Purchase.objects.filter(purchase_date__year='2022',purchase_date__month='04') 
-    if(m =='05'):
-     p= Purchase.objects.filter(purchase_date__year='2022', 
-                                      purchase_date__month='05')
-    if(m =='06'):
-     p= Purchase.objects.filter(purchase_date__year='2022', 
-                     purchase_date__month='06')
-    print(p)
-    return render(request,'listofpurchasevouchers.html',{'purchase':p})
+def listofpurchasevoucher(request,pk):#ann
+    m=pk
+    p= Purchase.objects.filter(purchase_date__year='2022', 
+                     purchase_date__month=m)             
+    if m==1:
+            msg1="Jan 01 to 31"
+    if m==2:
+            msg1="Feb 01 to 28"
+    if m ==3:
+            msg1="March 01 to 31"
+    if m ==4:
+            msg1="April 01 to 30"
+    if m ==5:
+            msg1="May 01 to 31"
+    if m ==6:
+            msg1="Jun 01 to 30"
+    if m ==7:
+            msg1="July 01 to 31"
+    if m ==8:
+            msg1="Aug 01 to 31"  
+    if m ==9:
+            msg1="Sep 01 to 30"
+    if m ==10:
+            msg1="Oct 01 to 30"
+    if m ==11:
+            msg1="Nov 01 to 31" 
+    if m ==12:
+            msg1="Dec 01 to 31"      
+    else:
+        msg1="July 01 to 31"               
+    return render(request,'listofpurchasevouchers.html',{'purchase':p,'msg1':msg1})
     
-def listjournalvouchers(request):#ann                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          j= Journal.objects.all( )          
-     return render(request,'listjournalvouchers.html')
-    
+def listjournalvouchers(request):#ann 
+    p=Particular.objects.all()   
+    #j=Journal.objects.all()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              j= Journal.objects.all( )          
+    return render(request,'listjournalvouchers.html',{'Particular':p})
 
 def index1(request):
     return render(request,'basepage.html')
@@ -79,7 +92,7 @@ def sales(request):#ann
 def saleview(request,pk):#ann
     sal=Sales.objects.get(id=pk)
     print(sal)
-    return render(request,'sales.html',{'sale':sal})     
+    return render(request,'saleview.html',{'sale':sal})     
 
 def purchase(request):#ann
     return render(request,'purchase.html')    
@@ -94,8 +107,11 @@ def sales_add (request):#ann
     currentp=request.POST.get('current_ac_balancep')
     currentbl=request.POST.get('current_ac_balancesl')
     Item_name=request.POST.get('Item_name')
+    quantity1=request.POST.get('quantity')
+    price1=request.POST.get('rate')
     salesle=request.POST.get('salesledger')
-    sales=Sales(partyAccntname=partyAc,sales_date=sales_date,salesledger=salesle,currentbalancesl=currentbl,currentbalancep=currentp,nameofitem=Item_name)
+    total1=request.POST.get('amount')
+    sales=Sales(partyAccntname=partyAc,sales_date=sales_date,salesledger=salesle,currentbalancesl=currentbl,currentbalancep=currentp,nameofitem=Item_name,quantity=quantity1,price=price1,total=total1)
     sales.save()
     messages.info(request,'Sale entered successfully')
     #return redirect('/')  
@@ -109,9 +125,12 @@ def purchase_add(request):#ann
     purchase_date=request.POST.get('Date')
     currentbalancep =request.POST.get('current_ac_balancep')
     currentbalancepl =request.POST.get('current_ac_balancel')
+    quantity1=request.POST.get('quantity')
+    price1=request.POST.get('rate')
+    total1=request.POST.get('amount')
     nameofitem=request.POST.get('Item_name')
     purchasele=request.POST.get('purchaseledger')
-    purchase=Purchase(supplierinvoiceno=supplierinvoiceno,partyAccntname=partyAc,purchase_date=purchase_date,purchaseledger=purchasele,currentbalancepl =currentbalancepl ,currentbalancep=currentbalancep,nameofitem=nameofitem)
+    purchase=Purchase(supplierinvoiceno=supplierinvoiceno,partyAccntname=partyAc,purchase_date=purchase_date,purchaseledger=purchasele,currentbalancepl =currentbalancepl ,currentbalancep=currentbalancep,nameofitem=nameofitem,quantity=quantity1,price=price1,total=total1)
     purchase.save()
     print("purchase")
     messages.info(request,'Purchase entered successfully')
