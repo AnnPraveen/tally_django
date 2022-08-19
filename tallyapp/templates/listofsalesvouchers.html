@@ -19,7 +19,9 @@
       <thead class="thead-dark">
         <tr>
           <th  colspan="7">List of all Sales Vouchers<BR><BR></th>
-          <td>april 1 to april31<BR><BR></td>
+          <td>{% for m in msg1 %}
+            {{m}}
+            {% endfor %}<BR></td>
         </tr>
        <tr>
           <th colspan="2">Date</th>
@@ -33,17 +35,17 @@
       <tr>
         
       </tr>
-         {% t=0 %}
+        
          {% for i in sales %}  
       <tr>
           
           <td colspan="2"><a href="{% url 'saleview' i.id %}" onclick="openForm()">{{i.sales_date}}</a></td>
           <td colspan="2" ><a href="{% url 'dispatch_details' %}" onclick="openForm()">{{i.partyAccntname}}</a></td>
           <td colspan="2">Accounting Voucher</td>
-          <td colspan="2">{{i.salesledger}}</td>
+          <td colspan="2">2</td>
           <td colspan="2">{{i.total}}</td>
-          <td colspan="2">None </td>
-           {% t={{i.total}}+t %}
+          <td colspan="2">0000 </td>
+          
        </tr>
        {% endfor %}
       
@@ -51,7 +53,10 @@
          <td colspan="6">
            Grand Total:
            </td>
-           <td colspan="6">{{ t }}<center>
+           <td colspan="2">
+          
+            </td>
+           <td colspan="3">{{total1}}<center>
             </center>
             </td> 
           </tr> 

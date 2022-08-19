@@ -58,7 +58,7 @@
                              </div>
                             <div class="row container-fluid  p-2 m-0">    
                             <div class="col-sm-4 m-0 p-0"> <label >Date</label></div>
-                            <div class="col-sm-4 m-0 p-0"> <input type="date"  name="Date" value={{sale.sales_date}} class="form-control" /></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="date"  name="Date" value={{sale.sales_date|date:'Y-m-d'}} class="form-control" /></div>
                         </div>
                         <div class="row container-fluid  p-2 m-0">
                             <div class="col-sm-4 m-0 p-0"> <label >Current Balance:</label></div>
@@ -74,9 +74,8 @@
                             <div class="col-sm-4 m-0 p-0"> 
                                 <input type="number"  name="current_ac_balancesl" value={{sale.currentbalancesl}} class="form-control"/></div>                    
                         </div>
-                       
-      
-                   
+                    
+                         
                           
               </div>
               <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);"></div>
@@ -101,10 +100,10 @@
     </div>
     <div class="row container-fluid  p-2 m-0">
         <div class="col-sm-4 m-0 p-0">
-        <button class="btn btn-warning btn-lg btn-block"  type="submit">DispatchDetails</button></div>
+          <a class="btns_prnt" href="{% url 'dispatch_details' %}">Dispatch Details</a></div>
         <div class="col-sm-4 m-0 p-0">
-            <a href="{% url 'salesregister' %}">Back to sales register</a></div>
-    </div> -->
+            <a class="btns_prnt" href="{% url 'salesregister' %}">Back to sales register</a></div>
+    </div>
                   
 </div>
              
@@ -113,6 +112,10 @@
      
     
     </div>
+
+ 
+
+
         
     {% endblock %}
 

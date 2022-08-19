@@ -1,4 +1,5 @@
-from re import A
+from re import A, S
+from this import s
 from django.shortcuts import render,redirect
 from .models import *
 from django.contrib import messages
@@ -20,66 +21,96 @@ def disp_more_reports(request):#ann
 
 def salesregister(request):#ann
     sales=Sales.objects.all()
-    return render(request,'salesregister.html',{'sales':sales})   
+    
+    total1 = sum(sales.values_list('total', flat=True)) 
+    
+
+    return render(request,'salesregister.html',{'sales':sales,'total1':total1})   
 
 def purchaseregister(request):#ann
-    com=Companies.objects.all()
-    return render(request,'purchaseregister.html')   
+    p=Purchase.objects.all()
+    total1 = sum(p.values_list('total', flat=True))  
+    return render(request,'purchaseregister.html',{'total1':total1})   
 
 def journalregister(request):#ann
-    j=Journal.objects.all()
-    return render(request,'journal_report.html')
+    p=Particular.objects.all()   
+    #j=Journal.objects.all()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              j= Journal.objects.all( )          
+    return render(request,'listjournalvouchers.html',{'Particular':p})
+
 
 def listofsalesvoucher(request,pk):#ann
    # s=Sales.objects.all()
     m=pk
     s= Sales.objects.filter(sales_date__year='2022', 
                      sales_date__month=m)
-    #total=0         
-    #for sl in s:
-    #  t_amount =(sl.currentbalancesl)
-    # print(t_amount)
-    # total = t_amount+total
-    # print("hi")
-    print(s)
-    return render(request,'listofsalesvouchers.html',{'sales':s})     
+ 
+    total1 = sum(s.values_list('total', flat=True))               
+        
+    if m==1:
+             msg1="Jan 01 to 31"
+    elif m==2:
+            msg1="Feb 01 to 28"
+    elif m ==3:
+            msg1="March 01 to 31"
+    elif m ==4:
+             msg1="April 01 to 30"
+    elif m ==5:
+             msg1="May 01 to 31"
+    elif m ==6:
+            msg1="Jun 01 to 30"
+    elif m ==7:
+            msg1="July 01 to 31"
+    elif m ==8:
+             msg1="Aug 01 to 31"  
+    elif m==9:
+            msg1="Sep 01 to 30"
+    elif m ==10:
+             msg1="Oct 01 to 30"
+    elif m ==11:
+            msg1="Nov 01 to 31" 
+    elif m ==12:
+             msg1="Dec 01 to 31"      
+    else:
+        msg1="July 01 to 31" 
+    return render(request,'listofsalesvouchers.html',{'sales':s,'msg1':msg1,'total1':total1})     
 
 def listofpurchasevoucher(request,pk):#ann
     m=pk
     p= Purchase.objects.filter(purchase_date__year='2022', 
-                     purchase_date__month=m)             
+                     purchase_date__month=m)   
+    total1 = sum(p.values_list('total', flat=True))                             
     if m==1:
-            msg1="Jan 01 to 31"
-    if m==2:
+             msg1="Jan 01 to 31"
+    elif m==2:
             msg1="Feb 01 to 28"
-    if m ==3:
+    elif m ==3:
             msg1="March 01 to 31"
-    if m ==4:
-            msg1="April 01 to 30"
-    if m ==5:
-            msg1="May 01 to 31"
-    if m ==6:
+    elif m ==4:
+             msg1="April 01 to 30"
+    elif m ==5:
+             msg1="May 01 to 31"
+    elif m ==6:
             msg1="Jun 01 to 30"
-    if m ==7:
+    elif m ==7:
             msg1="July 01 to 31"
-    if m ==8:
-            msg1="Aug 01 to 31"  
-    if m ==9:
+    elif m ==8:
+             msg1="Aug 01 to 31"  
+    elif m==9:
             msg1="Sep 01 to 30"
-    if m ==10:
-            msg1="Oct 01 to 30"
-    if m ==11:
+    elif m ==10:
+             msg1="Oct 01 to 30"
+    elif m ==11:
             msg1="Nov 01 to 31" 
-    if m ==12:
-            msg1="Dec 01 to 31"      
+    elif m ==12:
+             msg1="Dec 01 to 31"      
     else:
         msg1="July 01 to 31"               
-    return render(request,'listofpurchasevouchers.html',{'purchase':p,'msg1':msg1})
+    return render(request,'listofpurchasevouchers.html',{'purchase':p,'msg1':msg1,'total1':total1})
     
 def listjournalvouchers(request):#ann 
-    p=Particular.objects.all()   
+    #p=Particular.objects.all()   
     #j=Journal.objects.all()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              j= Journal.objects.all( )          
-    return render(request,'listjournalvouchers.html',{'Particular':p})
+    return render(request,'listjournalvouchers.html')
 
 def index1(request):
     return render(request,'basepage.html')

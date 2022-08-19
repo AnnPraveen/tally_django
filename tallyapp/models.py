@@ -99,7 +99,7 @@ class Voucher(models.Model):
     make_optional =  models.CharField(max_length=225)
     provide_naration =  models.CharField(max_length=225)
     print_voucher = models.CharField(max_length=225)
-    company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)    
+    #company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)    
 
 class Sales(models.Model):#ann sales table
     partyAccntname = models.CharField(max_length=225)
@@ -124,7 +124,7 @@ class Purchase(models.Model):#ann purchase tabel
     price=models.IntegerField(default=0)
     total=models.IntegerField(default=0)
     purchase_date=models.DateField(null=True) 
-    voucher=models.ForeignKey(Voucher,on_delete=models.CASCADE,blank=True,null=True)
+    #voucher=models.ForeignKey(Voucher,on_delete=models.CASCADE,blank=True,null=True)
 
 class Currency(models.Model):
     symbol = models.CharField(max_length=225)

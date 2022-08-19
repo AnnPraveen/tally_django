@@ -16,7 +16,9 @@
         <tr>
           <th  colspan="7">List of all Journal Vouchers<BR><BR></th>
 
-          <td colspan="6">april 1 to april31<BR><BR></td>
+          <td colspan="6">{% for m in msg1 %}
+            {{m}}
+            {% endfor %}<BR><BR></td>
         </tr>
        <tr>
           <th colspan="3">Date</th>
@@ -29,20 +31,47 @@
         </tr>
       </thead>
         
-        {% for p in Particular %}  
       <tr>
-          <td colspan="3">{{p.journal.journal_date}}</td>
-          <td colspan="3">{{p.particularsby}}</td>
-          <td colspan="3">{{p.particularsto}}</td>
+          <td colspan="3">April 14,2022</td>
+          <td colspan="3">Ann</td>
+          <td colspan="3">roseelectricals</td>
           <td colspan="3">Journal</td>
-          <td colspan="3">{{p.journal_id}}</td>
-          <td colspan="2">{{p.debit}}</td>
-          <td colspan="2">{{p.credit}}</td>
+          <td colspan="3">1</td>
+          <td colspan="2">2000</td>
+          <td colspan="2">2000</td>
       </tr>
-       {% endfor %}
+      <tr>
+        <td colspan="3">April 23,2022</td>
+        <td colspan="3">Jibin</td>
+        <td colspan="3">Infox</td>
+        <td colspan="3">Journal</td>
+        <td colspan="3">2</td>
+        <td colspan="2">1000</td>
+        <td colspan="2">1000</td>
+    </tr>
+    <tr>
+      <td colspan="3">june 13,2022</td>
+      <td colspan="3">Infox</td>
+      <td colspan="1">Fedral Bank</td>
+      <td colspan="2">BSNL</td>
+      <td colspan="3">Journal</td>
+      <td colspan="3">3</td>
+      <td colspan="2">25600</td>
+      <td colspan="2">25600</td>
+  </tr>
+  <tr>
+    <td colspan="3">July 13,2022</td>
+    <td colspan="3">good electriclas</td>
+    <td colspan="3">Fedral bank</td>
+    <td colspan="3">Journal</td>
+    <td colspan="3">4</td>
+    <td colspan="2">30000</td>
+    <td colspan="2">30000</td>
+</tr>
+
       <tr>
          <td colspan="6">
-           Grand Total:
+           <!-- Grand Total: -->
            </td>
            <td colspan="13"><center></center>
            </td> 
