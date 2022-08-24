@@ -126,6 +126,19 @@ class Purchase(models.Model):#ann purchase tabel
     purchase_date=models.DateField(null=True) 
     #voucher=models.ForeignKey(Voucher,on_delete=models.CASCADE,blank=True,null=True)
 
+# class Dispatchdetails(models.Model):#ann dispatch  tabel
+#     supplierinvoiceno= models.CharField(max_length=225,default=True)
+#     partyAccntname = models.CharField(max_length=225,default=True)
+#     currentbalancep = models.CharField(max_length=225,null=True)
+#     currentbalancepl = models.CharField(max_length=225,null=True)
+#     purchaseledger = models.CharField(max_length=225,default=True)
+#     nameofitem=models.CharField(max_length=225,null=True)
+#     quantity=models.IntegerField(null=True)
+#     price=models.IntegerField(default=0)
+#     total=models.IntegerField(default=0)
+#     purchase_date=models.DateField(null=True) 
+#     #voucher=models.ForeignKey(Voucher,on_delete=models.CASCADE,blank=True,null=True)
+
 class Currency(models.Model):
     symbol = models.CharField(max_length=225)
     formal_name = models.CharField(max_length=225)

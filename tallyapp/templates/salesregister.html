@@ -24,8 +24,11 @@
 <center></center><h5 class="text-capitalize" style="text-align:center;"></h5></center>   
 <a href="javascript:;" class="has-arrow">
   <div class="row container-fluid p-8 mx-0">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);">
+         <div class="col-sm-3"> {% for key,value in credit.items %}  
+       <p> {{key}}: {{value.c}}. </p>
+       <p>{{value.c}}</p>
+       {% endfor %} </div>
+        <div class="col-sm-12 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);">
             <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
         <div  class="bg-info text-light"> Sales Register</div>
 <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);"></div>
@@ -36,29 +39,23 @@
               <th colspan="6" class="a">Infox<br></th>
           </tr>
           <tr><th colspan="5"class="a">Trancations</th></tr>
-      <!-- <tr> <th colspan="2"class="a" >Credit</th>
-          <th colspan="2"class="a" >Debit</th><th colspan="2"class="a" >Closing Balance</th></tr>
-               
-       -->
-        <!-- <tr>
-          <th colspan="4"></th>
-          
-          <th>salesforApril 12 2022</th></tr>
-        <tr>
-          <th colspan="5"><br/>Particulars</th>
-          
-          <th colspan="5">Transactions</th>
-        </tr> -->
-      </thead>
+        </thead>
        <tr>
         <th  colspan="8"></th>
         <th class="a" colspan="2"><br/>Credit</th>
         <th class="a"colspan="2"><br/>Debit</th>
         <th class="a"colspan="2"><br/>ClosingBalance</th>
        </tr>
+      
        <tbody>
- 
- <tr> <th><a href="{% url 'listofsalesvoucher' 04 %}" class="btns_prnt">April</a></th></tr>       
+  
+           
+          
+ <tr> <th><a href="{% url 'listofsalesvoucher' 04 %}" class="btns_prnt">April</a></th>
+ <th class="a" colspan="6"><br/></th>
+ <th class="a" colspan="2"><br/>0000</th>
+ <th class="a" colspan="2"><br/>{{value.month}}</th>
+ <th class="a" colspan="2"><br/>{{value.c}}</th> </tr>      
  <tr> <th><a href="{% url 'listofsalesvoucher' 05 %}" class="btns_prnt">May</a></th></tr>
  <tr><th><a href="{% url 'listofsalesvoucher' 06 %}" class="btns_prnt" >June</a></th> </tr>   
  
@@ -73,7 +70,9 @@
  <tr> <th><a href="{% url 'listofsalesvoucher' 01 %}" class="btns_prnt">January</a></th></tr>
  <tr> <th><a href="{% url 'listofsalesvoucher' 02 %}"  class="btns_prnt">Febuary</a></th></tr>
  <tr><th><a href="{% url 'listofsalesvoucher' 03 %}" class="btns_prnt">March</a></th> </tr> 
-       </tbody>
+ 
+</tbody>
+      
        <div class="row container-fluid m-0 w-100 p-0">
         <table class="table p-0 m-0">
           <tbody>
@@ -88,4 +87,3 @@
   </div>
 p
 {% endblock %}
-<!-- {% url 'listofsalesvoucher'%} -->

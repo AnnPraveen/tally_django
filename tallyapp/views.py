@@ -1,5 +1,8 @@
 from re import A, S
 from this import s
+from django.db.models import Sum
+from django.db.models.functions import TruncMonth
+from django.db.models.functions import Extract
 from django.shortcuts import render,redirect
 from .models import *
 from django.contrib import messages
@@ -20,22 +23,26 @@ def disp_more_reports(request):#ann
     return render(request,'dispmorereprt.html')    
 
 def salesregister(request):#ann
+    credit=Sales.objects.all().annotate(month=TruncMonth('sales_date')).values('month').annotate(c=Sum('total')).order_by('month')                  # Select the count of the grouping       
     sales=Sales.objects.all()
-    
+    print("hai")
+    for s in credit:
+        print(getattr(s, "c")) 
+       
+    #print(sales)                 
     total1 = sum(sales.values_list('total', flat=True)) 
-    
-
-    return render(request,'salesregister.html',{'sales':sales,'total1':total1})   
+    return render(request,'salesregister.html',{'sales':sales,'total1':total1,'credit':credit})   
 
 def purchaseregister(request):#ann
     p=Purchase.objects.all()
+    
     total1 = sum(p.values_list('total', flat=True))  
     return render(request,'purchaseregister.html',{'total1':total1})   
 
 def journalregister(request):#ann
     p=Particular.objects.all()   
     #j=Journal.objects.all()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              j= Journal.objects.all( )          
-    return render(request,'listjournalvouchers.html',{'Particular':p})
+    return render(request,'journal_report.html',{'Particular':p})
 
 
 def listofsalesvoucher(request,pk):#ann
@@ -45,31 +52,31 @@ def listofsalesvoucher(request,pk):#ann
                      sales_date__month=m)
  
     total1 = sum(s.values_list('total', flat=True))               
-        
+       
     if m==1:
-             msg1="Jan 01 to 31"
+            msg1="1-Jan-22  to 31-jan-22"
     elif m==2:
-            msg1="Feb 01 to 28"
+            msg1="1-Feb-22  to 28-feb-22"
     elif m ==3:
-            msg1="March 01 to 31"
+            msg1="1-March-22  to 31-March-22"
     elif m ==4:
-             msg1="April 01 to 30"
+             msg1="1-April-22 to 30-April-22"
     elif m ==5:
-             msg1="May 01 to 31"
+             msg1="1-May-22  to 31-May-22"
     elif m ==6:
-            msg1="Jun 01 to 30"
+            msg1="1-June-22 to 31-May-22"
     elif m ==7:
-            msg1="July 01 to 31"
+            msg1="1-july-22  to 31-july-22"
     elif m ==8:
-             msg1="Aug 01 to 31"  
+             msg1="1-Aug-22  to 31-Aug-22"  
     elif m==9:
-            msg1="Sep 01 to 30"
+            msg1="1-Sep-22  to 30-Sep-22"
     elif m ==10:
-             msg1="Oct 01 to 30"
+             msg1="1-Oct-22 to 30-Oct-22"
     elif m ==11:
-            msg1="Nov 01 to 31" 
+            msg1="1-Nov-22 to 31-Nov-22" 
     elif m ==12:
-             msg1="Dec 01 to 31"      
+             msg1="1-Dec-22 to 31-Dec-22"     
     else:
         msg1="July 01 to 31" 
     return render(request,'listofsalesvouchers.html',{'sales':s,'msg1':msg1,'total1':total1})     
@@ -80,36 +87,35 @@ def listofpurchasevoucher(request,pk):#ann
                      purchase_date__month=m)   
     total1 = sum(p.values_list('total', flat=True))                             
     if m==1:
-             msg1="Jan 01 to 31"
+            msg1="1-Jan-22  to 31-jan-22"
     elif m==2:
-            msg1="Feb 01 to 28"
+            msg1="1-Feb-22  to 28-feb-22"
     elif m ==3:
-            msg1="March 01 to 31"
+            msg1="1-March-22  to 31-March-22"
     elif m ==4:
-             msg1="April 01 to 30"
+             msg1="1-April-22 to 30-April-22"
     elif m ==5:
-             msg1="May 01 to 31"
+             msg1="1-May-22  to 31-May-22"
     elif m ==6:
-            msg1="Jun 01 to 30"
+            msg1="1-June-22 to 31-May-22"
     elif m ==7:
-            msg1="July 01 to 31"
+            msg1="1-july-22  to 31-july-22"
     elif m ==8:
-             msg1="Aug 01 to 31"  
+             msg1="1-Aug-22  to 31-Aug-22"  
     elif m==9:
-            msg1="Sep 01 to 30"
+            msg1="1-Sep-22  to 30-Sep-22"
     elif m ==10:
-             msg1="Oct 01 to 30"
+             msg1="1-Oct-22 to 30-Oct-22"
     elif m ==11:
-            msg1="Nov 01 to 31" 
+            msg1="1-Nov-22 to 31-Nov-22" 
     elif m ==12:
-             msg1="Dec 01 to 31"      
+             msg1="1-Dec-22 to 31-Dec-22"      
     else:
         msg1="July 01 to 31"               
     return render(request,'listofpurchasevouchers.html',{'purchase':p,'msg1':msg1,'total1':total1})
     
 def listjournalvouchers(request):#ann 
-    #p=Particular.objects.all()   
-    #j=Journal.objects.all()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              j= Journal.objects.all( )          
+                    
     return render(request,'listjournalvouchers.html')
 
 def index1(request):
@@ -123,7 +129,12 @@ def sales(request):#ann
 def saleview(request,pk):#ann
     sal=Sales.objects.get(id=pk)
     print(sal)
-    return render(request,'saleview.html',{'sale':sal})     
+    return render(request,'saleview.html',{'sale':sal}) 
+
+def purchaseview(request,pk):#ann
+    p=Purchase.objects.get(id=pk)
+    print(p)
+    return render(request,'purchaseview.html',{'purchase':p})       
 
 def purchase(request):#ann
     return render(request,'purchase.html')    

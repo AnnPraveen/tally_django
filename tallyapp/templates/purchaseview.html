@@ -35,29 +35,29 @@
 
                         <div class="row container-fluid  p-2 m-0">
                             <div class="col-sm-4 m-0 p-0"> <label >Supplier Invoice No</label></div>
-                            <div class="col-sm-4 m-0 p-0"> <input type="text" placeholder="supplier_invoice_number" name="Suppliernumber" class="form-control " /></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="text" placeholder="supplier_invoice_number" name="Suppliernumber" value={{purchase.supplierinvoiceno}} class="form-control " /></div>
                         </div>
                         <div class="row container-fluid  p-2 m-0">
                             <div class="col-sm-4 m-0 p-0"> <label >Party A/c Name</label></div>
-                            <div class="col-sm-4 m-0 p-0"> <input type="text" placeholder="Party_ac_number" name="Party_name" class="form-control" /></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="text" placeholder="Party_ac_number" name="Party_name" value={{purchase.partyAccntname}}  class="form-control" /></div>
                              </div>
                             <div class="row container-fluid  p-2 m-0">    
                             <div class="col-sm-4 m-0 p-0"> <label >Date</label></div>
-                            <div class="col-sm-4 m-0 p-0"> <input type="date" placeholder="addDate" name="Date" class="form-control" /></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="date" placeholder="addDate" name="Date" value="{{purchase.purchase_date|date:'Y-m-d'}}" class="form-control" /></div>
                         </div>
                         <div class="row container-fluid  p-2 m-0">
                             <div class="col-sm-4 m-0 p-0"> <label >Current Balance:</label></div>
                             <div class="col-sm-4 m-0 p-0"> 
-                                <input type="text" placeholder="" name="current_ac_balancep" class="form-control"/></div>                    
+                                <input type="text" placeholder="" name="current_ac_balancep" value={{purchase.currentbalancep}} class="form-control"/></div>                    
                         </div>
                                            <div class="row container-fluid  p-2 m-0">
                             <div class="col-sm-4 m-0 p-0"> <label >Purchase Ledger</label></div>
-                            <div class="col-sm-4 m-0 p-0"> <input type="text" placeholder="" name="purchaseledger" class="form-control"/></div>
+                            <div class="col-sm-4 m-0 p-0"> <input type="text" placeholder="" name="purchaseledger" value={{purchase.purchaseledger}}  class="form-control"/></div>
                         </div>
                         <div class="row container-fluid  p-2 m-0">
                             <div class="col-sm-4 m-0 p-0"> <label >Current Balance:</label></div>
                             <div class="col-sm-4 m-0 p-0"> 
-                                <input type="text" placeholder="" name="current_ac_balancel" class="form-control"/></div>                    
+                                <input type="text" placeholder="" name="current_ac_balancel" value={{purchase.currentbalancepl}}  class="form-control"/></div>                    
                         </div>
                                           
                         <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);"></div>
@@ -72,20 +72,20 @@
                           </thead>
                           <tbody>
                             <tr>
-                                <th colspan="5"><input type="text" placeholder="" name="Item_name" class="form-control"/></th>
-                                <th colspan="2"><input type="number" placeholder="" name="quantity" class="form-control"/></th>
-                                <th colspan="2"><input type="number" placeholder="rate per unit" name="rate" class="form-control"/></th>
-                                <th colspan="2"> <input type="number" placeholder="" name="amount" class="form-control"/></th>
+                                <th colspan="5"><input type="text" placeholder="" name="Item_name" value={{purchase.nameofitem}} class="form-control"/></th>
+                                <th colspan="2"><input type="number" placeholder="" name="quantity" value={{purchase.quantity}} class="form-control"/></th>
+                                <th colspan="2"><input type="number" placeholder="rate per unit" name="rate" value={{purchase.price}} class="form-control"/></th>
+                                <th colspan="2"> <input type="number" placeholder="" name="amount" value={{purchase.total}} class="form-control"/></th>
                               </tr>
                           </tbody>
                          </table>
                         </div>
                         <div class="row container-fluid  p-2 m-0">
-                            <div class="col-sm-4 m-0 p-0">
-                            <button class="btn btn-warning btn-lg btn-block"  type="submit"><a href="{% url 'listofpurchasevoucher'%}">0000</a></button></div>
                             <!-- <div class="col-sm-4 m-0 p-0">
-                                <input class="btns_prnt" type="button" value="Quit"></div>
-                        </div> -->
+                              <a class="btns_prnt" href="{% url 'partydetails' %}">Party Details</a></div> -->
+                            <div class="col-sm-4 m-0 p-0">
+                                <a class="btns_prnt" href="{% url 'purchaseregister' %}">Back to purchase register</a></div>
+                        </div>
                                       
                     </div>
                                  

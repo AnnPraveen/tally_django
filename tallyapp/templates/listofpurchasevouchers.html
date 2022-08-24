@@ -4,8 +4,8 @@
 <center></center><h5 class="text-capitalize" style="text-align:center;"></h5></center>   
 <a href="javascript:;" class="has-arrow">
   <div class="row container-fluid p-8 mx-0">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);">
+        <!-- <div class="col-sm-3"></div> -->
+        <div class="col-sm-12 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);">
             <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
         <div  class="bg-info text-light"> Vouchers Register</div>
 <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);"></div>
@@ -13,6 +13,7 @@
       <thead class="thead-dark">
         <tr>
           <th  colspan="2">List of all Purchase Vouchers<BR><BR></th>
+            <td colspan="4"></td>
           <td> {% for m in msg1 %}
             {{m}}
             {% endfor %}</td>
@@ -31,9 +32,8 @@
          
       {% for i in purchase %}  
       <tr>
-          
           <td colspan="2">{{i.purchase_date}}</td>
-          <td colspan="2" >{{i.partyAccntname}}</td>
+          <td colspan="2"><a href="{% url 'purchaseview' i.id %}">{{i.partyAccntname}}</a></td>
           <td colspan="2">Accounting Voucher</td>
           <td colspan="2">{{i.purchaseledger}}</td>
           <td colspan="2">0 </td>

@@ -41,7 +41,9 @@ urlpatterns = [
     path('journalregister',views.journalregister,name='journalregister'),#ann
     path('sales_add',views.sales_add,name='sales_add'),#ann
     path('saleview/<int:pk>',views.saleview,name='saleview'),#ann
-    path('partydetails',views.partydetails,name='partydetails'),
+    path('purchaseview/<int:pk>',views.purchaseview,name='purchaseview'),#ann
+    
+    path('partydetails',views.partydetails,name='partydetails'),#ann
     path('showVouchers',views.showvouchers,name='showvouchers'),
     path('alter',views.alter,name='alter'),
     path('dispatch_details',views.dispatch_details,name='dispatch_details'),#click party name in sale form to get delivery details
