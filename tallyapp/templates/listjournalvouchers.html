@@ -22,56 +22,24 @@
         </tr>
        <tr>
           <th colspan="3">Date</th>
-          <th colspan="3">Particulars(by)</th>
-          <th colspan="3">Particulars(to))</th>
           <th colspan="3">Voucher type:</th>
           <th colspan="3">Journal No:</th>
-          <th colspan="2">Debit Amount</th>
-          <th colspan="2">Credit Amount</th>
+    
+          
         </tr>
       </thead>
-        
+      {% for i in journal %} 
       <tr>
-          <td colspan="3">April 14,2022</td>
-          <td colspan="3">Ann</td>
-          <td colspan="3">roseelectricals</td>
-          <td colspan="3">Journal</td>
-          <td colspan="3">1</td>
-          <td colspan="2">2000</td>
-          <td colspan="2">2000</td>
+          <td colspan="3">{{i.journal_date}}</td>
+          <td colspan="3">{{i.journalledger}}</td>
+          <td colspan="3">{{i.id}}</td>
+          
       </tr>
-      <tr>
-        <td colspan="3">April 23,2022</td>
-        <td colspan="3">Jibin</td>
-        <td colspan="3">Infox</td>
-        <td colspan="3">Journal</td>
-        <td colspan="3">2</td>
-        <td colspan="2">1000</td>
-        <td colspan="2">1000</td>
-    </tr>
-    <tr>
-      <td colspan="3">june 13,2022</td>
-      <td colspan="3">Infox</td>
-      <td colspan="1">Fedral Bank</td>
-      <td colspan="2">BSNL</td>
-      <td colspan="3">Journal</td>
-      <td colspan="3">3</td>
-      <td colspan="2">25600</td>
-      <td colspan="2">25600</td>
-  </tr>
-  <tr>
-    <td colspan="3">July 13,2022</td>
-    <td colspan="3">good electriclas</td>
-    <td colspan="3">Fedral bank</td>
-    <td colspan="3">Journal</td>
-    <td colspan="3">4</td>
-    <td colspan="2">30000</td>
-    <td colspan="2">30000</td>
-</tr>
+      {% endfor %}
 
       <tr>
          <td colspan="6">
-           <!-- Grand Total: -->
+           
            </td>
            <td colspan="13"><center></center>
            </td> 

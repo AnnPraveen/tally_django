@@ -34,7 +34,7 @@
         <tr>
           <th colspan="4" class="a"></th>
           
-          <th>JournalforApril 1</th></tr>
+          <th>JournalRegister</th></tr>
         <tr>
           <th colspan="5" rowspan="2" class="a"><br/>Particulars</th>
           
@@ -48,33 +48,29 @@
         </tr>
        <tbody>
  
- <tr> <th><a href="{% url 'listjournalvouchers' %}" class="btns_prnt">April</a></th></tr>       
- <tr> <th><a href="{% url 'listjournalvouchers'  %}" class="btns_prnt">May</a></th></tr>
- <tr><th><a href="{% url 'listjournalvouchers' %}"  class="btns_prnt" >June</a></th> </tr>   
- 
-  <tr> <th><a href="{% url 'listjournalvouchers' %}" class="btns_prnt">July</a></th></tr>
- <tr> <th><a href="{% url 'listjournalvouchers'%}" class="btns_prnt">August</a></th></tr>
- <tr><th><a href="{% url 'listjournalvouchers' %}" class="btns_prnt">September</a></th> </tr> 
- 
- <tr> <th><a href="{% url 'listjournalvouchers' %}"  class="btns_prnt">October</a></th></tr>
- <tr> <th><a href="{% url 'listjournalvouchers' %}"   class="btns_prnt">November</a></th></tr>
- <tr><th><a href="{% url 'listjournalvouchers' %}"  class="btns_prnt">Deember</a></th> </tr> 
- 
- <tr> <th><a href="{% url 'listjournalvouchers' %}"   class="btns_prnt">January</a></th></tr>
- <tr> <th><a href="{% url 'listjournalvouchers'%}"  class="btns_prnt">Febuary</a></th></tr>
- <tr><th><a href="{% url 'listjournalvouchers'%}"   class="btns_prnt">March</a></th> </tr>  -->
-       </tbody>
-       <div class="row container-fluid m-0 w-100 p-0">
-        <table class="table p-0 m-0">
-            <tbody>
-                <tr>
-                    <td class="w-75 m-0 p-0 pl-3"></td>
-                    <td class="w-25 m-0 p-0 text-center"><a href=""></a></td>
-                </tr>
-            </tbody>
-        </table>   
-    </table>
+        <tbody>
+       
+        
+          {% for j in  items %}
+             <tr>
+                <td colspan="5" text-align="center"><a href="{% url 'listjournalvouchers' forloop.counter  %}" class="btns_prnt">{{j.month|date:'M'}}</a></td>
+                <td colspan="3" class="a" text-align="center"><center>{{j.journal_count}}</center></td>
+                <td colspan="2" class="a" text-align="center"><center>0</center></td>
+             </tr> 
+              
+          {% endfor %}
+          </tbody>
+         <div class="row container-fluid m-0 w-100 p-0">
+          <table class="table p-0 m-0">
+              <tbody>
+                  <tr>
+                      <td class="w-75 m-0 p-0 pl-3"></td>
+                      <td class="w-25 m-0 p-0 text-center"><h3 class="btns_prnt"></h3></td>
+                  </tr>
+              </tbody>
+          </table>   
+      </table>
+      </div>
     </div>
-  </div>
-
-{% endblock %}
+  
+  {% endblock %}
