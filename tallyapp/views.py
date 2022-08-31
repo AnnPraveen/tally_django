@@ -58,6 +58,76 @@ def journalregister(request):#ann
     print(items)
     return render(request,'journal_report.html',{'items':items})
 
+def listofledgers(request,pk):#ann
+   # s=Sales.objects.all()
+    m=pk
+    s= Sales.objects.filter(sales_date__year='2022', 
+                     sales_date__month=m)
+ 
+    total1 = sum(s.values_list('total', flat=True))               
+       
+    if m==1:
+            msg1="1-Jan-22  to 31-jan-22"
+    elif m==2:
+            msg1="1-Feb-22  to 28-feb-22"
+    elif m ==3:
+            msg1="1-March-22  to 31-March-22"
+    elif m ==4:
+        
+             msg1="1-April-22 to 30-April-22"
+    elif m ==5:
+             msg1="1-May-22  to 31-May-22"
+    elif m ==6:
+            msg1="1-June-22 to 31-May-22"
+    elif m ==7:
+            msg1="1-july-22  to 31-july-22"
+    elif m ==8:
+             msg1="1-Aug-22  to 31-Aug-22"  
+    elif m==9:
+            msg1="1-Sep-22  to 30-Sep-22"
+    elif m ==10:
+             msg1="1-Oct-22 to 30-Oct-22"
+    elif m ==11:
+            msg1="1-Nov-22 to 31-Nov-22" 
+    elif m ==12:
+             msg1="1-Dec-22 to 31-Dec-22"     
+    else:
+        msg1="July 01 to 31" 
+    return render(request,'currentliablities.html',{'sales':s,'msg1':msg1,'total1':total1})     
+
+def listofpurchasevoucher(request,pk):#ann
+    m=pk
+    p= Purchase.objects.filter(purchase_date__year='2022', 
+                     purchase_date__month=m)   
+    total1 = sum(p.values_list('total', flat=True))                             
+    if m==1:
+            msg1="1-Jan-22  to 31-jan-22"
+    elif m==2:
+            msg1="1-Feb-22  to 28-feb-22"
+    elif m ==3:
+            msg1="1-March-22  to 31-March-22"
+    elif m ==4:
+             msg1="1-April-22 to 30-April-22"
+    elif m ==5:
+             msg1="1-May-22  to 31-May-22"
+    elif m ==6:
+            msg1="1-June-22 to 31-May-22"
+    elif m ==7:
+            msg1="1-july-22  to 31-july-22"
+    elif m ==8:
+             msg1="1-Aug-22  to 31-Aug-22"  
+    elif m==9:
+            msg1="1-Sep-22  to 30-Sep-22"
+    elif m ==10:
+             msg1="1-Oct-22 to 30-Oct-22"
+    elif m ==11:
+            msg1="1-Nov-22 to 31-Nov-22" 
+    elif m ==12:
+             msg1="1-Dec-22 to 31-Dec-22"      
+    else:
+        msg1="July 01 to 31"               
+    return render(request,'listofpurchasevouchers.html',{'purchase':p,'msg1':msg1,'total1':total1})
+    
 def listofsalesvoucher(request,pk):#ann
    # s=Sales.objects.all()
     m=pk
@@ -282,10 +352,8 @@ def companycreate(request):
             return render(request,'features.html',{'ctg':ctg})
     return render(request,'createcompany.html')
 
-def group(request,pk):
-    # feature=Features.objects.get(company_id=pk)
-    cmp=Companies.objects.get(id=pk)
-    return render(request,'group.html',{'cmp':cmp})
+def groupsummary(request):
+    return render(request,'groupsummary.html')
 def ledger(request,pk):
     cmp=Companies.objects.get(id=pk)
     if request.method == 'POST':

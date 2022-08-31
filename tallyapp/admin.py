@@ -46,15 +46,7 @@ class VoucherAdmin(admin.ModelAdmin):
 admin.site.register(Voucher,VoucherAdmin)
 
 
-#admin.site.register(Ledger)
-class LedgerAdmin(admin.ModelAdmin):
-    list_display=('name',)
-admin.site.register(Ledger,LedgerAdmin)
 
-admin.site.register(Ledger_Mailing_Details)
-admin.site.register(Ledger_Banking_Details)
-admin.site.register(Ledger_Asset_Rounding)
-admin.site.register(Ledger_Asset_Statutory)
 
 admin.site.register(Purchase)#ann
 admin.site.register(Sales)#ann

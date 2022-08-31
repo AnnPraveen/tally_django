@@ -7,8 +7,8 @@ urlpatterns = [
     path('index1',views.index1,name='index1'),
     path('createcompany',views.createcompany,name='createcompany'),
     path('companycreate',views.companycreate,name='companycreate'),
-    path('group/<int:pk>',views.group,name='group'),
     path('ledger/<int:pk>',views.ledger,name='ledger'),
+
     path('costcentre/<int:pk>',views.costcentre,name='costcentre'),
     path('currency/<int:pk>',views.currency,name='currency'),
     path('features/<int:pk>',views.features,name='features'),
@@ -26,11 +26,12 @@ urlpatterns = [
     path('demo1/<int:pk>',views.demo1,name='demo1'),
     # path('demo2/<int:pk>',views.demo2,name='demo2'), 
     path('voucher1',views.voucher1,name='voucher1'),#ann
-    
+    path('groupsummary',views.groupsummary,name='groupsummary'),#groupsummary
     path('sales',views.sales,name='sales'),#salesann
     path('journal',views.journal,name='journal'),#journalnn
     path('purchase',views.purchase,name='purchase'),#purchaseann
     path('purchase_add',views.purchase_add,name='purchase_add'),#ann
+        path('listofledgers/<int:pk>',views.listofledgers,name='listofledgers'),#ann,#listofpurchasevouchers
     path('listofpurchasevoucher/<int:pk>',views.listofpurchasevoucher,name='listofpurchasevoucher'),#ann,#listofpurchasevouchers
     path('listjournalvouchers/<int:pk>',views.listjournalvouchers,name='listjournalvouchers'),#ann,#listofjournalvouchers
     path('featurecompany/<int:pk>',views.featurecompany,name='featurecompany'),
@@ -51,7 +52,7 @@ urlpatterns = [
     path('listofsalesvoucher/<int:pk>',views.listofsalesvoucher,name='listofsalesvoucher'),#ann
     
     path('listofgroup',views.listofgroup,name='listofgroup'),
-    path('listofledgers',views.listofledgers,name='listofledgers'),
+    path('listofledgers',views.listofledgers,name='listofledgers'),#ann
     path('listofcostcentres',views.listofcostcentres,name='listofcostcentres'),
     path('listofcurrencies',views.listofcurrencies,name='listofcurrencies'),
     path('listofvouchertypes',views.listofvouchertypes,name='listofvouchertypes'),
