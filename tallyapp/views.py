@@ -57,14 +57,19 @@ def journalregister(request):#ann
     items=Journal.objects.all().annotate(month=TruncMonth('journal_date')).values('month').annotate(journal_count = Count('id')).values('month','journal_count').order_by('month')
     print(items)
     return render(request,'journal_report.html',{'items':items})
-
+def ledgersummary(request):#ann
+    l=ledgers_vouchers.objects.all()
+    credit=ledgers_vouchers.objects.all().annotate(month=TruncMonth('ledgervoucher_date')).values('month').annotate(credit=Sum('credit')).order_by('month').values("month", "credit")                 # Select the count of the grouping       
+    total1 = sum(l.values_list('credit', flat=True))  
+    return render(request,'ledgersummary.html',{'total1':total1,'credit':credit}) 
+  
 def listofledgers(request,pk):#ann
-   # s=Sales.objects.all()
+   # s=ledgers_vouchers.objects.all()
     m=pk
-    s= Sales.objects.filter(sales_date__year='2022', 
+    l= ledgers_vouchers.objects.filter(ledgervoucher_date='2022', 
                      sales_date__month=m)
  
-    total1 = sum(s.values_list('total', flat=True))               
+    total1 = sum(l.values_list('credit', flat=True))               
        
     if m==1:
             msg1="1-Jan-22  to 31-jan-22"
@@ -93,7 +98,7 @@ def listofledgers(request,pk):#ann
              msg1="1-Dec-22 to 31-Dec-22"     
     else:
         msg1="July 01 to 31" 
-    return render(request,'currentliablities.html',{'sales':s,'msg1':msg1,'total1':total1})     
+    return render(request,'currentliablities.html',{'ledgers':l,'msg1':msg1,'total1':total1})     
 
 def listofpurchasevoucher(request,pk):#ann
     m=pk
@@ -354,6 +359,11 @@ def companycreate(request):
 
 def groupsummary(request):
     return render(request,'groupsummary.html')
+    
+def subgroupsummary(request):
+    return render(request,'subgroupsummary.html')    
+
+   
 def ledger(request,pk):
     cmp=Companies.objects.get(id=pk)
     if request.method == 'POST':

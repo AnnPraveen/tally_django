@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% block body %}
 <style>
-  .a{
+  th.a{
     text-align: center;
-    
-   
+    width: 120px;
    }
   .btns_prnt{
       width: 100%;
@@ -27,7 +26,11 @@
   <div class="row container-fluid p-8 mx-0">
           <div class="col-sm-12 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);">
             <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
-        <div  class="bg-info text-light">Group Summary</div>
+        <div  class="bg-info text-light">Ledger Montly Summary</div>
+        <td colspan="4"></td>
+          <td> {% for m in msg1 %}
+            {{m}}
+            {% endfor %}</td>
 <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);"></div>
     <table class="table-bordered" width="100%">
       <thead class="thead-dark"> 
@@ -35,35 +38,34 @@
                   
           <th rowspan="6" colspan="3" class="a"><br/>Particulars 
         
-          <th colspan="7" class="a">Currentliabilities<br/> ABC Pvt Ltd 
+          <th colspan="7" class="a">Ann ELEGENT<br/> ABC Pvt Ltd 
              <tr><td  colspan="7" class="a"><br/>ClosingBalance</td></tr>
              <tr><td colspan="3" class="a" >credit</td><td colspan="2" class="a">Dedit</td></tr>
           </th>   
         </tr>   
         
       </thead>
-      <tbody>
+       <tbody>
        
-        
-           <tr>
-           
-              <td colspan="6" text-align="center"><a href="{% url 'subgroupsummary' %}" class="btns_prnt">SundreyCreditors </a></td>
-              
-              <td class="w-25 m-0 p-0 text-center">200000.90 </td>
-           </tr>
-           <tr>
-            <td colspan="6" text-align="center"><a href="" class="btns_prnt">Albert &Co</a></td>
-            
-            <td class="w-25 m-0 p-0 text-center">200</td>
-           </tr> 
-           
+        {% for s in  credit %}
+        <tr>
+           <td colspan="5" text-align="center"><a href="{% url 'listofpurchasevoucher' forloop.counter  %}" class="btns_prnt">{{s.month|date:'M'}}</a></td>
+           <td colspan="2" class="a" text-align="center"><center>000000 </center></td>
+           <td colspan="2" class="a" text-align="center"><center>{{s.total}}</center></td>
+           <td colspan="2" class="a" text-align="center"><center>{{s.total}}</center></td>
+        </tr> 
+         
+     {% endfor %}
+      
+      
+       
         </tbody>
        <div class="row container-fluid m-0 w-100 p-0">
         <table class="table p-0 m-0">
             <tbody>
                 <tr>
                     <td class="w-75 m-0 p-0 pl-3">Grand Total</td>
-                    <td class="w-25 m-0 p-0 text-center"><h4 class="btns_prnt">200200.90</h4></td>
+                    <td class="w-25 m-0 p-0 text-center"><h3 class="btns_prnt">{{total1}}</h3></td>
                 </tr>
             </tbody>
         </table>   

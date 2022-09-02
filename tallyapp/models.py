@@ -19,16 +19,17 @@ class Companies(models.Model):#ann(for my display)
     
 class Group(models.Model):#ann(for my display)
     name = models.CharField(max_length=225)
-    alias = models.CharField(max_length=225,null=True)
-    under = models.CharField(max_length=225)
-    debit_credit = models.CharField(max_length=255)
-    company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
-       
-class Ledger(models.Model):#ann(for my display)
+    
+    
+class SubGroup(models.Model):#ann(for my display)
+    name = models.CharField(max_length=225)
+    group=models.ForeignKey(Group,on_delete=models.CASCADE,blank=True,null=True)
+    # company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)       
+class Voucher(models.Model):#ann(for my display)
     name = models.CharField(max_length=225)
     alias = models.CharField(max_length=225)
     under =  models.CharField(max_length=225)
-    company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
+    #company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
     
 
 #  class stock_item(models.Model):#ajmay
@@ -71,21 +72,17 @@ class Costcentre(models.Model):
     under = models.CharField(max_length=225)
     company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
 
-class Voucher(models.Model):
-    voucher_name = models.CharField(max_length=225)
-    alias = models.CharField(max_length=225)
-    voucher_type = models.CharField(max_length=225)
-    abbreviation = models.CharField(max_length=225)
-    active_this_voucher_type =  models.CharField(max_length=225)
-    method_voucher_numbering = models.CharField(max_length=225)
-    use_adv_conf = models.CharField(max_length=225,blank=True)
-    prvnt_duplictes = models.CharField(max_length=225,default="Null",blank=True)
-    use_effective_date =  models.CharField(max_length=225,default="Null")
-    allow_zero_value_trns =  models.CharField(max_length=225)
-    allow_naration_in_voucher =  models.CharField(max_length=225)
-    make_optional =  models.CharField(max_length=225)
-    provide_naration =  models.CharField(max_length=225)
-    print_voucher = models.CharField(max_length=225)
+class ledgers_vouchers(models.Model):
+    Voucher=models.ForeignKey(Voucher,on_delete=models.CASCADE,blank=True,null=True)
+    SubGroup =models.ForeignKey(SubGroup ,on_delete=models.CASCADE,blank=True,null=True)
+    ledgervoucher_date=models.DateField(null=True)
+    credit= models.IntegerField(default=0)#ledger credit
+    debit= models.IntegerField(default=0)#ledger debit
+    
+ 
+
+
+
     #company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)    
 
 class Sales(models.Model):#ann sales table

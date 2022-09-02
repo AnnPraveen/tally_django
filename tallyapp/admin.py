@@ -43,7 +43,7 @@ admin.site.register(Currency,CurrencyAdmin)
 #admin.site.register(Voucher)
 class VoucherAdmin(admin.ModelAdmin):
     list_display=('voucher_name',)
-admin.site.register(Voucher,VoucherAdmin)
+#admin.site.register(Voucher)
 
 
 
@@ -52,3 +52,8 @@ admin.site.register(Purchase)#ann
 admin.site.register(Sales)#ann
 admin.site.register(Journal)#ann
 admin.site.register(Particular)#ann
+
+
+admin.site.register(Voucher)#ann
+admin.site.register(SubGroup)#ann
+admin.site.register(ledgers_vouchers)#ann
