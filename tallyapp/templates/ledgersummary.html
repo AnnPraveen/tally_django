@@ -38,7 +38,7 @@
                   
           <th rowspan="6" colspan="3" class="a"><br/>Particulars 
         
-          <th colspan="7" class="a">Ann ELEGENT<br/> ABC Pvt Ltd 
+          <th colspan="7" class="a">{{name.ledger}}<br/> ABC Pvt Ltd 
              <tr><td  colspan="7" class="a"><br/>ClosingBalance</td></tr>
              <tr><td colspan="3" class="a" >credit</td><td colspan="2" class="a">Dedit</td></tr>
           </th>   
@@ -47,12 +47,11 @@
       </thead>
        <tbody>
        
-        {% for s in  credit %}
+        {% for s in  v %}
         <tr>
            <td colspan="5" text-align="center"><a href="{% url 'listofpurchasevoucher' forloop.counter  %}" class="btns_prnt">{{s.month|date:'M'}}</a></td>
-           <td colspan="2" class="a" text-align="center"><center>000000 </center></td>
-           <td colspan="2" class="a" text-align="center"><center>{{s.total}}</center></td>
-           <td colspan="2" class="a" text-align="center"><center>{{s.total}}</center></td>
+           <td colspan="3" class="a" text-align="center"><center>{{v.credit}}</center></td>
+           <td colspan="2" class="a" text-align="center"><center>{{s.debit}}</center></td>
         </tr> 
          
      {% endfor %}

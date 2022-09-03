@@ -40,18 +40,14 @@
         
       </thead>
       <tbody>
-       
+       {% for l in  ledg %}
         
            <tr>
-              <td colspan="6" text-align="center"><a href="{% url 'ledgersummary' %}" class="btns_prnt">Ann Elegant </a></td>
+              <td colspan="6" text-align="center"><a href="{% url 'ledgersummary' l.id %}" class="btns_prnt">{{l.ledger}}</a></td>
              
            </tr>
-           <tr>
-            <td colspan="6" text-align="center"><a href="" class="btns_prnt">Rose villa</td>
-            
-            <td class="w-25 m-0 p-0 text-center"></td>
-           </tr> 
-           
+     
+         {% endfor %}  
         </tbody>
        <div class="row container-fluid m-0 w-100 p-0">
        

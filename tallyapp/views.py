@@ -357,11 +357,23 @@ def companycreate(request):
             return render(request,'features.html',{'ctg':ctg})
     return render(request,'createcompany.html')
 
-def groupsummary(request):
-    return render(request,'groupsummary.html')
+def groupsummary(request):#ann
+    pk=1
+    subg=SubGroup.objects.filter(group_id=pk)
+    return render(request,'groupsummary.html',{'subgrp':subg})
     
-def subgroupsummary(request):
-    return render(request,'subgroupsummary.html')    
+def ledgergroupsummary(request,pk):#ann
+    m=pk  
+    ledg=ledgers.objects.filter(SubGroup_id=m)
+    return render(request,'ledgergroupsummary.html',{'ledg':ledg})  
+def ledgersummary(request,lk):#ann
+   # ledgname=ledgers.objects.filter(id=lk)
+    ledgname =ledgers.objects.get(id=lk)
+    #v=ledgers_vouchers.objects.filter(ledgers_id=lk)
+    v=ledgers_vouchers.objects.filter(ledgers_id=lk).annotate(month=TruncMonth('ledgervoucher_date')).values('month').annotate(credit=Sum('credit')).order_by('month').values("month", "credit").annotate(debit=Sum('debit')).order_by('month').values("month", "debit")                                  # Select the count of the grouping       qa23
+    #ledgname=ledgers.objects.values_list('id', 'ledger')
+    print(v)
+    return render(request,'ledgersummary.html',{'name':ledgname,'v':v})       
 
    
 def ledger(request,pk):

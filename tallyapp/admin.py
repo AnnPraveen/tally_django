@@ -54,6 +54,7 @@ admin.site.register(Journal)#ann
 admin.site.register(Particular)#ann
 
 
+admin.site.register(ledgers)#ann
 admin.site.register(Voucher)#ann
 admin.site.register(SubGroup)#ann
 admin.site.register(ledgers_vouchers)#ann

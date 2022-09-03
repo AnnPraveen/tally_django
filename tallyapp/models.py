@@ -24,7 +24,8 @@ class Group(models.Model):#ann(for my display)
 class SubGroup(models.Model):#ann(for my display)
     name = models.CharField(max_length=225)
     group=models.ForeignKey(Group,on_delete=models.CASCADE,blank=True,null=True)
-    # company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)       
+    # company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True) 
+          
 class Voucher(models.Model):#ann(for my display)
     name = models.CharField(max_length=225)
     alias = models.CharField(max_length=225)
@@ -72,15 +73,19 @@ class Costcentre(models.Model):
     under = models.CharField(max_length=225)
     company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
 
+  
+class ledgers(models.Model):
+      ledger=models.CharField(max_length=225,null=True) 
+      SubGroup =models.ForeignKey(SubGroup ,on_delete=models.CASCADE,blank=True,null=True)
+      
 class ledgers_vouchers(models.Model):
     Voucher=models.ForeignKey(Voucher,on_delete=models.CASCADE,blank=True,null=True)
     SubGroup =models.ForeignKey(SubGroup ,on_delete=models.CASCADE,blank=True,null=True)
+    ledgers =models.ForeignKey(ledgers ,on_delete=models.CASCADE,blank=True,null=True)
     ledgervoucher_date=models.DateField(null=True)
     credit= models.IntegerField(default=0)#ledger credit
     debit= models.IntegerField(default=0)#ledger debit
-    
- 
-
+     
 
 
     #company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)    

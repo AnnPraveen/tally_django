@@ -43,19 +43,15 @@
         
       </thead>
       <tbody>
-       
+        {% for i in subgrp %} 
         
            <tr>
            
-              <td colspan="6" text-align="center"><a href="{% url 'subgroupsummary' %}" class="btns_prnt">SundreyCreditors </a></td>
+              <td colspan="6" text-align="center"><a href="{% url 'ledgergroupsummary' i.id %}" class="btns_prnt">{{i.name}} </a></td>
               
-              <td class="w-25 m-0 p-0 text-center">200000.90 </td>
+              <td class="w-25 m-0 p-0 text-center"> </td>
            </tr>
-           <tr>
-            <td colspan="6" text-align="center"><a href="" class="btns_prnt">Albert &Co</a></td>
-            
-            <td class="w-25 m-0 p-0 text-center">200</td>
-           </tr> 
+       {% endfor %}
            
         </tbody>
        <div class="row container-fluid m-0 w-100 p-0">
