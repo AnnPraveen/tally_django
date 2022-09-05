@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tallyapp',
     'bootstrap_modal_forms',
-    
+    'mathfilters',
  ]
 
 MIDDLEWARE = [

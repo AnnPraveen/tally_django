@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% block body %}
+{% load mathfilters %}
 <style>
-  th.a{
+  th.a:hover{
     text-align: center;
     width: 120px;
+    background-color:orange;
    }
   .btns_prnt{
       width: 100%;
@@ -36,23 +38,26 @@
       <thead class="thead-dark"> 
         <tr>
                   
-          <th rowspan="6" colspan="3" class="a"><br/>Particulars 
+          <th rowspan="10" colspan="5" class="a"><br/>Particulars 
         
-          <th colspan="7" class="a">{{name.ledger}}<br/> ABC Pvt Ltd 
-             <tr><td  colspan="7" class="a"><br/>ClosingBalance</td></tr>
-             <tr><td colspan="3" class="a" >credit</td><td colspan="2" class="a">Dedit</td></tr>
+          <th colspan="6" class="a"><center>{{name.ledger}}<br/> ABC Pvt Ltd</center>
+             <tr><td  colspan="5" class="a"><br/><center>Transactions</center></td><td rowspan="5"><center>Closing Balance</center></td>
+             <tr><td colspan="2" class="a" ><center>credit</center></td><td colspan="2" class="a"><center>Dedit</center> </td></td></tr>
+             
           </th>   
         </tr>   
         
       </thead>
        <tbody>
-       
-        {% for s in  v %}
+        <tr><td colspan="10" colspan="3" class="a">Opening balance</td><td colspan="2" colspan="3" class="a">100000cr</td></tr>
+      {% for s in  v %}
         <tr>
-           <td colspan="5" text-align="center"><a href="{% url 'listofpurchasevoucher' forloop.counter  %}" class="btns_prnt">{{s.month|date:'M'}}</a></td>
-           <td colspan="3" class="a" text-align="center"><center>{{v.credit}}</center></td>
+          <td colspan="4" colspan="3" class="a"><a href="{% url 'listofledger' forloop.counter  %}" class="btns_prnt">{{s.month|date:'M'}}</a></td>
+           <td colspan="2" class="a" text-align="center"><center>{{s.credit}}</center></td>
            <td colspan="2" class="a" text-align="center"><center>{{s.debit}}</center></td>
+           <td colspan="4" class="a" text-align="center"><center>{{s.debit|sub:s.credit}}</center></td>
         </tr> 
+      
          
      {% endfor %}
       

@@ -85,6 +85,7 @@ class ledgers_vouchers(models.Model):
     ledgervoucher_date=models.DateField(null=True)
     credit= models.IntegerField(default=0)#ledger credit
     debit= models.IntegerField(default=0)#ledger debit
+    closingbalance=models.IntegerField(default=0)#closing balance
      
 
 

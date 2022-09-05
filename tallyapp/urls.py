@@ -33,7 +33,7 @@ urlpatterns = [
     path('journal',views.journal,name='journal'),#journalnn
     path('purchase',views.purchase,name='purchase'),#purchaseann
     path('purchase_add',views.purchase_add,name='purchase_add'),#ann
-    path('listofledgers/<int:pk>',views.listofledgers,name='listofledgers'),#ann,#listofpurchasevouchers
+    path('listofledger/<int:pk>',views.listofledger,name='listofledger'),#ann,#listofpurchasevouchers
     path('listofpurchasevoucher/<int:pk>',views.listofpurchasevoucher,name='listofpurchasevoucher'),#ann,#listofpurchasevouchers
     path('listjournalvouchers/<int:pk>',views.listjournalvouchers,name='listjournalvouchers'),#ann,#listofjournalvouchers
     path('featurecompany/<int:pk>',views.featurecompany,name='featurecompany'),
@@ -54,7 +54,7 @@ urlpatterns = [
     path('listofsalesvoucher/<int:pk>',views.listofsalesvoucher,name='listofsalesvoucher'),#ann
     
     path('listofgroup',views.listofgroup,name='listofgroup'),
-    path('listofledgers',views.listofledgers,name='listofledgers'),#ann
+    #path('listofledgers',views.listofledgers,name='listofledgers'),#ann
     path('listofcostcentres',views.listofcostcentres,name='listofcostcentres'),
     path('listofcurrencies',views.listofcurrencies,name='listofcurrencies'),
     path('listofvouchertypes',views.listofvouchertypes,name='listofvouchertypes'),
