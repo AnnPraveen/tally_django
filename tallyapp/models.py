@@ -77,9 +77,11 @@ class Costcentre(models.Model):
 class ledgers(models.Model):
       ledger=models.CharField(max_length=225,null=True) 
       SubGroup =models.ForeignKey(SubGroup ,on_delete=models.CASCADE,blank=True,null=True)
+      group=models.ForeignKey(Group,on_delete=models.CASCADE,blank=True,null=True)
       
 class ledgers_vouchers(models.Model):
     Voucher=models.ForeignKey(Voucher,on_delete=models.CASCADE,blank=True,null=True)
+    Group =models.ForeignKey(Group ,on_delete=models.CASCADE,blank=True,null=True)
     SubGroup =models.ForeignKey(SubGroup ,on_delete=models.CASCADE,blank=True,null=True)
     ledgers =models.ForeignKey(ledgers ,on_delete=models.CASCADE,blank=True,null=True)
     ledgervoucher_date=models.DateField(null=True)
@@ -143,7 +145,12 @@ class Currency(models.Model):
 
 class Journal(models.Model):#ann journal table
      journalledger = models.CharField(max_length=225,null=True)
-     journal_date=models.DateField(null=True)  
+     journal_date=models.DateField(null=True) 
+     particularsto = models.CharField(max_length=225,null=True)
+     total=models.IntegerField(default=0)
+     credit = models.IntegerField(default=0,null=True)#current balance of party
+     debit = models.IntegerField(null=True,default=0)#balance of corresponding sales ledger   
+     
 
 class Particular(models.Model):#ann Particular table
     particularsby = models.CharField(max_length=225,null=True)

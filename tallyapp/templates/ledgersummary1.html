@@ -48,7 +48,23 @@
         </tr>   
         
       </thead>
-           <tbody>
+       <tbody>
+        <tr><td colspan="10" colspan="3" class="a">Opening balance</td><td colspan="2" colspan="3" class="a">100000cr</td></tr>
+      {% for s in  v %}
+        <tr>
+          <td colspan="4" colspan="3" class="a"><a href="{% url 'listofledger' forloop.counter  %}" class="btns_prnt">{{s.month|date:'M'}}</a></td>
+           <td colspan="2" class="a" text-align="center"><center>{{s.credit}}</center></td>
+           <td colspan="2" class="a" text-align="center"><center>{{s.debit}}</center></td>
+           <td colspan="4" class="a" text-align="center"><center>{{s.debit|sub:s.credit}}</center></td>
+        </tr> 
+      
+         
+     {% endfor %}
+      
+      
+       
+        </tbody>
+        <tbody>
           <tr><td colspan="10" colspan="3" class="a">Opening balance</td><td colspan="2" colspan="3" class="a">100000cr</td></tr>
         {% for s in  v %}
           <tr>
@@ -66,7 +82,7 @@
         <table class="table p-0 m-0">
             <tbody>
                 <tr>
-                    <td class="w-75 m-0 p-0 pl-3"></td>
+                    <td class="w-75 m-0 p-0 pl-3">Grand Total</td>
                     <td class="w-25 m-0 p-0 text-center"><h3 class="btns_prnt">{{total1}}</h3></td>
                 </tr>
             </tbody>

@@ -50,15 +50,78 @@
  
         <tbody>
        
+          <tr>
+            <td colspan="5" text-align="center"><a href="{% url 'listjournalvouchers' 01  %}" class="btns_prnt">April</a></td>
+            <td colspan="2" class="a" text-align="center"><center>{{data.april}}</center></td>
+            <td colspan="2" class="a" text-align="center"><center>0</center></td>
+           
+         </tr> 
+         <tr>
+          <td colspan="5" text-align="center"><a href="{% url 'listjournalvouchers' 02  %}" class="btns_prnt">May</a></td>
+          <td colspan="2" class="a" text-align="center"><center>{{data.may}}</center></td>
+          <td colspan="2" class="a" text-align="center"><center>0</center></td>
+          
+       </tr> 
+       <tr>
+        <td colspan="5" text-align="center"><a href="{% url 'listjournalvouchers' 03  %}" class="btns_prnt">June</a></td>
+        <td colspan="2" class="a" text-align="center"><center>{{data.june}}</center></td>
+        <td colspan="2" class="a" text-align="center"><center>0</center></td>
         
-          {% for j in  items %}
-             <tr>
-                <td colspan="5" text-align="center"><a href="{% url 'listjournalvouchers' forloop.counter  %}" class="btns_prnt">{{j.month|date:'M'}}</a></td>
-                <td colspan="3" class="a" text-align="center"><center>{{j.journal_count}}</center></td>
-                <td colspan="2" class="a" text-align="center"><center>0</center></td>
-             </tr> 
-              
-          {% endfor %}
+     </tr> 
+     <tr>
+      <td colspan="5" text-align="center"><a href="{% url 'listjournalvouchers' 04  %}" class="btns_prnt">July</a></td>
+      <td colspan="2" class="a" text-align="center"><center>{{data.july}}</center></td>
+      <td colspan="2" class="a" text-align="center"><center>0</center></td>
+      
+   </tr> 
+   <tr>
+    <td colspan="5" text-align="center"><a href="{% url 'listjournalvouchers' 05  %}" class="btns_prnt">August</a></td>
+    <td colspan="2" class="a" text-align="center"><center>{{data.august}}</center></td>
+    <td colspan="2" class="a" text-align="center"><center>0</center></td>
+    
+ </tr> 
+ <tr>
+  <td colspan="5" text-align="center"><a href="{% url 'listjournalvouchers' 06  %}" class="btns_prnt">September</a></td>
+  <td colspan="2" class="a" text-align="center"><center>{{data.september}}</center></td>
+  <td colspan="2" class="a" text-align="center"><center>0</center></td>
+ 
+</tr> 
+<tr>
+<td colspan="5" text-align="center"><a href="{% url 'listjournalvouchers' 07  %}" class="btns_prnt">October</a></td>
+<td colspan="2" class="a" text-align="center"><center>{{data.october}}</center></td>
+<td colspan="2" class="a" text-align="center"><center>0</center></td>
+
+</tr> 
+<tr>
+<td colspan="5" text-align="center"><a href="{% url 'listjournalvouchers' 08  %}" class="btns_prnt">November</a></td>
+<td colspan="2" class="a" text-align="center"><center>{{data.november}}</center></td>
+<td colspan="2" class="a" text-align="center"><center>0</center></td>
+
+</tr> 
+<tr>
+<td colspan="5" text-align="center"><a href="{% url 'listjournalvouchers' 09 %}" class="btns_prnt">December</a></td>
+<td colspan="2" class="a" text-align="center"><center>{{data.december}}</center></td>
+<td colspan="2" class="a" text-align="center"><center>0</center></td>
+
+</tr> 
+<tr>
+<td colspan="5" text-align="center"><a href="{% url 'listjournalvouchers' 09  %}" class="btns_prnt">January</a></td>
+<td colspan="2" class="a" text-align="center"><center>{{data.january}}</center></td>
+<td colspan="2" class="a" text-align="center"><center>0</center></td>
+
+</tr> 
+<tr>
+<td colspan="5" text-align="center"><a href="{% url 'listjournalvouchers' 10  %}" class="btns_prnt">Febuary</a></td>
+<td colspan="2" class="a" text-align="center"><center>{{data.febuary}}</center></td>
+<td colspan="2" class="a" text-align="center"><center>0</center></td>
+
+</tr> 
+<tr>
+<td colspan="5" text-align="center"><a href="{% url 'listjournalvouchers' 11  %}" class="btns_prnt">March</a></td>
+<td colspan="2" class="a" text-align="center"><center>{{data.march}}</center></td>
+<td colspan="2" class="a" text-align="center"><center>0</center></td>
+
+</tr> 
           </tbody>
          <div class="row container-fluid m-0 w-100 p-0">
           <table class="table p-0 m-0">

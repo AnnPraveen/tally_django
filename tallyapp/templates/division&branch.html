@@ -35,11 +35,9 @@
                   
           <th rowspan="6" colspan="3" class="a"><br/>Particulars 
         
-          <th colspan="7" class="a">Current Liabilities<br/> ABC Pvt Ltd<BR>{% for m in msg1 %}
-            {{m}}
-            {% endfor %}</th>
+          <th colspan="7" class="a">Currentliabilities<br/> ABC Pvt Ltd 
              <tr><td  colspan="7" class="a"><br/>ClosingBalance</td></tr>
-             <tr><td colspan="4" class="a" >credit</td><td colspan="3" class="a">Dedit</td></tr>
+             <tr><td colspan="3" class="a" >credit</td><td colspan="2" class="a">Dedit</td></tr>
           </th>   
         </tr>   
         
@@ -50,20 +48,18 @@
            <tr>
            
               <td colspan="6" text-align="center"><a href="{% url 'ledgergroupsummary' i.id %}" class="btns_prnt">{{i.name}} </a></td>
-                
-              <td class="w-25 m-0 p-0 text-center">{{c}}</td>
               
-              <td class="w-25 m-0 p-0 text-center">{{d}}</td>
+              <td class="w-25 m-0 p-0 text-center"> </td>
            </tr>
-           {% endfor %}
-               
+       {% endfor %}
+           
         </tbody>
        <div class="row container-fluid m-0 w-100 p-0">
         <table class="table p-0 m-0">
             <tbody>
                 <tr>
                     <td class="w-75 m-0 p-0 pl-3">Grand Total</td>
-                    <td class="w-25 m-0 p-0 text-center"><h4 class="btns_prnt">{{total1}}</h4></td>
+                    <td class="w-25 m-0 p-0 text-center"><h4 class="btns_prnt">200200.90</h4></td>
                 </tr>
             </tbody>
         </table>   

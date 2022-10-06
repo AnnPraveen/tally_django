@@ -27,7 +27,7 @@
   <div class="row container-fluid p-8 mx-0">
           <div class="col-sm-12 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);">
             <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
-        <div  class="bg-info text-light">Group Summary</div>
+        <div  class="bg-info text-light">Ledger Summary</div>
 <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);"></div>
     <table class="table-bordered" width="100%">
       <thead class="thead-dark"> 
@@ -35,28 +35,27 @@
                   
           <th rowspan="6" colspan="3" class="a"><br/>Particulars 
         
-          <th colspan="7" class="a">Current Liabilities<br/> ABC Pvt Ltd<BR>{% for m in msg1 %}
+          <th colspan="7" class="a">Branch/Divisions
+            <br/> ABC Pvt Ltd<BR>{% for m in msg1 %}
             {{m}}
             {% endfor %}</th>
              <tr><td  colspan="7" class="a"><br/>ClosingBalance</td></tr>
-             <tr><td colspan="4" class="a" >credit</td><td colspan="3" class="a">Dedit</td></tr>
+             <tr><td colspan="3" class="a" >credit</td><td colspan="2" class="a">Dedit</td></tr>
           </th>   
         </tr>   
         
       </thead>
       <tbody>
-        {% for i in subgrp %} 
+       {% for i in ledg %} 
         
-           <tr>
+       <tr>
+       
+          <td colspan="6" text-align="center"><a href="{% url 'ledgersummary' i.id %}" class="btns_prnt">{{i.ledger}} </a></td>
+          
+          <td class="w-25 m-0 p-0 text-center"> </td>
+       </tr>
+      {% endfor %}
            
-              <td colspan="6" text-align="center"><a href="{% url 'ledgergroupsummary' i.id %}" class="btns_prnt">{{i.name}} </a></td>
-                
-              <td class="w-25 m-0 p-0 text-center">{{c}}</td>
-              
-              <td class="w-25 m-0 p-0 text-center">{{d}}</td>
-           </tr>
-           {% endfor %}
-               
         </tbody>
        <div class="row container-fluid m-0 w-100 p-0">
         <table class="table p-0 m-0">

@@ -33,25 +33,20 @@
       </thead>
       {% for i in journal %} 
       <tr>
-          <td colspan="3">{{i.journal_date}}</td>
-          <th colspan="2">{{i.particularsto}}</th>
-          <td colspan="3">{{i.journalledger}}</td>
-          <td colspan="3">{{i.id}}</td>
-          <th colspan="2">{{i.debit}}</th>
-          <th colspan="2">{{i.credit}} </th>
+          <td colspan="3" rowspan="2">{{i.journal_date}}</td>
+          <th colspan="2">by:{{i.particulars.particularby}}</th>
+          <td colspan="3" rowspan="2">{{i.journalledger}}</td>
+          <td colspan="3" rowspan="2">{{i.id}}</td>
+         
+          <th colspan="2" rowspan="2">{particulars.credit}}</th>
           
       </tr>
-      {% endfor %}
       <tr>
-        <td colspan="14">
-          Grand Total:
-          </td>
-           <td colspan="9">{{total1}}<center>
-           </center>
-           </td> 
-         </tr> 
-      
-
+      <th colspan="2">to:{{particulars.particularto}}</th>
+      <th colspan="2" rowspan="2">{{particulars.debit}} </th>
+          
+      {% endfor %}
+    </tr>
       <tr>
          <td colspan="6">
            

@@ -1,6 +1,5 @@
 from calendar import month
 from datetime import date
-
 from re import A, S
 from this import s
 from xml.etree.ElementTree import tostring
@@ -31,106 +30,121 @@ def disp_more_reports(request):#ann
     return render(request,'dispmorereprt.html')    
 
 def salesregister(request):#ann
-    credit=Sales.objects.all().annotate(month=TruncMonth('sales_date')).values('month').annotate(total=Sum('total')).order_by('month').values("month", "total")                 # Select the count of the grouping       
-    sales=Sales.objects.all()
-    print("hai")
-    vol=[];
-    s= credit[0]
-    for s in  credit:
-        # truncate_date = datetime(s["month"])
-      print(s['total'])
-    vol.append(s["total"])
-    for x in vol:
-      print(x)            
-    total1 = sum(sales.values_list('total', flat=True)) 
-    return render(request,'salesregister.html',{'sales':sales,'total1':total1,'credit':credit})   
+    credit=Sales.objects.all().annotate(month=TruncMonth('sales_date')).values('month').annotate(total=Sum('total')).order_by('month').values("month", "total")      
+    sales=Sales.objects.all()                     
+    a=sales.filter(sales_date__month='04')
+    april= sum(a.values_list('total',flat=True))
+    ma=sales.filter(sales_date__month='05')
+    may= sum(ma.values_list('total',flat=True))
+    ju=sales.filter(sales_date__month='06')
+    june= sum(ju.values_list('total',flat=True))
+    jl=sales.filter(sales_date__month='07')
+    july= sum(jl.values_list('total',flat=True))
+    au=sales.filter(sales_date__month='08')
+    august= sum(au.values_list('total',flat=True))
+    sep=sales.filter(sales_date__month='09')
+    september= sum(sep.values_list('total',flat=True))
+    oct=sales.filter(sales_date__month='10')
+    october= sum(oct.values_list('total',flat=True))
+    nov=sales.filter(sales_date__month='11')
+    november= sum(nov.values_list('total',flat=True))
+    dec=sales.filter(sales_date__month='12')
+    december= sum(dec.values_list('total',flat=True))
+    jan=sales.filter(sales_date__month='01')
+    january= sum(jan.values_list('total',flat=True))
+    feb=sales.filter(sales_date__month='02')
+    febuary= sum(feb.values_list('total',flat=True))
+    m=sales.filter(sales_date__month='03')
+    march= sum(m.values_list('total',flat=True))
+    data={}
+    data['april']=april
+    data['june']=june
+    data['july']=july
+    data['august']=august
+    data['september']=september
+    data['october']=october
+    data['november']=november
+    data['december']=december
+    data['january']=january
+    data['febuary']=febuary
+    data['march']=march 
+    data['may']=may
+    total1=sum(sales.values_list('total',flat=True)) 
+    return render(request,'salesregister.html',{'total1':total1,'data':data})         
 
 def purchaseregister(request):#ann
-    p=Purchase.objects.all()
-    credit=Purchase.objects.all().annotate(month=TruncMonth('purchase_date')).values('month').annotate(total=Sum('total')).order_by('month').values("month", "total")                 # Select the count of the grouping       
-    total1 = sum(p.values_list('total', flat=True))  
-    return render(request,'purchaseregister.html',{'total1':total1,'credit':credit})   
+    P=Purchase.objects.all()
+    a=P.filter(purchase_date__month='04')
+    april= sum(a.values_list('total',flat=True))
+    ma=P.filter(purchase_date__month='05')
+    may= sum(ma.values_list('total',flat=True))
+    ju=P.filter(purchase_date__month='06')
+    june= sum(ju.values_list('total',flat=True))
+    jl=P.filter(purchase_date__month='07')
+    july= sum(jl.values_list('total',flat=True))
+    au=P.filter(purchase_date__month='08')
+    august= sum(au.values_list('total',flat=True))
+    sep=P.filter(purchase_date__month='09')
+    september= sum(sep.values_list('total',flat=True))
+    oct=P.filter(purchase_date__month='10')
+    october= sum(oct.values_list('total',flat=True))
+    nov=P.filter(purchase_date__month='11')
+    november= sum(nov.values_list('total',flat=True))
+    dec=P.filter(purchase_date__month='12')
+    december= sum(dec.values_list('total',flat=True))
+    jan=P.filter(purchase_date__month='01')
+    january= sum(jan.values_list('total',flat=True))
+    feb=P.filter(purchase_date__month='02')
+    febuary= sum(feb.values_list('total',flat=True))
+    m=P.filter(purchase_date__month='03')
+    march= sum(m.values_list('total',flat=True))
+    data={}
+    data['april']=april
+    data['june']=june
+    data['july']=july
+    data['august']=august
+    data['september']=september
+    data['october']=october
+    data['november']=november
+    data['december']=december
+    data['january']=january
+    data['febuary']=febuary
+    data['march']=march 
+    data['may']=may
+    
+    
+    total1 = sum(P.values_list('total', flat=True))  
+    return render(request,'purchaseregister.html',{'total1':total1,'data':data}) 
 
 def journalregister(request):#ann
-    p=Particular.objects.all()
-    s=Journal.objects.all()
-    items=Journal.objects.all().annotate(month=TruncMonth('journal_date')).values('month').annotate(journal_count = Count('id')).values('month','journal_count').order_by('month')
-    print(items)
-    return render(request,'journal_report.html',{'items':items})
-    
- 
-def listofledger(request,pk):#ann
-   # s=ledgers_vouchers.objects.all()
-    m=pk
-    l= ledgers_vouchers.objects.filter(ledgervoucher_date__year='2022', 
-                   ledgervoucher_date__month=m)
-    total1=0
-    total2=0
-    total1 = sum(l.values_list('credit', flat=True)) 
-    total2 = sum(l.values_list('debit', flat=True))               
-       
-    if m==1:
-            msg1="1-Jan-22  to 31-jan-22"
-    elif m==2:
-            msg1="1-Feb-22  to 28-feb-22"
-    elif m ==3:
-            msg1="1-March-22  to 31-March-22"
-    elif m ==4:
-        
-             msg1="1-April-22 to 30-April-22"
-    elif m ==5:
-             msg1="1-May-22  to 31-May-22"
-    elif m ==6:
-            msg1="1-June-22 to 31-May-22"
-    elif m ==7:
-            msg1="1-july-22  to 31-july-22"
-    elif m ==8:
-             msg1="1-Aug-22  to 31-Aug-22"  
-    elif m==9:
-            msg1="1-Sep-22  to 30-Sep-22"
-    elif m ==10:
-             msg1="1-Oct-22 to 30-Oct-22"
-    elif m ==11:
-            msg1="1-Nov-22 to 31-Nov-22" 
-    elif m ==12:
-             msg1="1-Dec-22 to 31-Dec-22"     
-    else:
-        msg1="July 01 to 31" 
-    return render(request,'listofledger.html',{'ledgers':l,'msg1':msg1,'total1':total1,'total2':total2})     
+    P=Journal.objects.all()
+    april=P.filter(journal_date__month='04').count()
+    may=P.filter(journal_date__month='05').count()
+    june=P.filter(journal_date__month='06').count()
+    july=P.filter(journal_date__month='07').count()
+    august=P.filter(journal_date__month='08').count()
+    september=P.filter(journal_date__month='09').count()
+    october=P.filter(journal_date__month='10').count()
+    november=P.filter(journal_date__month='11').count()
+    december=P.filter(journal_date__month='12').count()
+    january=P.filter(journal_date__month='01').count()
+    febuary=P.filter(journal_date__month='02').count()
+    march=P.filter(journal_date__month='03').count()
+    data={}
+    data['april']=april
+    data['june']=june
+    data['july']=july
+    data['august']=august
+    data['september']=september
+    data['october']=october
+    data['november']=november
+    data['december']=december
+    data['january']=january
+    data['febuary']=febuary
+    data['march']=march 
+    data['may']=may
+    return render(request,'journal_report.html',{'data':data})  
 
-def listofpurchasevoucher(request,pk):#ann
-    m=pk
-    p= Purchase.objects.filter(purchase_date__year='2022', 
-                     purchase_date__month=m)   
-    total1 = sum(p.values_list('total', flat=True))                             
-    if m==1:
-            msg1="1-Jan-22  to 31-jan-22"
-    elif m==2:
-            msg1="1-Feb-22  to 28-feb-22"
-    elif m ==3:
-            msg1="1-March-22  to 31-March-22"
-    elif m ==4:
-             msg1="1-April-22 to 30-April-22"
-    elif m ==5:
-             msg1="1-May-22  to 31-May-22"
-    elif m ==6:
-            msg1="1-June-22 to 31-May-22"
-    elif m ==7:
-            msg1="1-july-22  to 31-july-22"
-    elif m ==8:
-             msg1="1-Aug-22  to 31-Aug-22"  
-    elif m==9:
-            msg1="1-Sep-22  to 30-Sep-22"
-    elif m ==10:
-             msg1="1-Oct-22 to 30-Oct-22"
-    elif m ==11:
-            msg1="1-Nov-22 to 31-Nov-22" 
-    elif m ==12:
-             msg1="1-Dec-22 to 31-Dec-22"      
-    else:
-        msg1="July 01 to 31"               
-    return render(request,'listofpurchasevouchers.html',{'purchase':p,'msg1':msg1,'total1':total1})
-    
 def listofsalesvoucher(request,pk):#ann
    # s=Sales.objects.all()
     m=pk
@@ -205,7 +219,7 @@ def listjournalvouchers(request,pk):#ann
     m=pk
     j= Journal.objects.filter(journal_date__year='2022', 
                      journal_date__month=m)   
-                          
+    total1 = sum(j.values_list('total', flat=True))                      
     if m==1:
             msg1="1-Jan-22  to 31-jan-22"
     elif m==2:
@@ -232,7 +246,46 @@ def listjournalvouchers(request,pk):#ann
              msg1="1-Dec-22 to 31-Dec-22"      
     else:
         msg1="July 01 to 31"                        
-    return render(request,'listjournalvouchers.html',{'journal':j,'msg1':msg1})
+    return render(request,'listjournalvouchers.html',{'journal':j,'msg1':msg1,'total1':total1})
+#...views
+def listofledger(request,pk):#ann
+   # s=ledgers_vouchers.objects.all()
+    m=pk
+    l= ledgers_vouchers.objects.filter(ledgervoucher_date__year='2022', 
+                   ledgervoucher_date__month=m)
+    total1=0
+    total2=0
+    total1 = sum(l.values_list('credit', flat=True)) 
+    total2 = sum(l.values_list('debit', flat=True))               
+       
+    if m==1:
+            msg1="1-Jan-22  to 31-jan-22"
+    elif m==2:
+            msg1="1-Feb-22  to 28-feb-22"
+    elif m ==3:
+            msg1="1-March-22  to 31-March-22"
+    elif m ==4:
+        
+             msg1="1-April-22 to 30-April-22"
+    elif m ==5:
+             msg1="1-May-22  to 31-May-22"
+    elif m ==6:
+            msg1="1-June-22 to 31-May-22"
+    elif m ==7:
+            msg1="1-july-22  to 31-july-22"
+    elif m ==8:
+             msg1="1-Aug-22  to 31-Aug-22"  
+    elif m==9:
+            msg1="1-Sep-22  to 30-Sep-22"
+    elif m ==10:
+             msg1="1-Oct-22 to 30-Oct-22"
+    elif m ==11:
+            msg1="1-Nov-22 to 31-Nov-22" 
+    elif m ==12:
+             msg1="1-Dec-22 to 31-Dec-22"     
+    else:
+        msg1="July 01 to 31" 
+    return render(request,'listofledger.html',{'ledgers':l,'msg1':msg1,'total1':total1,'total2':total2})     
 
 def index1(request):
     return render(request,'basepage.html')
@@ -343,23 +396,83 @@ def companycreate(request):
                     pincode=pincode,
                     telephone=telephone,mobile=mobile,fax=fax,email=email,website=website,fin_begin=fin_begin,
                     books_begin=books_begin,currency_symbol=currency_symbol,formal_name=formal_name)
-                ctg.save()
-            
-            
-             
-            
-            
+                ctg.save()    
             demo1(request, ctg.id)
             
             # return redirect('companycreated')
             return render(request,'features.html',{'ctg':ctg})
     return render(request,'createcompany.html')
+#...........ann.....#
 
-def groupsummary(request):#ann
-    pk=1
-    subg=SubGroup.objects.filter(group_id=pk)
-    return render(request,'groupsummary.html',{'subgrp':subg})
+def balancesheet(request):#ann
+#     v1=ledgers_vouchers.objects.filter(Group_id=1)
+#     v2=ledgers_vouchers.objects.filter(Group_id=2)
+#     total1 = sum(v1.values_list('closingbalance', flat=True)) 
+#     total2 = sum(v2.values_list('closingbalance', flat=True)) 
+    return render(request,'balancesheet.html')     
+
+def groupsummary(request,lk):#ann
+    n=lk
+    msg1="April 01 to 31" 
+    if n==1:
+     subg1=SubGroup.objects.filter(group_id=n).values('id')
+     subg=SubGroup.objects.filter(group_id=n)
+     list1=list(subg1)
+    #  print(list1[1])
+     vals =[]
+    for p in  list1:
+      vals+=list(p.values())
+      print (vals)
+      cont=len(vals)
+      print(cont)
+      n=vals[0]
+      cd=ledgers_vouchers.objects.filter(SubGroup_id=n) 
+      print(cd)
+      c=sum(cd.values_list('credit',flat=True))
+      print(c)  
+      d=sum(cd.values_list('debit',flat=True))
+      print(d)
+    # if cont>0:
+    # for i in vals:
+    #  n=i
+    #  print(n)
+    # n=vals[0]
+    # cd=ledgers_vouchers.objects.filter(SubGroup_id=n) 
+    # print(cd)
+    # c=sum(cd.values_list('credit',flat=True))
+    # print(c)  
+    # d=sum(cd.values_list('debit',flat=True))
+    # print(d) 
+    #     print(d)
+    #     c1=c.update(sum(cd.values_list('credit',flat=True))) 
+    #     d1=d.update(sum(cd.values_list('debit',flat=True))) 
+    #    cont=cont-1
+    #cd=ledgers_vouchers.objects.filter(Group_id=n) 
+    #   
+    #  print(c) 
+    #  print(d) 
+    #  print(cd)
+    #  credit & debit separeate 
+    #
+    # for n in subg:
+    # a=sales.filter(sales_date__month='04')
+    # april= sum(a.values_list('total',flat=True))  
+    #  credit1= sum(subg.values_list('credit',flat=True))
+    #  debit1=  sum(subg.values_list('credit',flat=True))
+    v=ledgers_vouchers.objects.filter(Group_id=1)
+    total1 = sum(v.values_list('closingbalance', flat=True)) 
+    name="Current Liabilities"
+    return render(request,'groupsummary.html',{'msg1':msg1,'subgrp':subg,'total1':total1,'c':c,'d':d})
+#  elif n==2:
+#    name1="Branch/Divisions" 
+#      subg=SubGroup.objects.filter(group_id=n)
+#      ledg=ledgers.objects.filter(group_id=n)
+#      v=ledgers_vouchers.objects.filter(Group_id=2)
+#      total1 = sum(v.values_list('closingbalance', flat=True))  
+#      return render(request,'groupsummarydb.html',{'msg1':msg1,'ledg':ledg,'total1':total1})       
     
+
+
 def ledgergroupsummary(request,pk):#ann
     m=pk  
     ledg=ledgers.objects.filter(SubGroup_id=m)
@@ -367,7 +480,14 @@ def ledgergroupsummary(request,pk):#ann
     v=ledgers_vouchers.objects.filter(ledgers_id=m)
     total1 = sum(v.values_list('closingbalance', flat=True))  
     return render(request,'ledgergroupsummary.html',{'ledg':ledg,'total1':total1})
- 
+
+def ledgersummary1(request,lk):#ann
+    ledgname =ledgers.objects.get(id=lk)
+    v=ledgers_vouchers.objects.filter(ledgers_id=lk).annotate(month=TruncMonth('ledgervoucher_date')).values('month').annotate(credit=Sum('credit'),debit=Sum('debit')).order_by('month').values("month", "credit","debit")                              
+    #ledgname=ledgers.objects.values_list('id', 'ledger')
+   
+    
+    return render(request,'ledgersummary1.html',{'name':ledgname,'v':v})     
           
 def ledgersummary(request,lk):#ann
     ledgname =ledgers.objects.get(id=lk)
@@ -474,7 +594,6 @@ def costcentre(request,pk):
     ccentre=Costcentre.objects.filter(company_id=cmp)
     return render(request,'costcentre.html',{'cmp':cmp,'ccentre':ccentre})
 
-
 def ratesofexchange(request,pk):
     cmp=Companies.objects.get(id=pk)
     cur=Currency.objects.filter(company_id=cmp)
@@ -544,9 +663,6 @@ def currency(request,pk):
         data.save()
         # return redirect('costcentre')
     return render(request,'currency.html',{'cmp':cmp})
-
-
-
 
 def creategroup(request,pk):
     cmp=Companies.objects.get(id=pk)

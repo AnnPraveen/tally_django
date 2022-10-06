@@ -4,6 +4,7 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('company',views.company,name='company'),
     path('disp_more_reports',views.disp_more_reports,name='disp_more_reports'),#ann
+    path('balancesheet',views.balancesheet,name='balancesheet'), #ann
     path('index1',views.index1,name='index1'),
     path('createcompany',views.createcompany,name='createcompany'),
     path('companycreate',views.companycreate,name='companycreate'),
@@ -26,22 +27,26 @@ urlpatterns = [
     path('demo1/<int:pk>',views.demo1,name='demo1'),
     # path('demo2/<int:pk>',views.demo2,name='demo2'), 
     path('voucher1',views.voucher1,name='voucher1'),#ann
-    path('groupsummary',views.groupsummary,name='groupsummary'),#groupsummary ann
+    path('groupsummary/<int:lk>',views.groupsummary,name='groupsummary'),#groupsummary ann
     path('ledgergroupsummary/<int:pk>',views.ledgergroupsummary,name='ledgergroupsummary'),#groupledger ann
     path('ledgersummary/<int:lk>',views.ledgersummary,name='ledgersummary'),#groupledger ann
     path('sales',views.sales,name='sales'),#salesann
     path('journal',views.journal,name='journal'),#journalnn
     path('purchase',views.purchase,name='purchase'),#purchaseann
     path('purchase_add',views.purchase_add,name='purchase_add'),#ann
-    path('listofledger/<int:pk>',views.listofledger,name='listofledger'),#ann,#listofpurchasevouchers
+    path('listofledger/<int:pk>',views.listofledger,name='listofledger'),#ann
+    #urls....
     path('listofpurchasevoucher/<int:pk>',views.listofpurchasevoucher,name='listofpurchasevoucher'),#ann,#listofpurchasevouchers
     path('listjournalvouchers/<int:pk>',views.listjournalvouchers,name='listjournalvouchers'),#ann,#listofjournalvouchers
-    path('featurecompany/<int:pk>',views.featurecompany,name='featurecompany'),
-    path('disable/<int:pk>',views.disable,name='disable'),
-    path('enable/<int:pk>',views.enable,name='enable'),
+    path('listofsalesvoucher/<int:pk>',views.listofsalesvoucher,name='listofsalesvoucher'),#ann
     path('salesregister',views.salesregister,name='salesregister'),#ann
     path('purchaseregister',views.purchaseregister,name='purchaseregister'),#ann
     path('journalregister',views.journalregister,name='journalregister'),#ann
+    #..urls
+    path('featurecompany/<int:pk>',views.featurecompany,name='featurecompany'),
+    path('disable/<int:pk>',views.disable,name='disable'),
+    path('enable/<int:pk>',views.enable,name='enable'),
+
     path('sales_add',views.sales_add,name='sales_add'),#ann
     path('saleview/<int:pk>',views.saleview,name='saleview'),#ann
     path('purchaseview/<int:pk>',views.purchaseview,name='purchaseview'),#ann
@@ -51,8 +56,7 @@ urlpatterns = [
     path('alter',views.alter,name='alter'),
     path('dispatch_details',views.dispatch_details,name='dispatch_details'),#click party name in sale form to get delivery details
     path('altercompany_view',views.altercompany_view,name='altercompany_view'),
-    path('listofsalesvoucher/<int:pk>',views.listofsalesvoucher,name='listofsalesvoucher'),#ann
-    
+   
     path('listofgroup',views.listofgroup,name='listofgroup'),
     #path('listofledgers',views.listofledgers,name='listofledgers'),#ann
     path('listofcostcentres',views.listofcostcentres,name='listofcostcentres'),
