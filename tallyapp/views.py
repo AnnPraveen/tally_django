@@ -2,6 +2,7 @@ from calendar import month
 from datetime import date
 from re import A, S
 from this import s
+from typing import ValuesView
 from xml.etree.ElementTree import tostring
 from django.db.models import Sum
 from django.db.models.functions import TruncDay
@@ -405,11 +406,11 @@ def companycreate(request):
 #...........ann.....#
 
 def balancesheet(request):#ann
-#     v1=ledgers_vouchers.objects.filter(Group_id=1)
-#     v2=ledgers_vouchers.objects.filter(Group_id=2)
-#     total1 = sum(v1.values_list('closingbalance', flat=True)) 
-#     total2 = sum(v2.values_list('closingbalance', flat=True)) 
-    return render(request,'balancesheet.html')     
+    v1=ledgers_vouchers.objects.filter(Group_id=1)
+    v2=ledgers_vouchers.objects.filter(Group_id=2)
+    total1 = sum(v1.values_list('closingbalance', flat=True)) 
+    total2 = sum(v2.values_list('closingbalance', flat=True)) 
+    return render(request,'balancesheet.html',{'total1':total1,'total2':total2})     
 
 def groupsummary(request,lk):#ann
     n=lk
@@ -420,7 +421,7 @@ def groupsummary(request,lk):#ann
      list1=list(subg1)
     #  print(list1[1])
      vals =[]
-    for p in  list1:
+     for p in  list1:
       vals+=list(p.values())
       print (vals)
       cont=len(vals)
@@ -432,68 +433,69 @@ def groupsummary(request,lk):#ann
       print(c)  
       d=sum(cd.values_list('debit',flat=True))
       print(d)
-    # if cont>0:
-    # for i in vals:
-    #  n=i
-    #  print(n)
-    # n=vals[0]
-    # cd=ledgers_vouchers.objects.filter(SubGroup_id=n) 
-    # print(cd)
-    # c=sum(cd.values_list('credit',flat=True))
-    # print(c)  
-    # d=sum(cd.values_list('debit',flat=True))
-    # print(d) 
-    #     print(d)
-    #     c1=c.update(sum(cd.values_list('credit',flat=True))) 
-    #     d1=d.update(sum(cd.values_list('debit',flat=True))) 
-    #    cont=cont-1
-    #cd=ledgers_vouchers.objects.filter(Group_id=n) 
-    #   
-    #  print(c) 
-    #  print(d) 
-    #  print(cd)
-    #  credit & debit separeate 
-    #
-    # for n in subg:
-    # a=sales.filter(sales_date__month='04')
-    # april= sum(a.values_list('total',flat=True))  
-    #  credit1= sum(subg.values_list('credit',flat=True))
-    #  debit1=  sum(subg.values_list('credit',flat=True))
-    v=ledgers_vouchers.objects.filter(Group_id=1)
-    total1 = sum(v.values_list('closingbalance', flat=True)) 
-    name="Current Liabilities"
-    return render(request,'groupsummary.html',{'msg1':msg1,'subgrp':subg,'total1':total1,'c':c,'d':d})
-#  elif n==2:
-#    name1="Branch/Divisions" 
-#      subg=SubGroup.objects.filter(group_id=n)
-#      ledg=ledgers.objects.filter(group_id=n)
-#      v=ledgers_vouchers.objects.filter(Group_id=2)
-#      total1 = sum(v.values_list('closingbalance', flat=True))  
-#      return render(request,'groupsummarydb.html',{'msg1':msg1,'ledg':ledg,'total1':total1})       
+      v=ledgers_vouchers.objects.filter(Group_id=1)
+      total1 = sum(cd.values_list('closingbalance', flat=True)) 
+      name="Current Liabilities"
+      return render(request,'groupsummary.html',{'msg1':msg1,'subgrp':subg,'total1':total1,'c':c,'d':d})
+    if n==2:
+      name1="Branch/Divisions" 
+      subg=SubGroup.objects.filter(group_id=n)
+      ledg=ledgers.objects.filter(group_id=n)
+      ledg1=ledgers.objects.filter(group_id=n).values('id')
+      v=ledgers_vouchers.objects.filter(Group_id=2)
+      list1=list(ledg1)
+    #  print(list1[1])
+      vals =[]
+    for p in  list1:
+      vals+=list(p.values())
+      print (vals)
+      cont=len(vals)
+      print(cont)
+    for t in vals: 
+      n=vals[0]
+      cd=ledgers_vouchers.objects.filter(Group_id=2) 
+      print(cd)
+      c=sum(cd.values_list('credit',flat=True))
+      print(c)  
+      d=sum(cd.values_list('debit',flat=True))
+      print(d)
+      total1 = sum(v.values_list('closingbalance', flat=True))  
+      return render(request,'groupsummarydb.html',{'msg1':msg1,'ledg':ledg,'total1':total1,'c':c,'d':d})       
     
 
 
 def ledgergroupsummary(request,pk):#ann
     m=pk  
-    ledg=ledgers.objects.filter(SubGroup_id=m)
+    ledg=ledgers.objects.filter(SubGroup_id=m)  
     gname=SubGroup.objects.filter(id=m)
-    v=ledgers_vouchers.objects.filter(ledgers_id=m)
+    # v=ledgers_vouchers.objects.filter(ledgers_id=m)
+    # c=sum(v.values_list('credit',flat=True))
+    # print(c)  
+    # d=sum(v.values_list('debit',flat=True))
+    v=ledgers_vouchers.objects.filter(Group_id=2) 
+    c=sum(v.values_list('credit',flat=True))
+    print(c)  
+    d=sum(v.values_list('debit',flat=True))
     total1 = sum(v.values_list('closingbalance', flat=True))  
-    return render(request,'ledgergroupsummary.html',{'ledg':ledg,'total1':total1})
+   
+    return render(request,'ledgergroupsummary.html',{'ledg':ledg,'total1':total1,'v':v,'c':c,'d':d})
 
-def ledgersummary1(request,lk):#ann
-    ledgname =ledgers.objects.get(id=lk)
-    v=ledgers_vouchers.objects.filter(ledgers_id=lk).annotate(month=TruncMonth('ledgervoucher_date')).values('month').annotate(credit=Sum('credit'),debit=Sum('debit')).order_by('month').values("month", "credit","debit")                              
-    #ledgname=ledgers.objects.values_list('id', 'ledger')
+# def ledgersummary1(request,lk):#ann
+#     ledgname =ledgers.objects.get(id=lk)
+#     v=ledgers_vouchers.objects.filter(ledgers_id=lk).annotate(month=TruncMonth('ledgervoucher_date')).values('month').annotate(credit=Sum('credit'),debit=Sum('debit')).order_by('month').values("month", "credit","debit")                              
+#     #ledgname=ledgers.objects.values_list('id', 'ledger')
    
     
-    return render(request,'ledgersummary1.html',{'name':ledgname,'v':v})     
+#     return render(request,'ledgersummary1.html',{'name':ledgname,'v':v})     
           
 def ledgersummary(request,lk):#ann
     ledgname =ledgers.objects.get(id=lk)
     v=ledgers_vouchers.objects.filter(ledgers_id=lk).annotate(month=TruncMonth('ledgervoucher_date')).values('month').annotate(credit=Sum('credit'),debit=Sum('debit')).order_by('month').values("month", "credit","debit")                              
     #ledgname=ledgers.objects.values_list('id', 'ledger')
-   
+    #v=ledgers_vouchers.objects.filter(ledgers_id=lk)
+    c=sum(v.values_list('credit',flat=True))
+    print(c)  
+    d=sum(v.values_list('debit',flat=True))
     
     return render(request,'ledgersummary.html',{'name':ledgname,'v':v})       
   

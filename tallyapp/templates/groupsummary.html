@@ -38,37 +38,41 @@
           <th colspan="7" class="a">Current Liabilities<br/> ABC Pvt Ltd<BR>{% for m in msg1 %}
             {{m}}
             {% endfor %}</th>
-             <tr><td  colspan="7" class="a"><br/>ClosingBalance</td></tr>
-             <tr><td colspan="4" class="a" >credit</td><td colspan="3" class="a">Dedit</td></tr>
-          </th>   
+            <tr><td  colspan="7" class="a"><br/>ClosingBalance</td>
+              <tr><td colspan="3" class="a" >credit</td><td  class="a">Dedit</td></tr>
+           </th>     
         </tr>   
-        
+           
       </thead>
       <tbody>
         {% for i in subgrp %} 
         
            <tr>
-           
-              <td colspan="6" text-align="center"><a href="{% url 'ledgergroupsummary' i.id %}" class="btns_prnt">{{i.name}} </a></td>
-                
-              <td class="w-25 m-0 p-0 text-center">{{c}}</td>
+            <td colspan="2"><a href="{% url 'ledgergroupsummary' i.id %}" class="btns_prnt">{{i.name}} </a></td>
+            {% endfor %}  
+            <td colspan="2" class="a" >{{total1}}</td>
               
-              <td class="w-25 m-0 p-0 text-center">{{d}}</td>
+            <td colspan="2" class="a"></td>
            </tr>
-           {% endfor %}
+           <tr>
+            <td colspan="2" >Grand Total</td>
+            <td colspan="2" class="a" >{{total1}}&nbsp</td>
+            <td colspan="2" class="a" ></td>
+        </tr>
                
         </tbody>
-       <div class="row container-fluid m-0 w-100 p-0">
+       
+       <!-- <div class="row container-fluid m-0 w-100 p-0">
         <table class="table p-0 m-0">
             <tbody>
-                <tr>
-                    <td class="w-75 m-0 p-0 pl-3">Grand Total</td>
-                    <td class="w-25 m-0 p-0 text-center"><h4 class="btns_prnt">{{total1}}</h4></td>
-                </tr>
+                 <tr>
+                    <td colspan="2" >Grand Total</td>
+                    <td colspan="2" class="a" >{{total1}}&nbsp</td>
+                </tr> 
             </tbody>
         </table>   
     </table>
-    </div>
+    </div> -->
   </div>
 
 {% endblock %}

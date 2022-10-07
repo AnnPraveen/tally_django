@@ -49,16 +49,16 @@
         
       </thead>
            <tbody>
-          <tr><td colspan="10" colspan="3" class="a">Opening balance</td><td colspan="2" colspan="3" class="a">100000cr</td></tr>
+          <tr><td colspan="7"  class="a">Opening balance</td><td></td><td colspan="7"  text-align="center"><center>&nbsp&nbsp&nbsp100000cr</center></td></tr>
         {% for s in  v %}
           <tr>
             <td colspan="4" colspan="3" class="a"><a href="{% url 'listofledger' forloop.counter  %}" class="btns_prnt">{{s.month|date:'M'}}</a></td>
              <td colspan="2" class="a" text-align="center"><center>{{s.credit}}</center></td>
              <td colspan="2" class="a" text-align="center"><center>{{s.debit}}</center></td>
-             <td colspan="4" class="a" text-align="center"><center>{{s.debit|sub:s.credit}}</center></td>
-          </tr> 
-        
-           
+             {% if s.credit > s.debit %}<td colspan="4" class="a" text-align="center"><center>{{s.credit|sub:s.debit}}&nbsp;Cr</center></td>
+              {% else %}       
+             <td colspan="4" class="a" text-align="center"><center>{{s.debit|sub:s.credit}}&nbsp;Dr</center></td>{% endif %}
+          </tr>        
        {% endfor %} 
           </tbody>
         

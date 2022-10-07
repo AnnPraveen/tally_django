@@ -39,25 +39,26 @@
             <br/> ABC Pvt Ltd<BR>{% for m in msg1 %}
             {{m}}
             {% endfor %}</th>
-             <tr><td  colspan="7" class="a"><br/>ClosingBalance</td></tr>
-             <tr><td colspan="3" class="a" >credit</td><td colspan="2" class="a">Dedit</td></tr>
+             <tr><td  colspan="7" class="a"><br/>ClosingBalance</td>
+             <tr><td colspan="1" class="a" >credit</td><td  class="a">Dedit</td></tr>
           </th>   
         </tr>   
         
       </thead>
       <tbody>
        {% for i in ledg %} 
-        
-       <tr>
-       
-          <td colspan="6" text-align="center"><a href="{% url 'ledgersummary' i.id %}" class="btns_prnt">{{i.ledger}} </a></td>
-          
-          <td class="w-25 m-0 p-0 text-center"> </td>
-       </tr>
+      <tr>
+       <td colspan="1" text-align="center"><a href="{% url 'ledgersummary' i.id %}" class="btns_prnt">{{i.ledger}} </a></td>
+          <td colspan="3" class="a" ></td><td colspan="2" class="a">{{total1}}</td>
+        </tr>
+
       {% endfor %}
-           
+          <tr>
+       <td colspan="1" text-align="center"> grand total </td>
+          <td colspan="3" class="a" ></td><td colspan="2" class="a">{{total1}}</td>
+        </tr>  
         </tbody>
-       <div class="row container-fluid m-0 w-100 p-0">
+       <!-- <div class="row container-fluid m-0 w-100 p-0">
         <table class="table p-0 m-0">
             <tbody>
                 <tr>
@@ -67,7 +68,7 @@
             </tbody>
         </table>   
     </table>
-    </div>
+    </div> -->
   </div>
 
 {% endblock %}

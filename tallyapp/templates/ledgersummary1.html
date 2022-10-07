@@ -55,7 +55,7 @@
           <td colspan="4" colspan="3" class="a"><a href="{% url 'listofledger' forloop.counter  %}" class="btns_prnt">{{s.month|date:'M'}}</a></td>
            <td colspan="2" class="a" text-align="center"><center>{{s.credit}}</center></td>
            <td colspan="2" class="a" text-align="center"><center>{{s.debit}}</center></td>
-           <td colspan="4" class="a" text-align="center"><center>{{s.debit|sub:s.credit}}</center></td>
+           <td colspan="4" class="a" text-align="center"><center>{{s.credit|sub:s.debit}}</center></td>
         </tr> 
       
          

@@ -78,14 +78,14 @@
             </tr>
             <tr>
               <td colspan="6" >
-                
                 </td>
                 <td colspan="2">
                   Closing Balance:</td>
                 <td colspan="2">
                  
                  </td> 
-                 <td colspan="2">{{total2|sub:total1}}
+                 {% if total1 > total2 %} <td colspan="2">{{total1|sub:total2}}{% else %}
+                 <td colspan="2">{{total2|sub:total1}}{% endif %}
                  
                  </td> 
                </tr> 
