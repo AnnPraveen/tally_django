@@ -287,8 +287,8 @@
                         <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">{{total1}}</div>
                         <div style="margin-left:15px;font-size:16px"><a href="{% url 'groupsummary' 02 %}">Branch/Divisions</a></div>
                         <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">{{total2}}</div>
-                        <div style="margin-left:15px;font-size:16px"><a href="{% url 'groupsummary' 03 %}">Profit &Loss Account</a></div>
-                        <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">0000</div>
+                        <div style="margin-left:15px;font-size:16px"><a href="{% url 'profit'  %}">Profit &Loss Account</a></div>
+                        <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">456000</div>
                         <div style="margin-left:35px;font-style: italic;"><a href="{% url 'groupsummary' 02 %}">Opening Balance</a></div>
                         <div style="margin-left:35px;font-style: italic;"><a href="{% url 'groupsummary' 02 %}">Current Period</a></div>
                         <div style="text-align:center; margin-top:-18px;margin-right:18px;font-size:15px">234567,90</div>
@@ -318,14 +318,14 @@
                                            
                 <hr>
                 
-                    <div style="margin-left:15px;font-size:16px"><a href="{% url 'groupsummary' 01 %}">Capital Account</a></div>
-                    <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">0000</div>
-                    <div style="margin-left:15px;font-size:16px"><a href="{% url 'groupsummary' 02 %}">Loans(Liability)</a></div>
-                    <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">0000</div>
-                    <div style="margin-left:15px;font-size:16px"><a href="{% url 'groupsummary' 03 %}">Fixed Assets</a></div>
-                    <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">0000</div>
-                    <div style="margin-left:35px;font-size:16px"><a href="{% url 'groupsummary' 02 %}">Investments</a></div>
-                    <div style="margin-left:35px;font-size:16px"><a href="{% url 'groupsummary' 02 %}">Current Assets</a></div>
+                    <div style="margin-left:15px;font-size:16px"><a href="{% url 'capital_group_summary' %}">Capital Account</a></div>
+                    <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">5670</div>
+                    <div style="margin-left:15px;font-size:16px"><a href="{% url 'loanl_group_summary' %}">Loans(Liability)</a></div>
+                    <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">3000</div>
+                    <div style="margin-left:15px;font-size:16px"><a href="{% url 'fixed_assets_group_summary'%}">Fixed Assets</a></div>
+                    <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">50000</div>
+                    <div style="margin-left:35px;font-size:16px"><a href="{% url 'groupsummary' 02 %}">Investments</a> <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">400</div>
+                    <div style="margin-left:35px;font-size:16px"><a href="{% url 'groupsummary' 02 %}">Current Assets</a></div>                    <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">4008</div>
                     <div style="text-align:center; margin-top:-18px;margin-right:18px;font-size:15px">234567,90</div>
                     <div style="margin-left:35px;font-style: italic;"><a href="{% url 'groupsummary' 02 %}">Unadjusted Forex Gain/Loss</a></div>
                     <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">0000</div>

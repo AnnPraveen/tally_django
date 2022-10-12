@@ -8,7 +8,7 @@ urlpatterns = [
     path('index1',views.index1,name='index1'),
     path('createcompany',views.createcompany,name='createcompany'),
     path('companycreate',views.companycreate,name='companycreate'),
-    path('ledger/<int:pk>',views.ledger,name='ledger'),
+    #path('ledger/<int:pk>',views.ledger,name='ledger'),
 
     path('costcentre/<int:pk>',views.costcentre,name='costcentre'),
     path('currency/<int:pk>',views.currency,name='currency'),
@@ -30,10 +30,10 @@ urlpatterns = [
     path('groupsummary/<int:lk>',views.groupsummary,name='groupsummary'),#groupsummary ann
     path('ledgergroupsummary/<int:pk>',views.ledgergroupsummary,name='ledgergroupsummary'),#groupledger ann
     path('ledgersummary/<int:lk>',views.ledgersummary,name='ledgersummary'),#groupledger ann
-    path('sales',views.sales,name='sales'),#salesann
+    # path('sales',views.sales,name='sales'),#salesann
     path('journal',views.journal,name='journal'),#journalnn
-    path('purchase',views.purchase,name='purchase'),#purchaseann
-    path('purchase_add',views.purchase_add,name='purchase_add'),#ann
+    # path('purchase',views.purchase,name='purchase'),#purchaseann
+  #
     path('listofledger/<int:pk>',views.listofledger,name='listofledger'),#ann
     #urls....
     path('listofpurchasevoucher/<int:pk>',views.listofpurchasevoucher,name='listofpurchasevoucher'),#ann,#listofpurchasevouchers
@@ -47,14 +47,9 @@ urlpatterns = [
     path('disable/<int:pk>',views.disable,name='disable'),
     path('enable/<int:pk>',views.enable,name='enable'),
 
-    path('sales_add',views.sales_add,name='sales_add'),#ann
-    path('saleview/<int:pk>',views.saleview,name='saleview'),#ann
-    path('purchaseview/<int:pk>',views.purchaseview,name='purchaseview'),#ann
-    
-    path('partydetails',views.partydetails,name='partydetails'),#ann
     path('showVouchers',views.showvouchers,name='showvouchers'),
     path('alter',views.alter,name='alter'),
-    path('dispatch_details',views.dispatch_details,name='dispatch_details'),#click party name in sale form to get delivery details
+    # path('dispatch_details',views.dispatch_details,name='dispatch_details'),#click party name in sale form to get delivery details
     path('altercompany_view',views.altercompany_view,name='altercompany_view'),
    
     path('listofgroup',views.listofgroup,name='listofgroup'),
@@ -62,5 +57,53 @@ urlpatterns = [
     path('listofcostcentres',views.listofcostcentres,name='listofcostcentres'),
     path('listofcurrencies',views.listofcurrencies,name='listofcurrencies'),
     path('listofvouchertypes',views.listofvouchertypes,name='listofvouchertypes'),
+    #############Nitya
     
+ path('balancesheet_new',views.balancesheet_new,name='balancesheet_new'),
+
+    path('capital_group_summary',views.capital_group_summary,name='capital_group_summary'),
+    path('ledger_monthly_summary/<id>',views.ledger_monthly_summary,name='ledger_monthly_summary'),
+    path('quit',views.quit,name='quit'),
+    path('ledger_vouchers/<pk>/<id>',views.ledger_vouchers,name='ledger_vouchers'),
+    path('vouch_delete/<pk>',views.vouch_delete,name='vouch_delete'),
+
+    path('loanl_group_summary',views.loanl_group_summary,name='loanl_group_summary'),
+
+    path('fixed_assets_group_summary',views.fixed_assets_group_summary,name = 'fixed_assets_group_summary'),
+############Profit and loss
+path('profit',views.profit,name='profit'),
+    path('stockgroup',views.stockgroup,name='stockgroup'),
+    path('stock_item',views.stock_items,name='stock_items'),
+    path('group',views.stock_groups,name="stock_groups"),
+    path('payhead',views.payhead,name='payhead'),
+    path('items/<int:pk>',views.item_list,name='item_list'),
+    path('payhead_list',views.payhead_list,name='payhead_list'),
+    path('ledger',views.ledger,name='ledger'),
+    path('save_ledger',views.save_ledger,name='save_ledger'),
+    path('sales',views.sales,name='sales'),
+    path('indirect',views.indirect,name='indirect'),
+    path('grp_month/<int:pk>',views.grp_month,name='grp_month'),
+    path('grp_month2/<int:pk>',views.grp_month_2,name='grp_month_2'),
+    path('sales_month/<int:pk>',views.sales_month,name='sales_month'),
+    path('sales_month2/<int:pk>',views.sales_month_2,name='sales_month_2'),
+    path('payhead/<int:pk>',views.payhead_month,name='payhead_month'),
+    path('stock_month/<int:pk>',views.stock_month,name='stock_month'),
+    path('voucher/<int:pk>',views.pay_voucher,name='pay_voucher'),
+    path('stock_voucher/<int:pk>',views.stock_voucher,name='stock_voucher'),
+    path('purchase',views.purchase,name='purchase'),
+    path('direct_exp',views.direct_exprenses,name='direct_exprenses'),
+    path('indirect_exp',views.indirect_expenses,name='indirect_expenses'),
+    path('stock_group2',views.stock_group2,name='stock_group2'),
+    path('items_2/<int:pk>',views.items_2,name='items_2')
+
+     # path('sales_add',views.sales_add,name='sales_add'),#ann
+    # path('saleview/<int:pk>',views.saleview,name='saleview'),#ann
+    # path('purchaseview/<int:pk>',views.purchaseview,name='purchaseview'),#ann
+    
+   
+    
+    # path('partydetails',views.partydetails,name='partydetails'),#ann
 ]
+
+
+

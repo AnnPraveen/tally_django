@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<style>
+    
+    thead th {
+                    border: .5px solid rgba(180, 150, 150, 0.3); ;
+                }
+
+        .table-row{
+                    cursor:pointer;
+                }
+        .table-row:hover{
+                    background-color: rgb(216, 155, 51);
+                }
+        tr{
+
+            background-color: rgba(33,57,77); 
+            color:#fff;
+            border: 0px none;
+
+        }
+ 
+    .btn{
+                    background-color: rgb(41, 51, 51);
+                    border: 1px,solid,cornflowerblue;
+                    width: 292px;
+                    margin-left: 12px;
+            }
+</style>
+<body>
+    <div class="container-fluid">
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row d-flex " style="background-color: rgb(71, 79, 84);color:#fff;;width:100%;margin: auto;">
+                    <div class="col ">Ledger Voucher</div>
+
+                    <div class="col-5" style="font-weight:900 ;text-transform:capitalize;">{{company.name}}</div>
+                    
+                    <div class= 'col-2'><a href="javascript:history.go(-1);">
+                        <span class="pull-right clickable" data-effect="fadeOut"><i class="fa fa-times"></i></span></a>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered border-dark " style="background-color: rgba(33,57,77,255);color:#fff;">
+                        <tr>
+                            <th colspan="4">Ledger: {{ledger.name}} </th>
+                            <th colspan="4" class="text-right"> {{begmonth}} to {{endmonth}}</th>
+                        </tr>
+                        
+                        <tr>
+                            <th>Date</th>
+                            <th colspan="3">Particulars</th>
+                            <th>Voucher Type</th>
+                            <th>Voucher No.</th>
+                            <th>Debit</th>
+                            <th>Credit</th>
+                            <th>Action</th>
+                        </tr>
+                       {% for i in voucher %}
+                        
+                        <tr class="table-row">
+                            <td>{{i.date}}</td>
+                            <td colspan="3"><a href="">{{i.particulars}}</a></td>
+                            <td>{{i.voucher_type}}</td>
+                            <td>{{i.voucher_no}}</td>
+                            <td class="text-center">{{i.debit}}</td>
+                            <td class="text-center">{{i.credit}}</td>
+                            <td class="text-center"><a href='/vouch_delete/{{ i.id }}' role="button" class="p-2"
+                                style="color: rgb(255, 255, 255) ; text-decoration: none; background-color:rgb(23, 41, 81);"><b><em>
+                                <i class="fa fa-trash"></i>&nbsp;&nbsp;DELETE</em></b></a></td>
+                        </tr>
+                        
+                        {% endfor %}
+                        <tr>
+                            <th colspan="6" class="text-right">Opening Balance :</th>
+
+                            {% if ledger.type_of_ledger == 'Dr' %}
+                            <td class=" text-center"><b></b>{{ledger.opening_blnc}}</b></td>
+                            <td class=" text-center"></td>
+                            {% else %}
+                            <td class=" text-center"></td>
+                            <td class=" text-center"><b>{{ledger.opening_blnc}}</b></td>
+                            {% endif %}
+                        </tr>
+                        
+                        <tr>
+                            <th colspan="6" class="text-right">Current Total :</th>
+                            <th class="text-center"><b>{{debit}}</b></th>
+                            <th class="text-center"><b>{{credit}}</b></th>
+                        </tr>
+                        
+                        <tr>
+                            <th colspan="6" class="text-right">Closing Balance :</th>
+
+                            {% if ledger.type_of_ledger == 'Dr'%}
+                                {% if deb > credit %}
+                                    <td class=" text-center"><b>{{closing}}</b></td>
+                                    <td class=" text-center"></td>
+                                {% else %}
+                                    <td class=" text-center"></td>
+                                    <td class=" text-center"><b>{{closing}}</b></td>
+                                {% endif %}
+                            {% else %}
+                                {% if cred > debit %}
+                                    <td class=" text-center"></td>
+                                    <td class=" text-center"><b>{{closing}}</b></td>
+                                {% else %}
+                                    <td class=" text-center"><b>{{closing}}</b></td>
+                                    <td class=" text-center"></td>
+                                {% endif %}
+                           {% endif %} 
+                        </tr>
+
+                    </table>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table1 col" style="text-align: right; margin-top: 10px; width:800px" >
+        <thead>
+            <th ><a href="{% url 'quit' %}" role="button"  class="btn" >QUIT</a></th>
+            <th><button type="button"  class="btn" onclick="myFunction()">SELECT</button></th>
+            <th><button type="button"  class="btn " onclick="removeSelectedRow()">REMOVE LINE</button></th>
+            <th><a href="{{ request.META.HTTP_REFERER }}" type="button"  class="btn" >RESTORE LINE</a></th>
+        </thead>
+    </table>
+
+    <script>
+
+        var table = $('.table').DataTable();
+        
+        $('.table').on( 'click', 'tr', function () {
+            var id = table.row( this ).id();
+        
+            alert( 'Clicked row id '+id );
+        } );
+
+
+        function myFunction() {
+            var se = document.getElementsByClassName('table-row');
+            se[0].style.backgroundColor = "lightblue";
+                
+        }
+        function myFunction1() {
+            document.getElementById("myTable").deleteRow(0);
+            }
+        var index;  
+        function getSelectedRow()
+                {
+            var table = document.getElementById("table");
+            for(var i = 1; i < table.rows.length; i++)
+            {
+                table.rows[i].onclick = function()
+                {
+                    // clear the selected from the previous selected row
+                    // the first time index is undefined
+                    if(typeof index !== "undefined"){
+                        table.rows[index].classList.toggle("selected");
+                    }
+                   
+                    index = this.rowIndex;
+                    this.classList.toggle("selected");
+                    
+
+                };
+            }
+                
+        }
+
+        getSelectedRow();
+
+        function removeSelectedRow()
+        {
+            table.deleteRow(index);
+            
+        }
+</script>
+{% endblock %}
+
+
