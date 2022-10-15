@@ -12,11 +12,29 @@ class States(models.Model):
     country=models.ForeignKey(Countries,on_delete=models.CASCADE,blank=True,null=True)
     
 class Companies(models.Model):#ann(for my display)
-    name=models.CharField(max_length=225)
-    mailing_name=models.CharField(max_length=225)
-    
-    
-    
+    d_path=models.CharField(max_length=100,null=True)
+    name = models.CharField(max_length=255)
+    mailing_name = models.CharField(max_length=255)
+    address = models.CharField(max_length=255,null=True)
+    state = models.CharField(max_length=255,null=True)
+    country = models.CharField(max_length=255,null=True)
+    pincode = models.CharField(max_length=10,null=True)
+    telephone = models.CharField(max_length=20,null=True)
+    mobile = models.CharField(max_length=15,null=True)
+    fax = models.CharField(max_length=15,null=True)
+    email = models.EmailField(null=True)
+    password = models.CharField(max_length=240, null=True)
+    website = models.CharField(max_length=100,null=True)
+    currency_symbol = models.CharField(max_length=20,null=True)
+    formal_name = models.CharField(max_length=20,null=True)
+    fin_begin = models.DateField(null=True)
+    books_begin = models.DateField(null=True)
+    fin_end = models.DateField(null=True)
+    status=models.BooleanField(default=True)
+   
+class Months(models.Model):
+    month_name = models.CharField(max_length=255)  
+     
 class Group(models.Model):#ann(for my display)
     name = models.CharField(max_length=225)
     
@@ -88,10 +106,7 @@ class ledgers_vouchers(models.Model):
     credit= models.IntegerField(default=0)#ledger credit
     debit= models.IntegerField(default=0)#ledger debit
     closingbalance=models.IntegerField(default=0)#closing balance
-     
-
-
-    #company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)    
+    company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)    
 
 class Sales(models.Model):#ann sales table
     partyAccntname = models.CharField(max_length=225)
@@ -225,6 +240,8 @@ class tally_ledger(models.Model):
     credit_period = models.CharField(max_length=100,null=True)
     creditdays_voucher = models.CharField(max_length=100,null=True)
     c_balance = models.IntegerField(null = True,blank = True)
+    closing_balance=models.FloatField(default=0)
+
 class Ledger_vouchers_new(models.Model):
     
     ledger = models.ForeignKey(tally_ledger, on_delete=models.CASCADE, blank=True,null=True)
@@ -456,7 +473,21 @@ class add_voucher3(models.Model):
     def _str_(self):
         return self.particular    
         
-
+###############Neethu
+class Stock_closingbalance(models.Model):
+    stock_group=models.IntegerField(null=True)
+    stock_item=models.IntegerField(null=True)
+    closing_balance=models.FloatField()
+class Ledger_vouchers(models.Model):
+    ledger = models.ForeignKey(tally_ledger, on_delete=models.CASCADE, blank=True,null=True)
+    company=models.ForeignKey(Companies,on_delete=models.CASCADE,blank=True,null=True)
+    date=models.DateField()
+    particulars=models.CharField(max_length=225)
+    account=models.CharField(max_length=225,null=True)
+    voucher_type=models.CharField(max_length=225,null=True)
+    voucher_no=models.CharField(max_length=225)
+    debit=models.IntegerField()
+    credit=models.IntegerField()    
 
 
 

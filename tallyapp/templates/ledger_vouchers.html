@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% block body %}
+<script src="https://code.jquery.com/jquery-git.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+    .close {
+        position: absolute;
+        top: 3px;
+        right: 8px;
+        font-size: 25px;
+        color: rgb(255, 255, 255);
+        transform: rotate(45deg);
+        cursor: pointer;
+        text-decoration: none;
+    }
+    
+    .form-popup {
+        display: none;
+        position: fixed;
+        top: 250px;
+        right: 15px;
+        border: 1px solid #f1f1f1;
+        z-index: 9;
+        width: 300px;
+        height: 600px;
+      }
+    
+      .content a:hover {background-color: rgb(238, 167, 75);}
+      
+      /* Add styles to the form container */
+      .form-container {
+        max-width: 50px;
+        height: 500px;
+        padding: 10px;
+      }
+      .form-container1 {
+        max-width: 350px;
+        height: 500px;
+        padding: 2px;
+       
+      }
+    
+</style>
+<script>
+    $(document).ready(function() {
+        
+       
+    });
+
+   
+    function showCost(){
+        document.getElementById('underForm').style.display= "block";
+    }
+    function setPrimary(){
+    document.getElementById('under').value= '*Primary';
+    document.getElementById('underForm').style.visibility= "hidden";
+    }
+    function setCostcentre(under,underId){
+        document.getElementById('under').value= under;
+        document.getElementById('underForm').style.visibility= "hidden";
+        document.getElementsByName('underhidden').value= underId;
+    }
+    function showMe() {
+        
+      }
+</script>
+
+<div class="row container-fluid p-3 mx-0">
+    <div class="col-sm-3 m-0 p-0"></div>
+    <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);">
+        <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
+    <h6  class="bg-info text-light p-1 ">Ledger Voucher</h6>
+    <div  style="text-align: center;margin-top:-35px;font-weight:900">{{cmp.name}}</div>
+
+<form id="myForm" action="{% url 'ledger_vouchers'  %}" method="post" class="p-5">
+        {% csrf_token %}
+   
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label for="gname">Date :</label></div>
+                        <div class="col-sm-8 m-0 p-0"><input type="date" id="date" value="2022-04-01" name="date" class="form-control " required></div> 
+                    </div>
+<div id="q" >
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label for="alia">Particulars</label></div>
+                        <div class="col-sm-8 m-0 p-0">
+                            <select required  name="particulars" id="aa" class=" form-control">
+                                <option value="" selected disabled>select type</option>
+                                {% for i in led %}
+                                <option value="{{i.id}}" >{{i.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div> 
+                    </div>
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label for="under">Account</label></div>
+                        <div class="col-sm-6 m-0 p-0">
+
+                            <select required  name="account" id="aa" class=" form-control">
+                                <option value="" selected disabled>select type</option>
+                                <option value="HDFC" >HDFC</option>
+                                <option value="PURCHASE ACCOUNT" >PURCHASE ACCOUNT</option>
+                                <option value="SBI" >SBI</option>
+                                <option value="FEDERAL BANK" >FEDERAL BANK</option>
+                                <option value="CASH" >CASH</option>
+                                <option value="SALES" >SALES</option>
+                                <option value="PURCHASE" >PURCHASE</option>
+                                <option value="PURCHASE RETURN" >PURCHASE RETURN</option>
+                            </select>
+                        </div>
+                        </div>
+                    
+
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label for="under">Voucher Type</label></div>
+                        <div class="col-sm-6 m-0 p-0">
+
+                            <select required  name="vtype" id="aa" class=" form-control">
+                                <option value="" selected disabled>select type</option>
+                                <option  value="contra">Contra</option>
+                                <option value="CreditNote">Credit Note</option>
+                                <option value="DebitNote">Debit Note</option>
+                                <option  value="Journal">Journal</option>
+                                <option  value="Payment">Payment</option>
+                                <option  value="Purchase">Purchase</option>
+                                <option  value="Receipt">Receipt</option>
+                                <option value="Sales">Sales</option>
+                                
+                                
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label for="alia">Voucher No</label></div>
+                        <div class="col-sm-8 m-0 p-0"><input type="text" id="vno" name="vno" class="form-control " placeholder=""></div> 
+                    </div>
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label for="alia">Debit</label></div>
+                        <div class="col-sm-8 m-0 p-0"><input type="text" id="debit" name="debit" class="form-control " placeholder=""></div> 
+                    </div>
+                    <div class="row container-fluid  p-2 m-0">
+                        <div class="col-sm-4 m-0 p-0"> <label for="alia">Credit</label></div>
+                        <div class="col-sm-8 m-0 p-0"><input type="text" id="credit" name="credit" class="form-control " placeholder=""></div> 
+                    </div>
+</div>
+                    <br>
+                   
+                    <div class="col text-center" >
+                        <button   type="submit" class="btn btn-info" >Create</button>
+                    <!-- <input  type="submit" value="create"> -->
+                    </div>
+                    <!-- <div class="flexy w-100 py-4"><button id="cbtn" type="button" class="btn btn-info w-50">Create</button></div> -->
+    
+</form>
+
+</div>
+</div>
+<div class="col-sm-3  m-0 p-0"></div>
+
+</div> 
+
+
+
+
+{% endblock %}

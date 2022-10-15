@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+
+<style>
+   
+    .flexy{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .btns_prnt {
+        width: 100%;
+       
+        background-color: rgba(240, 248, 255, 0);
+        border: none;
+        /* padding: 6px; */
+    
+    }
+    .btns_prnt:hover{
+        background-color:rgb(44, 158, 187);
+        color: rgb(15, 14, 14);
+    }
+
+
+</style>
+
+
+
+<div class="row container-fluid p-2 mx-0">
+    <div class="col-sm-3 m-0 p-0"></div>
+    <div class="col-sm-6 m-0 p-0" style=" background-color:rgba(0,0,0,0.2);height: 400px;">
+        <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
+        <div  class="bg-info text-light p-2 ">Balance Sheet</div><br>
+        
+        <div  style="text-align: center;margin-top:-49px;font-weight:900">{{cmp.name}}</div>
+        <br>
+        <div  style="margin-left: 20px;font-size:14px;margin-top:5px" class=" "><b>Assets</b></div>
+        <div style="text-align: right; margin-top:1px;margin-right:25px;font-size:14px"><b>{{cmp.name}}</b></div>
+        <div style="text-align: right; margin-top:-3px;margin-right:25px;font-size:14px">as at {{cmp.fin_begin}}</div>
+        
+        <hr>
+<div>
+    <table>
+    
+    <tr>
+ <div class="btns_prnt ">
+            
+     <div style="margin-left: 20px;cursor:pointer"><a href="{% url 'capitalacc'  %}"><b>Capital Account</b> </a></div>
+     <div class="text-right">
+        <div  style="margin-top:-21px;margin-right:20px;"><b>0.000</b></div>
+
+     </div>
+</div>
+
+<div class="btns_prnt">
+     <div style="margin-left: 20px;cursor:pointer"><a href=""><b>Loans(Liability)</b></a> </div>
+     <div class="text-right">
+        <div  style="margin-top:-21px;margin-right:20px;"><b>0.000 </b></div>
+     </div>
+</div>
+
+<div class="btns_prnt">
+     <div style="margin-left: 20px;cursor:pointer"><a href=""><b>Fixed Assets</b></a> </div>
+     <div class="text-right">
+        <div  style="margin-top:-21px;margin-right:20px;"><b>0.00 </b></div>
+     </div>
+</div>
+<div class="btns_prnt">
+    <div style="margin-left: 20px;cursor:pointer"><a href="{% url 'investments' %}"><b>Investments</b></a> </div>
+    <div class="text-right">
+       <div  style="margin-top:-21px;margin-right:20px;"><b>1300.00</b></div>
+    </div>
+</div>
+<div class="btns_prnt">
+    <div style="margin-left: 20px;cursor:pointer"><a href="{% url 'currentassets' %}"><b>Current Assets</b></a> </div>
+    <div class="text-right">
+       <div  style="margin-top:-21px;margin-right:20px;"><b>{{assets}}</b></div>
+    </div>
+</div>
+    
+    
+ </div>
+     <!-- <td style="margin-left: 320px;margin-top:10px;"></td> -->
+ </tr>
+     
+    
+    </table>
+</div>
+
+</div>
+
+<div class="col-sm-4  m-0 p-0"></div>
+
+</div> 
+
+
+
+
+
+{% endblock %}
+

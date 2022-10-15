@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+    {% block body %}
+    {% load static %}
+    <style>
+        .enter{
+            display: flex;
+            align-items: center;
+            justify-content: center;   
+        }
+        .form-popup {
+            display: none;
+            position: fixed;
+            top: 180px;
+            right: 15px;
+            border: 1px solid #f1f1f1;
+            z-index: 9;
+            width: 330px;
+            height: 600px;
+          }
+        
+          .content a:hover {background-color: rgb(238, 167, 75);}
+          
+          /* Add styles to the form container */
+          .form-container {
+            max-width: 50px;
+            height: 500px;
+            padding: 10px;
+          }
+          .form-container1 {
+            max-width: 350px;
+            height: 500px;
+            padding: 2px;
+           
+          }
+          .close {
+            position: absolute;
+            top: 14px;
+            margin-left: 230px;
+            font-size: 25px;
+            color: rgb(6, 68, 139);
+            transform: rotate(45deg);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .scrollbar {
+            margin-left: 20px;
+            float: left;
+            height: 300px;
+            width: 300px;
+            background: rgb(216, 232, 238);
+            overflow-y: scroll;
+            margin-bottom: 25px;
+          }
+          
+          
+          .scrollbar-primary::-webkit-scrollbar {
+            width: 50px;
+            background-color: #0b7534;
+          }
+          
+          .scrollbar-primary::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 4px rgba(214, 57, 9, 0.1);
+            background-color: #dd9078;
+          }
+          
+          .scrollbar-primary {
+            scrollbar-color: #86d5f5 #f1f3f3;
+          }
+          .hide{
+            display: none;
+            align-items:center;
+            justify-content:center;
+            flex-direction: column;
+        }
+        .btns_prnt {
+            width: 100%;
+            background-color: rgba(240, 248, 255, 0);
+            border: none;
+            /* padding: 6px; */
+        
+        }
+        .btns_prnt:hover{
+            background-color:orange;
+            
+        }
+       
+    </style>
+ 
+    <!-- <script src="{% static 'js/ledger.js' %}"></script> -->
+
+    <div class="row container-fluid p-3 mx-0">
+        <div class="col-sm-2 m-0 p-0"></div>
+        <div class="col-sm-8 m-0 p-0" style="background-color:rgba(0,0,0,.4); height: 600px;">
+        <h6 class="bg-info text-light p-2 m-0 text-left">
+            Group Summary
+        </h6>
+        
+        <div  style="text-align: center;margin-top:-35px;font-weight:900">{{i.name}}</div>
+    <div hidden  style="text-align: center;margin-top:-35px;font-weight:900">{{i.id}}</div>
+    <br>
+        <form  method="post" action="" autocomplete="off">
+            {% csrf_token %}
+            <div class="row container-fluid  p-2 m-2" >
+
+              <div class="col-6"></div>
+                <div class="col-6" style=" border: 1px solid rgba(128, 128, 128, 0.6);">
+                  
+                    <div class="text-center"><i>{{stockgroup.grp_name}}</i></div>
+                    
+                    <div class="text-center"><b>{{cmp.name}}</b></div>
+                    <div class="text-center">For {{cmp.fin_begin}}</div>
+                    <div class="row">
+                    <div class="col-sm-12" style=" border: 1px solid rgba(128, 128, 128, 0.6);">
+                        <div class="text-center">Closing Balance</div>
+                        
+                      </div>
+                    </div>
+                </div>
+                
+           
+
+
+            <table align="center"  class="table table-hover text-center " style= "width:150% ;">
+              <h2 align="center"></h2>
+              <tr>
+                  <th colspan="18">Particulars</th>
+                  <th>Quantity</th>
+                  <th>Rate</th>
+                  <th>Value</th>
+                  
+                 
+                  
+              </tr>
+              <div class="btns_prnt" >
+                
+                <tr>
+              
+                  <td colspan="18" ><a href="{% url 'stockItem_monthlySummary' stockitem.id %}" style="font-size:16px;margin-left:50px;cursor:pointer">{{stockitem.name}}</a></td>
+                  <td>{{closing_quantity}}</td>
+                  <td>{{average}}</td>
+                  <td>{{closing_balance}}</td>
+                
+                </tr>
+                
+              </div>
+             
+              <div class="btns_prnt" >
+                
+                <tr>
+              
+                  <td colspan="18" ><a href="" style="font-size:16px;margin-left:50px;cursor:pointer">Himalaya Baby Soap</a></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                
+                </tr>
+                
+              </div>
+
+              </div>
+          </table>
+          
+            
+            
+             
+                
+                        
+                </div>
+                
+                
+                <table class="table">
+                    <tr>
+                        <td colspan="18" style="font-size:16px;margin-left:50px;">Grand Total</td>
+                        <td colspan="4"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td><td></td><td></td>
+                        <td></td><td></td><td></td>
+                        <td></td><td></td><td></td>
+                        <td></td><td></td><td></td><td></td><td></td><td></td>
+                        <td>{{closing_balance}}</td>
+                    </tr>
+                </table>
+            </div> 
+                
+</form>
+
+                                        
+                       
+                    </div>
+
+        </form>
+    </div>
+
+{% endblock %}

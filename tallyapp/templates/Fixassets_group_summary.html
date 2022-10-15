@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block body %}
 
 <head>
@@ -30,9 +29,9 @@
         
     </style>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <script src="jquery-3.6.0.min.js"></script>
+    <!-- <script src="jquery-3.6.0.min.js"></script> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
 </head>
 <body>
     <div class="container-fluid">
@@ -118,6 +117,7 @@
                             
                             <th class ='col-3 text-center' id = 'gdr'>{{d}}</th>
                             <th class = 'col-3 text-center' id = 'gcr'>{{c}}</th>
+
                         </tr>
                     </tbody>
 
@@ -132,8 +132,8 @@
     </div>
 
     
-
-    <!-- <table class="table1 col" style="text-align: right; margin-top: 10px;" >
+<!-- 
+    <table class="table1 col" style="text-align: right; margin-top: 10px;" >
         <thead>
             <th ><a href="{% url 'quit' %}" role="button"  class="btn" >QUIT</a></th>
             <th><button type="button"  class="btn" onclick="myFunction()">SELECT</button></th>
@@ -143,7 +143,7 @@
         </thead>
     </table> --> -->
 
-    <script>
+    <!-- <script>
 
         function myFunction() {
             var se = document.getElementsByClassName('table-row');
@@ -169,7 +169,7 @@
                     
 
                 };
-            }
+            } 
                 
         }
 
@@ -180,35 +180,8 @@
             table.deleteRow(index);
             
         }
-            /*var total1 = 0;
-            $('#table tr td.dr').each(function() {
-                total1 += parseInt($(this).text());
-            });
-            $('#table td .gdr').text(total1);
 
-            var total2 = 0;
-            $('#table tr td.cr').each(function() {
-                total2 += parseInt($(this).text());
-            });
-            $('#table td .gcr').text(total2);
-
-        var table = document.getElementById("table"),value1,value2, sumVal1 = 0 ,sumVal2 = 0;
-            
-            for(var i = 1; i < table.rows.length; i++)
-            {
-                value1 = document.getElementById("dr")
-                sumVal1 = sumVal1 + value1;
-            }
-
-            for(var i = 1; i < table.rows.length; i++)
-            {
-                value2 = document.getElementById("cr")
-                sumVal2 = sumVal2 + value2;
-            }
-            
-            document.getElementById("gdr").innerHTML = sumVal1;
-            document.getElementById("gcr").innerHTML = sumVal2;*/
-
-    </script>
+    </script>-->
 {% endblock %}
+
 

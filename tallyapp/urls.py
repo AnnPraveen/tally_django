@@ -62,7 +62,7 @@ urlpatterns = [
  path('balancesheet_new',views.balancesheet_new,name='balancesheet_new'),
 
     path('capital_group_summary',views.capital_group_summary,name='capital_group_summary'),
-    path('ledger_monthly_summary/<id>',views.ledger_monthly_summary,name='ledger_monthly_summary'),
+    path('ledgermonthly/<id>',views.ledgermonthly,name='ledgermonthly'),
     path('quit',views.quit,name='quit'),
     path('ledger_vouchers/<pk>/<id>',views.ledger_vouchers,name='ledger_vouchers'),
     path('vouch_delete/<pk>',views.vouch_delete,name='vouch_delete'),
@@ -94,8 +94,25 @@ path('profit',views.profit,name='profit'),
     path('direct_exp',views.direct_exprenses,name='direct_exprenses'),
     path('indirect_exp',views.indirect_expenses,name='indirect_expenses'),
     path('stock_group2',views.stock_group2,name='stock_group2'),
-    path('items_2/<int:pk>',views.items_2,name='items_2')
-
+    path('items_2/<int:pk>',views.items_2,name='items_2'),
+#########Neethu
+    path('investments',views.investments,name="investments"), 
+    path('monthly_summary/<int:pk>',views.monthly_summary,name="monthly_summary"),
+    path('ledgervouchers/<int:pk>',views.ledgervouchers,name="ledgervouchers"),
+    path('currentassets',views.currentassets,name="currentassets"),
+    path('stockgroupsummary',views.stockgroupsummary,name="stockgroupsummary"),
+    path('stockitem/<int:pk>',views.stockitem,name="stockitem"),
+    path('stockItem_monthlySummary/<int:pk>',views.stockItem_monthlySummary,name="stockItem_monthlySummary"),
+    path('stockitem_vouchersApril/<int:pk>',views.stockitem_vouchersApril,name="stockitem_vouchersApril"),
+    path('loans_ledger',views.loans_ledger,name="loans_ledger"),
+    path('loans_monthly_summary/<int:pk>',views.loans_monthly_summary,name="loans_monthly_summary"),
+    path('loans_voucher/<int:pk>',views.loans_voucher,name="loans_voucher"),
+    path('sundry_ledger',views.sundry_ledger,name="sundry_ledger"),
+    path('sundry_monthly_summary/<int:pk>',views.sundry_monthly_summary,name='sundry_monthly_summary'),
+    path('cash',views.cash,name='cash'),
+    path('cash_monthly_summary/<int:pk>',views.cash_monthly_summary,name='cash_monthly_summary'),
+    path('bank',views.bank,name="bank"),
+    path('bank_monthly_summary/<int:pk>',views.bank_monthly_summary,name="bank_monthly_summary"),
      # path('sales_add',views.sales_add,name='sales_add'),#ann
     # path('saleview/<int:pk>',views.saleview,name='saleview'),#ann
     # path('purchaseview/<int:pk>',views.purchaseview,name='purchaseview'),#ann

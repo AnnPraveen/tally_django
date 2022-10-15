@@ -1,0 +1,181 @@
+
+{% extends 'base.html' %}
+
+{% block body %}
+<head>
+    <style>
+          thead th {
+    border: .5px solid rgba(255, 255, 255, .2); ;
+    
+    
+ }
+ .table-row{
+cursor:pointer;
+}
+.selected{
+    background-color: rgb(216, 155, 51);
+
+}
+.table-row:hover{
+    background-color: rgb(216, 155, 51);
+}
+
+   
+.btn{
+                    background-color: rgb(41, 51, 51);
+                    border: 1px,solid,cornflowerblue;
+                    width: 292px;
+                    margin-left: 12px;
+            }
+  
+
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row d-flex " style="background-color: rgb(71, 79, 84);color:#fff;width:100%;margin: auto;">
+                    <div class="col-5 ">Ledger Monthly Summary</div>
+
+                    <div class="col-5" style="font-weight:900 ;text-transform:capitalize;">{{company.name}}</div>
+
+                    <div class= 'col-2'><a href="javascript:history.go(-1);">
+                        <span class="pull-right clickable" data-effect="fadeOut"><i class="fa fa-times"></i></span></a>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table " style="background-color: rgba(33,57,77);color:#fff;">
+
+                        <thead>
+
+                            <tr>
+                                <th rowspan="3"   class="align-middle text-white "> <h6 class="d-flex align-items-sm-start par p-1 py-1" style="margin-left: 20px;">Particular</h6></th>
+                                
+                                <th colspan="4" class="text-center text-white " ><h6><i>{{ledger.name}}{{d2}}</i></h6>
+                                  <h6 style="text-transform:capitalize ;"><strong>{{company.name}} </strong></h6><h6> For {{company.fin_begin}}</h6></th>
+                              </tr>
+                              <tr>
+
+                                <th colspan="2" class="text-center text-white" style="width: 26%;"><h6> <strong> Transactions </strong></h6></th>
+                                <th rowspan="2" class="text-center text-white " style="width: 13%;"><h6> <strong> Closing <br> Balance</strong></h6></th>
+
+                              </tr>
+                              <tr>
+                                <th class="text-center text-white">Debit</th>
+                                <th class="text-center text-white">Credit</th>
+                              </tr>
+
+                        </thead>
+                        
+
+                        <tbody>
+                          <tr class="table-row" data-href="">
+                            <td><label><i>Opening Balance</i></label></td>
+                            <td class=" text-center"></td>
+                            <td class=" text-center"></td>
+                            <td class="text-center"><label>{{ledger.opening_blnc}} {{ledger.type_of_ledger}}</label></td>
+                           
+                          </tr>
+                          
+                          {% for m in months %}
+                          {% for i in d1 %}
+
+                                <tr class="table-row" data-href="" >
+                                    
+                                    <td><a href="{% url 'ledger_vouchers'  ledger.id  m.id %}">{{m.month_name }}</a></td>
+                                    {% if m.month_name == i%}
+                                    
+                                        <td class=" text-center">{{debit}}</td>
+                                        <td class=" text-center">{{credit}}</td>
+                                        <td class="text-center"><label>{{closing}} 
+                                        {% if ledger.type_of_ledger == 'Dr' %} {% if deb > credit %} Dr {% else %} Cr {% endif %}
+                                        {% else %}{% if debit > cred %} Dr {% else %} Cr {% endif %}{% endif%}</label></td>
+                                    {% else %}
+                                        <td></td>
+                                        <td></td>
+                                        <td style="text-align: end;"><strong></strong></td>
+                                    {% endif %}
+                                </tr>     
+                                {% endfor %}
+                                     
+                            {% endfor %}
+                            
+                            
+                            <tr class="table-row">
+                                <th  ><h6 class="d-flex align-items-sm-start par p-1 py-1 foot" style="margin-left: 20px;">Grand Total</h6></th>
+                                
+                                <th  style="text-align: end;">{{debit}}</th>
+                                <th  style="text-align: end;">{{credit}}</th>
+                                <th  style="text-align: end;">{{clb}}&nbsp;{{type1}}</th>
+                                
+                            </tr>
+
+                        </tbody>
+       
+                    </table>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <table class="table1 col" style="text-align: right; margin-top: 10px;" >
+        <thead>
+            <th ><a href="{% url 'quit' %}" role="button"  class="btn" >QUIT</a></th>
+            <th><button type="button"  class="btn" onclick="myFunction()">SELECT</button></th>
+            <!-- <th><b  type="button"  class="btn p-1 px-4"  onclick="Delete()" >Delete</button></th> -->
+            <th><button type="button"  class="btn " onclick="removeSelectedRow()">REMOVE LINE</button></th>
+            <th><a href="{{ request.META.HTTP_REFERER }}" type="button"  class="btn" >RESTORE LINE</a></th>
+        </thead>
+    </table>
+
+    <script>
+
+        /*function myFunction() {
+            var table = document.getElementById('table')
+            var se = document.getElementsByClassName('table-row');
+                for( i= 1; i<se.length;i++){
+                    se[i].style.backgroundColor = "lightblue";
+
+                }
+
+        }*/
+        var index;  
+        function getSelectedRow()
+                {
+            var table = document.getElementById("table");
+            for(var i = 1; i < table.rows.length; i++)
+            {
+                {
+                    // clear the selected from the previous selected row
+                    // the first time index is undefined
+                    if(typeof index !== "undefined"){
+                        table.rows[index].classList.toggle("selected");
+                    }
+                   
+                    index = this.rowIndex;
+                    this.classList.toggle("selected");
+                    
+
+                };
+            }
+                
+        }
+
+        getSelectedRow();
+
+        function removeSelectedRow()
+        {
+            table.deleteRow(index);
+            
+        }
+        $(document).ready(function($) {
+            $(".table-row").click(function() {
+                window.document.location = $(this).data("href");
+            });
+        });
+    </script>
+
+{% endblock %}
+

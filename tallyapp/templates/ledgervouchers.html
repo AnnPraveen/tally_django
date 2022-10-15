@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+
+<style>
+  ::-moz-selection { /* Code for Firefox */
+    color: red;
+    background: yellow;
+  }
+  
+  ::selection {
+    color: red;
+    background: yellow;
+  }
+    .flexy{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .btns_prnt {
+        width: 100%;
+       
+        background-color: rgba(240, 248, 255, 0);
+        border: none;
+        /* padding: 6px; */
+    
+    }
+    .btns_prnt:hover{
+        background-color:rgb(44, 158, 187);
+        color: rgb(15, 14, 14);
+    }
+
+
+</style>
+
+
+
+<div class="row container-fluid p-2 mx-0">
+    <div class="col-sm-1 m-0 p-0"></div>
+    <div class="col-sm-10 m-0 p-0" style=" background-color:rgba(0,0,0,0.4);height: 500px;">
+        <!-- <a href="javascript:history.go(-1);" class="close">+</a> -->
+        <div  class="bg-info text-light p-2 ">Ledger Vouchers</div><br>
+        
+        <br>
+        
+        <div style="margin-left:18px;font-size:14px">Ledger: <b>Investments</b></div>
+       
+      <div style="text-align: right; margin-top:-18px;margin-right:40px;font-size:14px">{{msg1}}</div>
+<hr>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Particulars</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <th scope="col">Vch Type</th>
+        <th scope="col">Vch No</th>
+        <th scope="col">Debit</th>
+        <th scope="col">Credit</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in voucher %}
+      
+      <tr >
+        <th  scope="row">{{i.date}}</th>
+        <td>{{i.particulars}}</td>
+        <td>{{i.voucher_type}}</td>
+        <td>{{i.voucher_no}}</td>
+        <td>{{i.debit}}</td>
+        <td>{{i.credit}}</td>
+      </tr>
+    </div>
+      {% endfor %}
+      <tr>
+        <td >
+          
+          </td>
+          <td></td>
+          <td></td>
+          <td>Opening Balance:</td>
+          <td>
+            {% if talled.type == 'Dr' %}
+            {{talled.opening_blnc}}
+            {% endif %}
+          </td>
+          <td >
+           {% if talled.type == 'Cr' %}
+           {{talled.opening_blnc}}
+           {% endif %}
+           </td>
+          <td ><center>
+           </center>
+           </td> 
+         </tr> 
+         <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Current Total:</td>
+          <td>{{debit}}</td>
+          <td>{{credit}}</td>
+         </tr>
+         <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Closing Balance:</td>
+          <td>{{deb_balance}}</td>
+          <td>{{cred_balance}}</td>
+         </tr>
+    </tbody>
+  </table>
+{% comment %} <hr>
+
+<table class="table">
+  <tr>
+      <td >Opening Balance</td><td>200000</td><br>
+      <td >Current Total</td><td></td><br>
+      <td >Closing Balance</td><td></td>
+  </tr>
+</table> {% endcomment %}
+
+{% comment %} <button type="button" onclick="myFunction()">Select</button>
+<button type="button" onclick="myFunction()">Delete</button>
+<button type="button" onclick="myFunction()">Remove line</button>
+<button type="button" onclick="myFunction()">Restore line</button> {% endcomment %}
+
+<script>
+  function myFunction(){
+
+  }
+</script>
+
+<div class="col-sm-4  m-0 p-0"></div>
+
+</div> 
+
+
+
+
+
+{% endblock %}
+

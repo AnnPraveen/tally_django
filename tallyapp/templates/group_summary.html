@@ -3,9 +3,9 @@
 {% block body %}
 
 <head>
-    <script src="jquery-3.6.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <!-- <script src="jquery-3.6.0.min.js"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script> -->
     <style>
         
         thead th {
@@ -43,7 +43,7 @@
     <div class="container-fluid">
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="row d-flex " style="background-color: rgb(71, 79, 84);color:#fff;width:100%;margin: auto;">
+                <div class="row d-flex " style="background-color: rgb(8, 89, 139);color:#fff;width:100%;margin: auto;">
 
                     <div class="col-5"> Group Summary</div>
                     <div class="col-5" style="font-weight:900 ;text-transform:capitalize;">{{company.name}}</div>
@@ -74,12 +74,12 @@
                         </tr>
                     </thead>
                     <tbody >
-                        {{d}} {{c}}
+                    
                         {% for led in ledger %}
                         
                         <tr class="table-row clickable">                           
                              
-                            <td colspan="2" class="fields"><a href="{% url 'ledger_monthly_summary' led.id %}">{{led.name}}</a></td>
+                            <td colspan="2" class="fields"><a href="{% url 'ledgermonthly' led.id %}">{{led.name}}</a></td>
                             
                             {% if voucher is not None %}
                             {% if led.type_of_ledger == 'Dr'%}
@@ -140,15 +140,15 @@
 
     
 
- 
+<!--  
     <a href="{% url 'quit' %}" role="button"  class="btn" >QUIT</a>
     <button type="button" class="btn" onclick="myFunction()">Select</button>
-    <!--<button type="button" class="btn" onclick="myFunction()">Delete</button>-->
-    <button type="button" class="btn" onclick="myFunction()" id = "remove">Remove line</button>
-    <button type="button" class="btn" onclick="myFunction()">Restore line</button>
-
-    <script type="text/javascript">
-        /*$('#table tbody').on('Click','tr',function(){
+    <button type="button" class="btn" onclick="myFunction()">Delete</button>-->
+    <!-- <button type="button" class="btn" onclick="myFunction()" id = "remove">Remove line</button>
+    <button type="button" class="btn" onclick="myFunction()">Restore line</button> -->
+     -->
+    <!-- <script type="text/javascript"> -->
+        <!-- /*$('#table tbody').on('Click','tr',function(){
             if($(this).hasClass('selected')){
                 $(this).removeClass('selected')
             }
@@ -157,7 +157,7 @@
             }
         })*/
 
-    </script>
+    </script> -->
     
 {% endblock %}
 

@@ -319,15 +319,37 @@
                 <hr>
                 
                     <div style="margin-left:15px;font-size:16px"><a href="{% url 'capital_group_summary' %}">Capital Account</a></div>
-                    <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">5670</div>
+                    <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px"> 
+                        {% for b in balance %}
+                        {% if b.group_id == 3 %}
+                
+                        {{b.total}}
+                
+                        {% endif %}
+                        {% endfor %} 
+                    </div>
                     <div style="margin-left:15px;font-size:16px"><a href="{% url 'loanl_group_summary' %}">Loans(Liability)</a></div>
-                    <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">3000</div>
+                    <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px"> 
+                        {% for b in balance %}
+                        {% if b.group_id == 4 %}
+                
+                        {{b.total}}
+                
+                        {% endif %}
+                        {% endfor %} </div>
                     <div style="margin-left:15px;font-size:16px"><a href="{% url 'fixed_assets_group_summary'%}">Fixed Assets</a></div>
-                    <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">50000</div>
-                    <div style="margin-left:35px;font-size:16px"><a href="{% url 'groupsummary' 02 %}">Investments</a> <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">400</div>
-                    <div style="margin-left:35px;font-size:16px"><a href="{% url 'groupsummary' 02 %}">Current Assets</a></div>                    <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">4008</div>
-                    <div style="text-align:center; margin-top:-18px;margin-right:18px;font-size:15px">234567,90</div>
-                    <div style="margin-left:35px;font-style: italic;"><a href="{% url 'groupsummary' 02 %}">Unadjusted Forex Gain/Loss</a></div>
+                    <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">    
+                        {% for b in balance %}
+                        {% if b.group_id == 5  %}
+                
+                        {{b.total}}
+                
+                        {% endif %}
+                        {% endfor %} </div>
+                    <div style="margin-left:35px;font-size:16px"><a href="{% url 'investments' %}">Investments</a><div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">400</div>
+                    <div style="margin-left:35px;font-size:16px"><a href="{% url 'currentassets' %}">Current Assets</a> <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">{{assets}}</div>
+                    
+                    <div style="margin-left:35px;font-style: italic;"><a href=" ">Unadjusted Forex Gain/Loss</a>
                     <div style="text-align: right; margin-top:-18px;margin-right:18px;font-size:15px">0000</div>
                 </br>
             </br>

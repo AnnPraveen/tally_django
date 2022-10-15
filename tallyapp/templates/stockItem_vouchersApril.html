@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+    {% block body %}
+    {% load static %}
+    <style>
+        .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          max-width: 1500px;
+          margin: auto;
+          text-align: right;
+          font-family: arial;
+        }
+        a{
+            {% comment %} margin-right: 10px; {% endcomment %}
+        }
+        .btns{
+            color: black;
+            text-decoration: none;
+        }
+        .btns_prnt{
+            width: 100%;
+            text-align: end;
+            background-color: rgba(240, 248, 255, 0);
+            border: none;
+            
+        }
+        .btns_prnt:hover{
+            background-color:orange;
+            
+        }
+        .row{
+           
+            max-width: 1500px;
+            margin: auto;
+            text-align: left;
+            font-family: arial; 
+            color: #fff;
+        }
+    </style> 
+    <div class="m-3">
+    <div class="card">
+        <h4 style="margin-left:190px;">{{st.name}}</h4>
+        <h6 style="margin-left:190px;">{{msg1}}</h6>
+        <br>
+        
+        {% comment %} <h5 style="background-color:rgb(103, 175, 220) ; color:white; text-align: left; padding: 5px 0; width:100%;">List of companies</h5> {% endcomment %}
+        <div class="row" style="width: 100%;text-align:left;background-color: rgba(240, 248, 255, 0);border:white;;border-width:1px; border: 1px solid black;
+        border-collapse: collapse;">
+            <div class="col-md-1">Date</div>
+            <div class="col-md-2">Particulars</div>
+             <div class="col-md-2">Vch Type</div>
+             <div class="col-md-1">Vch No</div>
+            <div class="col-md-2" style="text-align:center;border:white;e;border-width:1px; border: 1px solid black;
+            border-collapse: collapse;" colspan="2">Inwards</div>
+            <div class="col-md-2" style="text-align:center;border:white;; border-width:1px; border: 1px solid black;
+            border-collapse: collapse;"; colspan="2">Outwards</div>
+            <div class="col-md-2" style="text-align:center;border:white;; border-width:1px; border: 1px solid black;
+            border-collapse: collapse;"; colspan="2">Closing Balance</div>
+        </div>
+        
+        <div class="row" style="width: 100%;text-align:left;background-color: rgba(240, 248, 255, 0);">
+            <div class="col-md-1" style="text-align:center;border:white;e;border-width:1px;border: 1px solid black;
+            border-collapse: collapse;"></div>
+            <div class="col-md-2" style="text-align:center;border:white;e;border-width:1px; border: 1px solid black;
+            border-collapse: collapse;"></div>
+            <div class="col-md-2" style="text-align:center;border:white;e;border-width:1px;border: 1px solid black;
+            border-collapse: collapse;"></div>
+            <div class="col-md-1" style="text-align:center;border:white;e;border-width:1px; border: 1px solid black;
+            border-collapse: collapse;"></div>
+            <div class="col" style="border:white;border-width:1px;border: 1px solid black;
+            border-collapse: collapse;" >quantity</div>
+            <div class="col" style="border:white; border-width:1px; border: 1px solid black;
+            border-collapse: collapse;"  >value</div>
+            <div class="col" style="border:white; border-width:1px;border: 1px solid black;
+            border-collapse: collapse;" >quantity</div>
+            <div class="col"style="border:white; border-width:1px; border: 1px solid black;
+            border-collapse: collapse;"  >value</div>
+            <div class="col"style="border:white; border-width:1px; border: 1px solid black;
+            border-collapse: collapse;"  >quantity</div>
+            <div class="col" style="border:white; border-width:1px;border: 1px solid black;
+            border-collapse: collapse;" >value</div>
+        </div>
+        <hr> 
+        <div class="row" style="width: 100%;text-align:left;background-color: rgba(240, 248, 255, 0);">
+            <div class="col-md-1" >1-Apr-22</div>
+            <div class="col-md-2" style="text-align:center;border:white;e;border-width:1px; border: 1px solid black;
+            border-collapse: collapse;">Opening Balance</div>
+            <div class="col-md-2" style="text-align:center;border:white;e;border-width:1px; border: 1px solid black;
+            border-collapse: collapse;"></div>
+            <div class="col-md-1" style="text-align:center;border:white;e;border-width:1px; border: 1px solid black;
+            border-collapse: collapse;"></div>
+            <div class="col" style="border:white;border-width:1px; border: 1px solid black;
+            border-collapse: collapse;" >{{st.quantity}} BTL</div>
+            <div class="col" style="border:white; border-width:1px; border: 1px solid black;
+            border-collapse: collapse;"  >{{st.value}}</div>
+            <div class="col" style="border:white; border-width:1px; border: 1px solid black;
+            border-collapse: collapse;" ></div>
+            <div class="col"style="border:white; border-width:1px; border: 1px solid black;
+            border-collapse: collapse;"  ></div>
+            <div class="col"style="border:white; border-width:1px; border: 1px solid black;
+            border-collapse: collapse;"  >{{st.quantity}} BTL</div>
+            <div class="col" style="border:white; border-width:1px; border: 1px solid black;
+            border-collapse: collapse;" >{{st.value}}</div>
+        </div> 
+            
+           
+            
+          
+            
+            <table class="table" >
+            {% for i in voucher %}
+            <a href="">
+                <button  class="btns_prnt" id="create">
+                    <div class="row" style="width: 100%;text-align:left;background-color: rgba(240, 248, 255, 0);">
+                    <div class="col-md-1" >1-Apr-22</div>
+                    <div class="col-md-2" style="text-align:center;border:white;e;border-width:1px; border: 1px solid black;
+                    border-collapse: collapse;">{{i.party_name}}</div>
+                    <div class="col-md-2" style="text-align:center;border:white;e;border-width:1px; border: 1px solid black;
+                    border-collapse: collapse;">{{i.vouch_type}}</div>
+                    <div class="col-md-1" style="text-align:center;border:white;e;border-width:1px;border: 1px solid black;
+                    border-collapse: collapse;">{{i.vouch_num}}</div>
+                    {% if i.vouch_type == 'purchase' %}
+                    <div class="col" style="border:white;border-width:1px; border: 1px solid black;
+                    border-collapse: collapse;" >{{i.quantity}} BTL</div>
+                    <div class="col" style="border:white; border-width:1px; border: 1px solid black;
+                    border-collapse: collapse;"  >{{i.value}}</div>
+                    
+                    
+                    <div class="col" style="border:white; border-width:1px;border: 1px solid black;
+                    border-collapse: collapse;" ></div>
+                    <div class="col"style="border:white; border-width:1px; border: 1px solid black;
+                    border-collapse: collapse;"  ></div>
+                    {% endif %}
+                    {% if i.vouch_type == 'sales' %}
+                    <div class="col" style="border:white;border-width:1px; border: 1px solid black;
+                    border-collapse: collapse;" ></div>
+                    <div class="col" style="border:white; border-width:1px; border: 1px solid black;
+                    border-collapse: collapse;"  ></div>
+                    
+                    
+                    <div class="col" style="border:white; border-width:1px; border: 1px solid black;
+                    border-collapse: collapse;" >{{i.quantity}} BTL</div>
+                    <div class="col"style="border:white; border-width:1px; border: 1px solid black;
+                    border-collapse: collapse;"  >{{i.value}}</div>
+                    {% endif %}
+                    <div class="col"style="border:white; border-width:1px; border: 1px solid black;
+                    border-collapse: collapse;"  ></div>
+                    <div class="col" style="border:white; border-width:1px; border: 1px solid black;
+                    border-collapse: collapse;" ></div>
+                
+                </div>
+                </button>
+                </a>
+                {% endfor %}
+                <br><br> <br><br> <br><br> <br><br>
+                <hr>
+                <a >
+                    
+                    <div class="row">
+                        <div class="col-md-1"> Total as per Default valuation:</div>
+                        <div class="col-md-2"> </div>
+                        <div class="col-md-2"> </div>
+                        <div class="col-md-1"> </div>
+                        <div class="col" style="border:white;border-width:1px; border: 1px solid black;
+                        border-collapse: collapse;" >{{quantity}} BTL</div>
+                        <div class="col" style="border:white; border-width:1px; border: 1px solid black;
+                        border-collapse: collapse;"  >{{value}}</div>
+                        <div class="col" style="border:white; border-width:1px; border: 1px solid black;
+                        border-collapse: collapse;" >{{quantity3}} BTL</div>
+                        <div class="col"style="border:white; border-width:1px; border: 1px solid black;
+                        border-collapse: collapse;"  >{{value3}}</div>
+                        <div class="col"style="border:white; border-width:1px; border: 1px solid black;
+                        border-collapse: collapse;"  >{{closing_quantity}} BTL</div>
+                        <div class="col" style="border:white; border-width:1px; border: 1px solid black;
+                        border-collapse: collapse;" >{{closing_balance}}</div>
+                    </div>
+                    
+                    </a>
+                    
+        </div>   
+        
+        
+        
+        
+       
+        
+        
+    
+        <br>
+        
+    </div>   
+{% endblock %}
